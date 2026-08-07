@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIX PIATRĂ — Configurator 1.0</title>
+<style>
+:root{--orange:#f28a00;--dark:#0d1217;--dark2:#151b21;--line:#29313a;--muted:#9ba6b1;--green:#25b85a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#eef1f4;color:#111}.app{min-height:100vh;display:grid;grid-template-columns:300px minmax(560px,1fr) 380px}.left{background:linear-gradient(180deg,#0a0f14,#111820);color:#fff;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.logo{width:48px;height:48px;border:2px solid var(--orange);border-radius:14px;display:grid;place-items:center;font-weight:800;color:var(--orange)}.brand h1{font-size:27px;margin:0;letter-spacing:.5px}.brand h1 span{color:var(--orange)}.brand p{margin:2px 0 0;color:#d7dde3;font-size:13px}.left h2,.center h2,.right h2{font-size:16px;margin:0 0 6px}.sub{font-size:13px;color:#aeb7c0;margin-bottom:14px}.search{width:100%;background:#10161c;border:1px solid #35404b;color:#fff;padding:12px 14px;border-radius:10px;margin-bottom:12px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{border:0;border-radius:999px;padding:7px 10px;background:#202831;color:#fff;cursor:pointer}.filter.active{background:var(--orange)}.stones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:calc(100vh - 300px);overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:#4b5661 #111820}.stones::-webkit-scrollbar{width:8px}.stones::-webkit-scrollbar-track{background:#111820;border-radius:8px}.stones::-webkit-scrollbar-thumb{background:#4b5661;border-radius:8px}.stones::-webkit-scrollbar-thumb:hover{background:#66727d}.stone{background:#151c23;border:1px solid #2d3741;border-radius:11px;overflow:hidden;cursor:pointer;transition:.18s}.stone:hover{transform:translateY(-2px);border-color:#f28a00}.stone.selected{outline:2px solid var(--orange)}.stone img{width:100%;height:92px;object-fit:cover;display:block}.stone .meta{padding:8px}.stone b{font-size:13px;display:block}.stone small{color:#c5ccd2}.stone button{float:right;margin-top:-31px;width:28px;height:28px;border-radius:50%;border:1px solid #dce1e5;background:transparent;color:#fff;font-size:20px;cursor:pointer}.all{margin-top:14px;width:100%;padding:11px;border-radius:10px;border:1px solid #3b4651;background:transparent;color:#fff}.center{background:linear-gradient(180deg,#0a0e12,#11161b);color:#fff;padding:16px;overflow:auto}.steps{height:62px;display:flex;align-items:flex-start;justify-content:space-around;border-bottom:1px solid #242d35;margin:-2px -16px 14px;padding-top:4px}.step{font-size:12px;text-align:center;color:#c9d0d6;min-width:95px}.step i{display:block;margin:auto auto 7px;width:28px;height:28px;border-radius:50%;background:#ddd;color:#111;font-style:normal;line-height:28px}.step.active i{background:var(--orange);color:#fff}.preview-card{border:1px solid #2b343c;border-radius:14px;background:#111820;padding:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.actions{display:flex;gap:8px}.ghost{background:#151d24;color:#fff;border:1px solid #35404a;padding:9px 12px;border-radius:9px;cursor:pointer}.preview{height:365px;border-radius:10px;overflow:hidden;background:#222}.preview canvas{width:100%;height:100%;display:block}.mix-title{display:flex;justify-content:space-between;align-items:end;margin:16px 0 9px}.mix-list{display:flex;flex-direction:column;gap:8px}.mix-row{display:grid;grid-template-columns:46px 150px 1fr 28px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #263039}.thumb{width:46px;height:46px;border-radius:8px;object-fit:cover}.mix-name b{display:block}.mix-name small{color:#aab3bc}.pct-input{width:100%;background:#131a20;border:1px solid #39434d;color:#fff;border-radius:8px;padding:10px;text-align:center;font-size:20px;font-weight:700}.pct-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.empty-state{height:100%;display:grid;place-items:center;text-align:center;color:#d7dde3;background:linear-gradient(135deg,#d9d9d6,#bfc2c0)}.empty-state b{display:block;color:#111;font-size:20px;margin-bottom:6px}.empty-state span{color:#3f464d;font-size:14px}.total-warning{margin-top:10px;padding:10px 12px;border-radius:9px;font-weight:700}.total-warning.ok{background:rgba(37,184,90,.14);color:#4ee27f;border:1px solid rgba(37,184,90,.45)}.total-warning.low{background:rgba(242,138,0,.12);color:#ffb24a;border:1px solid rgba(242,138,0,.45)}.total-warning.high{background:rgba(225,72,72,.12);color:#ff7a7a;border:1px solid rgba(225,72,72,.5)}.remove{background:none;border:0;color:#dbe1e5;font-size:24px;cursor:pointer}.mix-foot{display:flex;justify-content:space-between;padding-top:14px;font-size:14px}.mix-foot strong{color:#33d66b;font-size:22px}.right{background:#f6f7f8;padding:16px;overflow:auto}.right-top{height:62px;display:flex;align-items:flex-start;justify-content:flex-end;gap:28px;color:#222;padding:6px 8px 0}.card{background:#fff;border:1px solid #dfe4e8;border-radius:14px;padding:15px;margin-bottom:14px}.card h2{font-size:16px}.house{width:100%;height:245px;border-radius:10px;object-fit:cover;display:block;margin:10px 0}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{padding:11px;border-radius:9px;border:1px solid #d7dde2;background:#fff;font-weight:700;cursor:pointer}.btn.green{background:#159447;color:#fff;border-color:#159447}.calc-row,.total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e4e7ea}.qty{display:flex;align-items:center;gap:12px}.qty button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px}.total-row{font-size:21px;font-weight:800;border:0}.cart{width:100%;padding:15px;border:0;border-radius:10px;background:var(--orange);color:#fff;font-size:18px;font-weight:800;margin-bottom:9px}.wa{width:100%;padding:13px;border:1px solid #cfd6db;border-radius:10px;background:#fff;color:#111;font-size:16px;font-weight:800}.note{font-size:12px;color:#68727b}.mobile-tabs{display:none}
+@media(max-width:1150px){.app{grid-template-columns:270px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}.right-top{display:none}.right .card{margin:0}.right .card:first-of-type{grid-column:1/2}}
+@media(max-width:780px){.app{display:block}.left,.center,.right{padding:14px}.stones{grid-template-columns:repeat(2,1fr);max-height:420px}.steps{display:none}.mix-row{grid-template-columns:42px 105px 1fr 64px 20px}.right{display:block}.card{margin-bottom:12px}.preview{height:280px}.mobile-tabs{display:flex;position:sticky;bottom:0;z-index:10;background:#fff;border-top:1px solid #ddd}.mobile-tabs button{flex:1;padding:12px;border:0;background:#fff}.left,.center,.right{min-height:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="left">
+  <div class="brand"><div class="logo">◆</div><div><h1>MIX <span>PIATRĂ</span></h1><p>Creează-ți mixul perfect</p></div></div>
+  <h2>1. ALEGE PIETRELE TALE</h2><div class="sub">Poți folosi 1 până la 4 culori. Lista se poate derula.</div>
+  <input id="search" class="search" placeholder="Caută piatră...">
+  <div class="filters"><button class="filter active">Toate</button><button class="filter">Albe</button><button class="filter">Gri</button><button class="filter">Maro</button><button class="filter">Colorate</button></div>
+  <div id="stones" class="stones"></div><button class="all">▦ Vezi toate pietrele</button>
+</aside>
+<main class="center">
+ <div class="steps"><div class="step active"><i>1</i>Alege pietrele</div><div class="step"><i>2</i>Construiește mixul</div><div class="step"><i>3</i>Calculează</div><div class="step"><i>4</i>Comandă</div></div>
+ <section class="preview-card">
+  <div class="preview-head"><div><h2>2. MIXUL TĂU PERSONALIZAT</h2><div class="sub">La selecția inițială propunem automat procentele; apoi le poți modifica manual din 5 în 5.</div></div><div class="actions"><button id="reset" class="ghost">Resetare</button></div></div>
+  <div class="preview"><canvas id="mixCanvas"></canvas></div>
+  <div class="mix-title"><div><h2>Compoziție</h2><div class="sub">Totalul trebuie să fie 100%</div></div></div>
+  <div id="mixList" class="mix-list"></div>
+  <div id="totalWarning" class="total-warning low">Alege o piatră pentru a începe.</div><div class="mix-foot"><span>Total: <strong id="total">0%</strong></span><span>Cod mix: <b id="code">—</b></span></div>
+ </section>
+</main>
+<aside class="right">
+ <div class="right-top"><span>❔<br><small>Ajutor</small></span><span>♡<br><small>Favorite</small></span><span>◉<br><small>Contul meu</small></span></div>
+ <section class="card"><h2>3. VEZI PE CASA TA</h2><div class="note">Previzualizare orientativă a produsului aplicat pe soclu.</div><img class="house" src="assets/casa.jpg" alt="Casă cu soclu decorativ"><div class="btn-row"><button class="btn">Schimbă model</button><button class="btn green">Încarcă poza ta</button></div></section>
+ <section class="card"><h2>4. CALCULATOR CONSUM</h2><div class="calc-row"><span>Suprafață (m²)</span><div class="qty"><button id="minus">−</button><b id="sqm">25</b><button id="plus">+</button></div></div><div class="calc-row"><span>Cantitate material</span><b id="buckets">7 găleți</b></div><div class="calc-row"><span>Grund recomandat</span><b id="primer">1 găleată</b></div><div class="calc-row"><span>Preț materiale</span><b id="price">1.750 lei</b></div><div class="calc-row"><span>Transport</span><b>150 lei</b></div><div class="total-row"><span>TOTAL</span><span id="grand">1.900 lei</span></div><button class="cart">🛒 Adaugă în coș</button><button class="wa">◉ Cere ofertă pe WhatsApp</button></section>
+</aside>
+</div>
+<script>
+const products=[
+{name:'Alb',img:'assets/alb.jpeg',cat:'Albe'},{name:'Albastru',img:'assets/albastru.jpeg',cat:'Colorate'},{name:'Galben',img:'assets/galben.jpeg',cat:'Colorate'},{name:'Gri argintiu',img:'assets/gri-argintiu.jpeg',cat:'Gri'},{name:'Gri deschis',img:'assets/gri-deschis.jpeg',cat:'Gri'},{name:'Maro brown',img:'assets/maro-brown.jpeg',cat:'Maro'},{name:'Maro nisip',img:'assets/maro-nisip.jpeg',cat:'Maro'},{name:'Maro nucă',img:'assets/maro-nuca.jpeg',cat:'Maro'},{name:'Maro',img:'assets/maro.jpeg',cat:'Maro'},{name:'Negru',img:'assets/negru.jpeg',cat:'Gri'},{name:'Orange',img:'assets/orange.jpeg',cat:'Colorate'}];
+let selected=[];
+let vacantSlots=[];
+let autoPresetMode=true;
+const INITIAL_PRESETS={1:[100],2:[50,50],3:[35,35,30],4:[25,25,25,25]};
+const imgs={}; products.forEach(p=>{const i=new Image();i.src=p.img;imgs[p.img]=i;i.onload=draw});
+function renderProducts(filter='Toate',query=''){const el=document.querySelector('#stones');el.innerHTML='';products.filter(p=>(filter==='Toate'||p.cat===filter)&&p.name.toLowerCase().includes(query.toLowerCase())).forEach(p=>{const d=document.createElement('div');d.className='stone'+(selected.some(s=>s.name===p.name)?' selected':'');d.innerHTML=`<img src="${p.img}"><div class="meta"><b>${p.name}</b><small>2 - 4 mm</small><button>+</button></div>`;d.onclick=()=>addStone(p);el.appendChild(d)})}
+function addStone(p){
+  if(selected.some(s=>s.name===p.name))return;
+  if(selected.length>=4){alert('Poți selecta maximum 4 pietre.');return}
+
+  // Dacă tocmai a fost scoasă o culoare, următoarea culoare îi ia locul
+  // și păstrează exact procentul ei. Nu modificăm celelalte culori.
+  if(vacantSlots.length){
+    vacantSlots.sort((a,b)=>a.index-b.index);
+    const slot=vacantSlots.shift();
+    const insertAt=Math.max(0,Math.min(slot.index,selected.length));
+    selected.splice(insertAt,0,{...p,pct:slot.pct});
+    renderAll();
+    return;
+  }
+
+  selected.push({...p,pct:0});
+
+  // Preseturile automate sunt folosite doar cât timp clientul își construiește
+  // selecția inițială și nu a intervenit manual / nu a scos culori.
+  if(autoPresetMode){
+    const preset=INITIAL_PRESETS[selected.length];
+    if(preset) selected.forEach((s,i)=>s.pct=preset[i]);
+  }
+  renderAll();
+}
+function renderMix(){
+  const el=document.querySelector('#mixList');
+  el.innerHTML='';
+  selected.forEach((s,idx)=>{
+    const r=document.createElement('div');
+    r.className='mix-row';
+    r.innerHTML=`<img class="thumb" src="${s.img}"><div class="mix-name"><b>${s.name}</b><small>2 - 4 mm</small></div><input class="pct-input" type="number" min="0" max="100" step="5" value="${s.pct}" aria-label="Procent ${s.name}"><button class="remove">×</button>`;
+    const input=r.querySelector('.pct-input');
+    input.onchange=e=>{
+      let value=Number(e.target.value||0);
+      value=Math.max(0,Math.min(100,Math.round(value/5)*5));
+      selected[idx].pct=value;
+      autoPresetMode=false;
+      renderAll();
+    };
+    r.querySelector('.remove').onclick=()=>{
+      const removed=selected[idx];
+      vacantSlots.push({index:idx,pct:removed.pct});
+      selected.splice(idx,1);
+      autoPresetMode=false;
+      renderAll();
+    };
+    el.appendChild(r);
+  });
+  const total=selected.reduce((a,b)=>a+b.pct,0);
+  const totalEl=document.querySelector('#total');
+  const warning=document.querySelector('#totalWarning');
+  totalEl.textContent=total+'%';
+  totalEl.style.color=total===100&&selected.length>=1?'#33d66b':total>100?'#ff6767':'#ffb24a';
+  warning.className='total-warning '+(total===100&&selected.length>=1?'ok':total>100?'high':'low');
+  if(selected.length<1) warning.textContent='Alege o piatră pentru a începe.';
+  else if(total<100) warning.textContent=`Mai trebuie să adaugi ${100-total}% pentru a ajunge la 100%.`;
+  else if(total>100) warning.textContent=`Ai depășit totalul cu ${total-100}%. Redu manual unul sau mai multe procente.`;
+  else warning.textContent='Compoziția este completă: total 100%.';
+  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—';
+}
+let drawVersion=0;
+function seededRandomFactory(seed){
+  return function(){ seed=(seed*9301+49297)%233280; return seed/233280; };
+}
+function draw(){
+  const version=++drawVersion;
+  const c=document.querySelector('#mixCanvas');
+  const ctx=c.getContext('2d');
+  const rect=c.getBoundingClientRect();
+  const dpr=Math.max(1,Math.min(window.devicePixelRatio||1,2));
+  const W=Math.max(640,Math.round(rect.width));
+  const H=Math.max(360,Math.round(rect.height));
+  c.width=Math.round(W*dpr); c.height=Math.round(H*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const total=selected.reduce((a,b)=>a+b.pct,0);
+  if(selected.length<1 || total!==100){
+    const g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#d9dad8'); g.addColorStop(1,'#bfc2bf');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#20262b';
+    ctx.textAlign='center';
+    ctx.font='700 20px Arial';
+    ctx.fillText(selected.length<1?'Alege între 1 și 4 pietre':'Completează manual procentele până la 100%',W/2,H/2-4);
+    ctx.font='14px Arial';
+    ctx.fillStyle='#4b535a';
+    ctx.fillText(`Total curent: ${total}%`,W/2,H/2+24);
+    return;
+  }
+
+  const loaded=selected.every(s=>imgs[s.img]&&imgs[s.img].complete&&imgs[s.img].naturalWidth);
+  if(!loaded){ setTimeout(()=>{if(version===drawVersion)draw()},100); return; }
+
+  // MOTOR 2.0 - pietre neregulate, nu fragmente pătrate.
+  // Fiecare element final este o formă organică decupată din fotografia reală.
+  let codeSeed=2166136261;
+  selected.forEach(s=>{
+    for(const ch of s.name) codeSeed=(codeSeed^ch.charCodeAt(0))*16777619>>>0;
+    codeSeed=(codeSeed+s.pct*131)>>>0;
+  });
+  const rnd=seededRandomFactory(codeSeed||17);
+
+  // Fundal foarte discret. În mod normal nu rămâne vizibil deoarece pietrele se suprapun.
+  ctx.fillStyle='#2b2926';
+  ctx.fillRect(0,0,W,H);
+
+  // Zoom-out: multe pietre mici pe o suprafață mare.
+  const STEP=5.4;
+  const RMIN=3.8;
+  const RMAX=5.7;
+  const SOURCE_MIN=14;
+  const SOURCE_MAX=28;
+  const JITTER=2.2;
+  const cols=Math.ceil(W/STEP)+6;
+  const rows=Math.ceil(H/STEP)+6;
+  const totalStones=cols*rows;
+  const perPercent=totalStones/100;
+
+  // Distribuție exactă după procente, apoi amestecare aleatoare.
+  let bag=[];
+  selected.forEach((stone,idx)=>{
+    const n=Math.round(stone.pct*perPercent);
+    for(let k=0;k<n;k++) bag.push(idx);
+  });
+  while(bag.length<totalStones) bag.push(0);
+  while(bag.length>totalStones) bag.pop();
+  for(let i=bag.length-1;i>0;i--){
+    const j=Math.floor(rnd()*(i+1));
+    [bag[i],bag[j]]=[bag[j],bag[i]];
+  }
+
+  function stonePath(cx,cy,r,rot,seedOffset=0){
+    const pts=7+Math.floor(rnd()*4); // 7-10 colțuri neregulate
+    ctx.beginPath();
+    for(let n=0;n<pts;n++){
+      const a=rot+Math.PI*2*n/pts;
+      const wobble=.78+rnd()*.34;
+      const rr=r*wobble;
+      const x=cx+Math.cos(a)*rr;
+      const y=cy+Math.sin(a)*rr*(.82+rnd()*.22);
+      if(n===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+  }
+
+  function drawStone(stoneIdx,cx,cy,r,alpha=1){
+    const stone=selected[stoneIdx];
+    const img=imgs[stone.img];
+    const sw=Math.round(SOURCE_MIN+rnd()*(SOURCE_MAX-SOURCE_MIN));
+    const sh=Math.max(8,Math.round(sw*(.78+rnd()*.44)));
+    const sx=Math.floor(rnd()*Math.max(1,img.naturalWidth-sw));
+    const sy=Math.floor(rnd()*Math.max(1,img.naturalHeight-sh));
+    const rot=(rnd()-.5)*Math.PI*.7;
+    const rw=r*(1.05+rnd()*.18);
+
+    ctx.save();
+    stonePath(cx,cy,rw,rot);
+    ctx.clip();
+
+    // Folosim textura reală, mărită doar cât să umple forma pietrei.
+    // Nu există margine dreptunghiulară vizibilă, fiindcă desenul este decupat de contur.
+    const dw=rw*2.7;
+    const dh=rw*2.45;
+    ctx.globalAlpha=alpha;
+    ctx.translate(cx,cy);
+    ctx.rotate((rnd()-.5)*.5);
+    if(rnd()<.5) ctx.scale(-1,1);
+    ctx.drawImage(img,sx,sy,sw,sh,-dw/2,-dh/2,dw,dh);
+    ctx.restore();
+
+    // Umbră fină de contact între pietre - fără efect de bilă.
+    ctx.save();
+    ctx.globalAlpha=.16*alpha;
+    ctx.strokeStyle='#090909';
+    ctx.lineWidth=.55;
+    stonePath(cx,cy,rw,rot);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Poziții tip rețea neregulată. Rândurile sunt decalate pentru a evita tiparul pătrat.
+  const stones=[];
+  for(let row=0;row<rows;row++){
+    for(let col=0;col<cols;col++){
+      const i=row*cols+col;
+      const stagger=(row%2)*STEP*.48;
+      const x=col*STEP+stagger-STEP*3+(rnd()*2*JITTER-JITTER);
+      const y=row*STEP-STEP*3+(rnd()*2*JITTER-JITTER);
+      const r=RMIN+rnd()*(RMAX-RMIN);
+      stones.push({idx:bag[i],x,y,r});
+    }
+  }
+
+  // Ordine aleatoare pentru suprapuneri naturale.
+  for(let i=stones.length-1;i>0;i--){
+    const j=Math.floor(rnd()*(i+1));
+    [stones[i],stones[j]]=[stones[j],stones[i]];
+  }
+
+  ctx.imageSmoothingEnabled=true;
+  ctx.imageSmoothingQuality='high';
+  let pidx=0;
+  function drawChunk(){
+    if(version!==drawVersion) return;
+    const end=Math.min(stones.length,pidx+1100);
+    for(;pidx<end;pidx++){
+      const p=stones[pidx];
+      drawStone(p.idx,p.x,p.y,p.r,.98);
+    }
+    if(pidx<stones.length){ requestAnimationFrame(drawChunk); return; }
+
+    // Strat de umplere: pietre ceva mai mici, doar pentru eventualele micro-goluri.
+    const fillers=Math.round(totalStones*.22);
+    for(let t=0;t<fillers;t++){
+      const idx=bag[Math.floor(rnd()*bag.length)];
+      const x=rnd()*W;
+      const y=rnd()*H;
+      const r=2.7+rnd()*1.8;
+      drawStone(idx,x,y,r,.92);
+    }
+  }
+  drawChunk();
+}
+function makeCode(){let h=0;selected.forEach(s=>{for(const ch of s.name)h=(h*31+ch.charCodeAt(0))>>>0;h=(h+s.pct*97)>>>0});return 'MX-'+h.toString(36).toUpperCase().slice(-5).padStart(5,'0')}
+function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];vacantSlots=[];autoPresetMode=true;renderAll()};
+let sqm=25;function calc(){document.querySelector('#sqm').textContent=sqm;let buckets=Math.ceil(sqm/4);let primer=Math.ceil(sqm/200);let material=buckets*250;document.querySelector('#buckets').textContent=buckets+' găleți';document.querySelector('#primer').textContent=primer+' găleată';document.querySelector('#price').textContent=material.toLocaleString('ro-RO')+' lei';document.querySelector('#grand').textContent=(material+150).toLocaleString('ro-RO')+' lei'}document.querySelector('#plus').onclick=()=>{sqm++;calc()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(1,sqm-1);calc()};window.onresize=draw;renderAll();calc();
+</script>
+</body>
+</html>
