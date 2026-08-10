@@ -322,7 +322,7 @@ function draw(){
   }
   drawChunk();
 }
-let houseHistoryActive=false;
+
 function drawHouseOverlay(overlay,houseImg,choice){
   const mixCanvas=document.querySelector('#mixCanvas');
   if(!overlay||!mixCanvas||!houseImg)return;
@@ -448,31 +448,43 @@ function updateHouseThumbnail(){
 function openHousePreview(){
   const modal=document.querySelector('#houseModal');
   if(!modal)return;
+
   modal.classList.add('open');
   modal.setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
-  // Așteptăm un frame ca imaginea casei să aibă dimensiunea finală pe ecran,
-  // apoi copiem mixul pe soclu.
+
   requestAnimationFrame(()=>prepareHousePreview());
-  if(!houseHistoryActive){history.pushState({housePreview:true},'');houseHistoryActive=true;}
 }
-function closeHousePreview(fromPop=false){
+
+function closeHousePreview(){
   const modal=document.querySelector('#houseModal');
-  if(!modal||!modal.classList.contains('open'))return;
+  if(!modal)return;
+
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden','true');
   document.body.classList.remove('modal-open');
-  if(fromPop){houseHistoryActive=false;return;}
-  if(houseHistoryActive){history.back();}
 }
 function makeCode(){let h=0;selected.forEach(s=>{for(const ch of s.name)h=(h*31+ch.charCodeAt(0))>>>0;h=(h+s.pct*97)>>>0});return 'MX-'+h.toString(36).toUpperCase().slice(-5).padStart(5,'0')}
 function updateRecipeCard(){const codeEl=document.querySelector('#recipeCode'),listEl=document.querySelector('#recipeList');if(!codeEl||!listEl)return;const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){codeEl.textContent='—';listEl.textContent='Alege un mix de 100% pentru a genera fișa.';return}const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';codeEl.textContent=makeCode();listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')+`<br>Producător: <b>${brand}</b>`;}
 function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
 document.querySelector('#housePreview').addEventListener('click',openHousePreview);
-document.querySelector('#houseClose').addEventListener('click',()=>closeHousePreview(false));
-document.querySelector('#houseModal').addEventListener('click',e=>{if(e.target.id==='houseModal')closeHousePreview(false)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHousePreview(false)});
-window.addEventListener('popstate',()=>closeHousePreview(true));
+
+document.querySelector('#houseClose').addEventListener('click',e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  closeHousePreview();
+});
+
+document.querySelector('#houseModal').addEventListener('click',e=>{
+  if(e.target.id==='houseModal'){
+    e.preventDefault();
+    closeHousePreview();
+  }
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeHousePreview();
+});
 document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];renderAll()};
 let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBrand='duraziv',primerBrand='auto';
 const MOSAIC_PRICES={duraziv:270,kober:240};
