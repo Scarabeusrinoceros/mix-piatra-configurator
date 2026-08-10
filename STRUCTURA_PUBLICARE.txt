@@ -1,0 +1,32 @@
+MIX PIATRA - STRUCTURA PENTRU PUBLICARE
+
+/site
+  index.html
+  /assets
+    alb.jpeg
+    albastru.jpeg
+    casa.jpg
+    galben.jpeg
+    gri-argintiu.jpeg
+    gri-deschis.jpeg
+    house_foreground_right.png
+    maro-brown.jpeg
+    maro-nisip.jpeg
+    maro-nuca.jpeg
+    maro.jpeg
+    negru.jpeg
+    orange.jpeg
+
+/admin
+  index.html
+
+Recomandare URL:
+- domeniu principal -> continutul din /site
+- /admin/ -> continutul din /admin
+
+Nu este necesar sa publicam reference.png, fisiere SQL sau README-urile de dezvoltare.
+
+IMPORTANT:
+- cheia Supabase publishable este intentionat prezenta in browser;
+- nu publica niciodata o cheie service_role;
+- accesul real la date este controlat prin RLS Supabase.

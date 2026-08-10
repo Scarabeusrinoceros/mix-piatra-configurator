@@ -6,9 +6,12 @@
 <title>MIX PIATRĂ — Configurator 1.0</title>
 <style>
 :root{--orange:#f28a00;--dark:#0d1217;--dark2:#151b21;--line:#29313a;--muted:#9ba6b1;--green:#25b85a}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#eef1f4;color:#111}.app{min-height:100vh;display:grid;grid-template-columns:300px minmax(560px,1fr) 380px}.left{background:linear-gradient(180deg,#0a0f14,#111820);color:#fff;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.logo{width:48px;height:48px;border:2px solid var(--orange);border-radius:14px;display:grid;place-items:center;font-weight:800;color:var(--orange)}.brand h1{font-size:27px;margin:0;letter-spacing:.5px}.brand h1 span{color:var(--orange)}.brand p{margin:2px 0 0;color:#d7dde3;font-size:13px}.left h2,.center h2,.right h2{font-size:16px;margin:0 0 6px}.sub{font-size:13px;color:#aeb7c0;margin-bottom:14px}.search{width:100%;background:#10161c;border:1px solid #35404b;color:#fff;padding:12px 14px;border-radius:10px;margin-bottom:12px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{border:0;border-radius:999px;padding:7px 10px;background:#202831;color:#fff;cursor:pointer}.filter.active{background:var(--orange)}.stones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:calc(100vh - 300px);overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:#4b5661 #111820}.stones::-webkit-scrollbar{width:8px}.stones::-webkit-scrollbar-track{background:#111820;border-radius:8px}.stones::-webkit-scrollbar-thumb{background:#4b5661;border-radius:8px}.stones::-webkit-scrollbar-thumb:hover{background:#66727d}.stone{background:#151c23;border:1px solid #2d3741;border-radius:11px;overflow:hidden;cursor:pointer;transition:.18s}.stone:hover{transform:translateY(-2px);border-color:#f28a00}.stone.selected{outline:2px solid var(--orange)}.stone img{width:100%;height:92px;object-fit:cover;display:block}.stone .meta{padding:8px}.stone b{font-size:13px;display:block}.stone small{color:#c5ccd2}.stone button{float:right;margin-top:-31px;width:28px;height:28px;border-radius:50%;border:1px solid #dce1e5;background:transparent;color:#fff;font-size:20px;cursor:pointer}.all{margin-top:14px;width:100%;padding:11px;border-radius:10px;border:1px solid #3b4651;background:transparent;color:#fff}.center{background:linear-gradient(180deg,#0a0e12,#11161b);color:#fff;padding:16px;overflow:auto}.steps{height:62px;display:flex;align-items:flex-start;justify-content:space-around;border-bottom:1px solid #242d35;margin:-2px -16px 14px;padding-top:4px}.step{font-size:12px;text-align:center;color:#c9d0d6;min-width:95px}.step i{display:block;margin:auto auto 7px;width:28px;height:28px;border-radius:50%;background:#ddd;color:#111;font-style:normal;line-height:28px}.step.active i{background:var(--orange);color:#fff}.preview-card{border:1px solid #2b343c;border-radius:14px;background:#111820;padding:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.actions{display:flex;gap:8px}.ghost{background:#151d24;color:#fff;border:1px solid #35404a;padding:9px 12px;border-radius:9px;cursor:pointer}.preview{height:365px;border-radius:10px;overflow:hidden;background:#222}.preview canvas{width:100%;height:100%;display:block}.mix-title{display:flex;justify-content:space-between;align-items:end;margin:16px 0 9px}.mix-list{display:flex;flex-direction:column;gap:8px}.mix-row{display:grid;grid-template-columns:46px 150px 1fr 28px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #263039}.thumb{width:46px;height:46px;border-radius:8px;object-fit:cover}.mix-name b{display:block}.mix-name small{color:#aab3bc}.pct-input{width:100%;background:#131a20;border:1px solid #39434d;color:#fff;border-radius:8px;padding:10px;text-align:center;font-size:20px;font-weight:700}.pct-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.empty-state{height:100%;display:grid;place-items:center;text-align:center;color:#d7dde3;background:linear-gradient(135deg,#d9d9d6,#bfc2c0)}.empty-state b{display:block;color:#111;font-size:20px;margin-bottom:6px}.empty-state span{color:#3f464d;font-size:14px}.total-warning{margin-top:10px;padding:10px 12px;border-radius:9px;font-weight:700}.total-warning.ok{background:rgba(37,184,90,.14);color:#4ee27f;border:1px solid rgba(37,184,90,.45)}.total-warning.low{background:rgba(242,138,0,.12);color:#ffb24a;border:1px solid rgba(242,138,0,.45)}.total-warning.high{background:rgba(225,72,72,.12);color:#ff7a7a;border:1px solid rgba(225,72,72,.5)}.remove{background:none;border:0;color:#dbe1e5;font-size:24px;cursor:pointer}.mix-foot{display:flex;justify-content:space-between;padding-top:14px;font-size:14px}.mix-foot strong{color:#33d66b;font-size:22px}.right{background:#f6f7f8;padding:16px;overflow:auto}.right-top{height:62px;display:flex;align-items:flex-start;justify-content:flex-end;gap:28px;color:#222;padding:6px 8px 0}.card{background:#fff;border:1px solid #dfe4e8;border-radius:14px;padding:15px;margin-bottom:14px}.card h2{font-size:16px}.house{width:100%;height:245px;border-radius:10px;object-fit:cover;display:block;margin:10px 0}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{padding:11px;border-radius:9px;border:1px solid #d7dde2;background:#fff;font-weight:700;cursor:pointer}.btn.green{background:#159447;color:#fff;border-color:#159447}.calc-row,.total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e4e7ea}.qty{display:flex;align-items:center;gap:12px}.qty button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px}.total-row{font-size:21px;font-weight:800;border:0}.cart{width:100%;padding:15px;border:0;border-radius:10px;background:var(--orange);color:#fff;font-size:18px;font-weight:800;margin-bottom:9px}.wa{width:100%;padding:13px;border:1px solid #cfd6db;border-radius:10px;background:#fff;color:#111;font-size:16px;font-weight:800}.note{font-size:12px;color:#68727b}.mobile-tabs{display:none}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#eef1f4;color:#111}.app{min-height:100vh;display:grid;grid-template-columns:300px minmax(560px,1fr) 380px}.left{background:linear-gradient(180deg,#0a0f14,#111820);color:#fff;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.logo{width:48px;height:48px;border:2px solid var(--orange);border-radius:14px;display:grid;place-items:center;font-weight:800;color:var(--orange)}.brand h1{font-size:27px;margin:0;letter-spacing:.5px}.brand h1 span{color:var(--orange)}.brand p{margin:2px 0 0;color:#d7dde3;font-size:13px}.left h2,.center h2,.right h2{font-size:16px;margin:0 0 6px}.sub{font-size:13px;color:#aeb7c0;margin-bottom:14px}.search{width:100%;background:#10161c;border:1px solid #35404b;color:#fff;padding:12px 14px;border-radius:10px;margin-bottom:12px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{border:0;border-radius:999px;padding:7px 10px;background:#202831;color:#fff;cursor:pointer}.filter.active{background:var(--orange)}.stones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:calc(100vh - 300px);overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:#4b5661 #111820}.stones::-webkit-scrollbar{width:8px}.stones::-webkit-scrollbar-track{background:#111820;border-radius:8px}.stones::-webkit-scrollbar-thumb{background:#4b5661;border-radius:8px}.stones::-webkit-scrollbar-thumb:hover{background:#66727d}.stone{background:#151c23;border:1px solid #2d3741;border-radius:11px;overflow:hidden;cursor:pointer;transition:.18s}.stone:hover{transform:translateY(-2px);border-color:#f28a00}.stone.selected{outline:2px solid var(--orange)}.stone img{width:100%;height:92px;object-fit:cover;display:block}.stone .meta{padding:8px}.stone b{font-size:13px;display:block}.stone small{color:#c5ccd2}.stone button{float:right;margin-top:-31px;width:28px;height:28px;border-radius:50%;border:1px solid #dce1e5;background:transparent;color:#fff;font-size:20px;cursor:pointer}.all{margin-top:14px;width:100%;padding:11px;border-radius:10px;border:1px solid #3b4651;background:transparent;color:#fff}.center{background:linear-gradient(180deg,#0a0e12,#11161b);color:#fff;padding:16px;overflow:auto}.steps{height:62px;display:flex;align-items:flex-start;justify-content:space-around;border-bottom:1px solid #242d35;margin:-2px -16px 14px;padding-top:4px}.step{font-size:12px;text-align:center;color:#c9d0d6;min-width:95px}.step i{display:block;margin:auto auto 7px;width:28px;height:28px;border-radius:50%;background:#ddd;color:#111;font-style:normal;line-height:28px}.step.active i{background:var(--orange);color:#fff}.preview-card{border:1px solid #2b343c;border-radius:14px;background:#111820;padding:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.actions{display:flex;gap:8px}.ghost{background:#151d24;color:#fff;border:1px solid #35404a;padding:9px 12px;border-radius:9px;cursor:pointer}.preview{height:365px;border-radius:10px;overflow:hidden;background:#222}.preview canvas{width:100%;height:100%;display:block}.mix-title{display:flex;justify-content:space-between;align-items:end;margin:16px 0 9px}.mix-list{display:flex;flex-direction:column;gap:8px}.mix-row{display:grid;grid-template-columns:46px 150px 1fr 28px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #263039}.thumb{width:46px;height:46px;border-radius:8px;object-fit:cover}.mix-name b{display:block}.mix-name small{color:#aab3bc}.pct-input{width:100%;background:#131a20;border:1px solid #39434d;color:#fff;border-radius:8px;padding:10px;text-align:center;font-size:20px;font-weight:700}.pct-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.empty-state{height:100%;display:grid;place-items:center;text-align:center;color:#d7dde3;background:linear-gradient(135deg,#d9d9d6,#bfc2c0)}.empty-state b{display:block;color:#111;font-size:20px;margin-bottom:6px}.empty-state span{color:#3f464d;font-size:14px}.total-warning{margin-top:10px;padding:10px 12px;border-radius:9px;font-weight:700}.total-warning.ok{background:rgba(37,184,90,.14);color:#4ee27f;border:1px solid rgba(37,184,90,.45)}.total-warning.low{background:rgba(242,138,0,.12);color:#ffb24a;border:1px solid rgba(242,138,0,.45)}.total-warning.high{background:rgba(225,72,72,.12);color:#ff7a7a;border:1px solid rgba(225,72,72,.5)}.remove{background:none;border:0;color:#dbe1e5;font-size:24px;cursor:pointer}.mix-foot{display:flex;justify-content:space-between;padding-top:14px;font-size:14px}.mix-foot strong{color:#33d66b;font-size:22px}.right{background:#f6f7f8;padding:16px;overflow:auto}.right-top{height:62px;display:flex;align-items:flex-start;justify-content:flex-end;gap:28px;color:#222;padding:6px 8px 0}.card{background:#fff;border:1px solid #dfe4e8;border-radius:14px;padding:15px;margin-bottom:14px}.card h2{font-size:16px}.house{width:100%;height:245px;border-radius:10px;object-fit:cover;display:block;margin:10px 0}.house-thumb-stage{position:relative;margin:10px 0;border-radius:10px;overflow:hidden}.house-thumb-stage .house{margin:0}.house-thumb-overlay,.house-thumb-foreground{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.house-thumb-overlay{z-index:2;opacity:.93;filter:brightness(.94) contrast(1.03)}.house-thumb-foreground{z-index:3;object-fit:cover}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{padding:11px;border-radius:9px;border:1px solid #d7dde2;background:#fff;font-weight:700;cursor:pointer}.btn.green{background:#159447;color:#fff;border-color:#159447}.calc-row,.total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e4e7ea}.qty{display:flex;align-items:center;gap:8px}.sqm-input{width:76px;height:30px;border:1px solid #d6dce1;border-radius:8px;text-align:center;font-size:16px;font-weight:800;background:#fff;color:#111}.sqm-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.qty button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px}.calc-control{display:flex;align-items:center;gap:8px}.calc-control button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px;cursor:pointer}.calc-hint{font-size:11px;color:#68727b;margin-top:3px}.primer-box{padding:8px 0}.primer-line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 0}.primer-toggle{display:flex;align-items:center;gap:7px;font-size:13px;color:#4d5963}.primer-toggle input{width:17px;height:17px}.brand-select{width:100%;border:1px solid #d6dce1;border-radius:9px;background:#fff;color:#111;padding:9px 10px;font-weight:800}.primer-brand-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0 3px}.primer-brand-row label{font-size:12px;color:#68727b}.primer-brand-select{max-width:190px;padding:7px 9px;font-size:12px}.recipe-box{margin-top:10px;padding:11px;border:1px solid #e0e5e9;border-radius:10px;background:#f8fafb}.recipe-code{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:7px}.recipe-list{font-size:12px;line-height:1.55;color:#4d5963}.copy-recipe{border:1px solid #d6dce1;background:#fff;border-radius:8px;padding:7px 9px;font-weight:700;cursor:pointer}.total-row{font-size:21px;font-weight:800;border:0}.cart{width:100%;padding:15px;border:0;border-radius:10px;background:var(--orange);color:#fff;font-size:18px;font-weight:800;margin-bottom:9px}.wa{width:100%;padding:13px;border:1px solid #cfd6db;border-radius:10px;background:#fff;color:#111;font-size:16px;font-weight:800}.note{font-size:12px;color:#68727b}.mobile-tabs{display:none}.house{cursor:zoom-in}.house-modal{position:fixed;inset:0;background:rgba(5,8,11,.96);z-index:9999;display:none;align-items:center;justify-content:center;padding:18px}.house-modal.open{display:flex}.house-stage{position:relative;max-width:96vw;max-height:92vh}.house-stage>img{display:block;max-width:96vw;max-height:92vh;width:auto;height:auto}.house-mix-overlay{position:absolute;inset:0;width:100%;height:100%;opacity:.93;pointer-events:none;filter:brightness(.94) contrast(1.03);z-index:2}.house-foreground{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:3}.house-close{position:absolute;right:12px;top:12px;z-index:4;width:46px;height:46px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(0,0,0,.72);color:#fff;font-size:28px;cursor:pointer}.house-choice{position:absolute;left:16px;bottom:16px;z-index:4;background:rgba(5,8,11,.78);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 13px;font-size:13px;line-height:1.5;backdrop-filter:blur(5px);max-width:70%}body.modal-open{overflow:hidden}@media(max-width:780px){.house-modal{padding:0}.house-stage,.house-stage>img{max-width:100vw;max-height:100vh}.house-close{position:fixed;right:10px;top:10px}.house-choice{position:fixed;left:10px;right:68px;bottom:10px;max-width:none;font-size:12px}}
 @media(max-width:1150px){.app{grid-template-columns:270px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}.right-top{display:none}.right .card{margin:0}.right .card:first-of-type{grid-column:1/2}}
 @media(max-width:780px){.app{display:block}.left,.center,.right{padding:14px}.stones{grid-template-columns:repeat(2,1fr);max-height:420px}.steps{display:none}.mix-row{grid-template-columns:42px 105px 1fr 64px 20px}.right{display:block}.card{margin-bottom:12px}.preview{height:280px}.mobile-tabs{display:flex;position:sticky;bottom:0;z-index:10;background:#fff;border-top:1px solid #ddd}.mobile-tabs button{flex:1;padding:12px;border:0;background:#fff}.left,.center,.right{min-height:auto}}
+
+/* Checkout V1 - formular si sumar, fara baza de date */
+.checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -31,43 +34,83 @@
  </section>
 </main>
 <aside class="right">
- <div class="right-top"><span>❔<br><small>Ajutor</small></span><span>♡<br><small>Favorite</small></span><span>◉<br><small>Contul meu</small></span></div>
- <section class="card"><h2>3. VEZI PE CASA TA</h2><div class="note">Previzualizare orientativă a produsului aplicat pe soclu.</div><img class="house" src="assets/casa.jpg" alt="Casă cu soclu decorativ"><div class="btn-row"><button class="btn">Schimbă model</button><button class="btn green">Încarcă poza ta</button></div></section>
- <section class="card"><h2>4. CALCULATOR CONSUM</h2><div class="calc-row"><span>Suprafață (m²)</span><div class="qty"><button id="minus">−</button><b id="sqm">25</b><button id="plus">+</button></div></div><div class="calc-row"><span>Cantitate material</span><b id="buckets">7 găleți</b></div><div class="calc-row"><span>Grund recomandat</span><b id="primer">1 găleată</b></div><div class="calc-row"><span>Preț materiale</span><b id="price">1.750 lei</b></div><div class="calc-row"><span>Transport</span><b>150 lei</b></div><div class="total-row"><span>TOTAL</span><span id="grand">1.900 lei</span></div><button class="cart">🛒 Adaugă în coș</button><button class="wa">◉ Cere ofertă pe WhatsApp</button></section>
+ <div class="right-top"><a href="tel:+40735172091" style="color:inherit;text-decoration:none;text-align:center">☎<br><small>+40 735 172 091</small></a><span>❔<br><small>Ajutor</small></span><span>♡<br><small>Favorite</small></span><span>◉<br><small>Contul meu</small></span></div>
+ <section class="card"><h2>3. VEZI PE CASA TA</h2><div class="note">Previzualizare orientativă a produsului aplicat pe soclu.</div><div class="house-thumb-stage"><img id="housePreview" class="house" src="assets/casa.jpg" alt="Casă cu soclu decorativ" title="Apasă pentru vizualizare pe tot ecranul"><canvas id="houseThumbOverlay" class="house-thumb-overlay" aria-hidden="true"></canvas><img class="house-thumb-foreground" src="assets/house_foreground_right.png" alt="" aria-hidden="true"></div><div class="btn-row"><button class="btn">Schimbă model</button><button class="btn green">Încarcă poza ta</button></div></section>
+ <section class="card"><h2>4. CALCULATOR CONSUM</h2>
+ <div class="calc-row"><span>Suprafață (m²)</span><div class="qty"><button id="minus">−</button><input id="sqmInput" class="sqm-input" type="number" min="0" step="1" value="0" inputmode="numeric" aria-label="Suprafață în metri pătrați"><button id="plus">+</button></div></div>
+ <div class="calc-row"><div><span>Producător mozaic</span><div class="calc-hint">Aceeași rețetă de culoare, preț diferit</div></div><select id="mosaicBrand" class="brand-select" aria-label="Producător mozaic"><option value="duraziv">Duraziv — 270 lei / 25 kg</option><option value="kober">Kober — 240 lei / 25 kg</option></select></div>
+ <div class="calc-row"><div><span>Mozaic 25 kg</span><div class="calc-hint">Consum calculat: 4 m² / găleată</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
+ <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div></div><label class="primer-toggle"><input id="primerEnabled" type="checkbox" checked> Adaugă grund</label></div><div class="primer-brand-row"><label for="primerBrand">Vrei alt grund?</label><select id="primerBrand" class="brand-select primer-brand-select" aria-label="Alege marca grundului"><option value="auto">Recomandat automat</option><option value="duraziv">Duraziv</option><option value="kober">Kober</option></select></div>
+ <div class="primer-line"><span>Recomandare</span><b id="primerRecommendation">—</b></div>
+ <div class="primer-line"><span id="primerBigLabel">Grund 25 kg · 210 lei</span><div class="calc-control"><button id="primerBigMinus">−</button><b id="primerBig">0 găleți</b><button id="primerBigPlus">+</button></div></div>
+ <div class="primer-line"><span id="primerSmallLabel">Grund 4 kg · 59 lei</span><div class="calc-control"><button id="primerSmallMinus">−</button><b id="primerSmall">0 găleți</b><button id="primerSmallPlus">+</button></div></div></div>
+ <div class="calc-row"><span>Acoperire grund</span><b id="coverage">—</b></div>
+ <div class="calc-row"><span>Mozaic</span><b id="price">0 lei</b></div>
+ <div class="calc-row"><span>Grund</span><b id="primerPrice">0 lei</b></div>
+ <div class="calc-row"><span>Transport</span><b>Se calculează după adresă</b></div>
+ <div class="total-row"><span>SUBTOTAL PRODUSE</span><span id="grand">0 lei</span></div>
+ <div class="recipe-box"><div class="recipe-code"><div><small>Cod mix</small><br><strong id="recipeCode">—</strong></div><button id="copyRecipe" class="copy-recipe" type="button">Copiază rețeta</button></div><div id="recipeList" class="recipe-list">Alege un mix de 100% pentru a genera fișa.</div></div>
+ <button id="openCheckout" class="cart" type="button">Continuă la comandă</button><button id="whatsappOffer" class="wa" type="button">◉ Cere ofertă pe WhatsApp</button><div class="note" style="text-align:center;margin-top:8px">Telefon / WhatsApp: <a href="tel:+40735172091" style="color:inherit;font-weight:800">+40 735 172 091</a></div></section>
 </aside>
+</div>
+<div id="houseModal" class="house-modal" aria-hidden="true">
+  <div class="house-stage">
+    <img src="assets/casa.jpg" alt="Previzualizare casă">
+    <canvas id="houseMixOverlay" class="house-mix-overlay" aria-hidden="true"></canvas>
+    <img class="house-foreground" src="assets/house_foreground_right.png" alt="" aria-hidden="true">
+    <button id="houseClose" class="house-close" type="button" aria-label="Închide">×</button>
+    <div id="houseChoice" class="house-choice"><b>Mixul tău</b><br>Alege o compoziție pentru previzualizare.</div>
+  </div>
+</div>
+
+<div id="checkoutModal" class="checkout-modal" aria-hidden="true">
+  <div class="checkout-panel">
+    <div class="checkout-head"><div><h2>Finalizare comandă</h2><div class="note">Codul mixului și rețeta rămân asociate acestei comenzi.</div></div><button id="checkoutClose" class="checkout-close" type="button" aria-label="Închide">×</button></div>
+    <div class="checkout-grid">
+      <section class="checkout-card">
+        <h3>Date client și livrare</h3>
+        <div class="field-grid">
+          <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu"></div>
+          <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx"></div>
+          <div class="field"><label>Email</label><input id="custEmail" autocomplete="email" inputmode="email" placeholder="email@exemplu.ro"></div>
+          <div class="field"><label>Județ *</label><input id="custCounty" autocomplete="address-level1" placeholder="Ex. Suceava"></div>
+          <div class="field"><label>Localitate *</label><input id="custCity" autocomplete="address-level2" placeholder="Ex. Suceava"></div>
+          <div class="field"><label>Cod poștal</label><input id="custPostcode" autocomplete="postal-code" inputmode="numeric"></div>
+          <div class="field full"><label>Adresă de livrare *</label><input id="custAddress" autocomplete="street-address" placeholder="Stradă, număr, bloc etc."></div>
+          <div class="field full"><label>Observații</label><textarea id="custNotes" placeholder="Detalii pentru livrare sau comandă"></textarea></div>
+        </div>
+        <div id="checkoutError" class="checkout-error"></div>
+        <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat culorile, procentele, marca și cantitățile din sumarul comenzii.</span></label>
+        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Confirmă datele comenzii</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
+        <div id="checkoutStatus" class="checkout-status"></div>
+      </section>
+      <aside class="checkout-card">
+        <h3>Sumar comandă</h3>
+        <div id="checkoutSummary" class="checkout-summary"></div>
+        <div class="checkout-info"><b>Transport:</b> se calculează separat după adresa de livrare și cantitatea comandată.</div>
+        <div class="checkout-info">Comanda este salvată online în baza de date după confirmare. Transportul se stabilește separat după adresă.</div>
+      </aside>
+    </div>
+  </div>
 </div>
 <script>
 const products=[
 {name:'Alb',img:'assets/alb.jpeg',cat:'Albe'},{name:'Albastru',img:'assets/albastru.jpeg',cat:'Colorate'},{name:'Galben',img:'assets/galben.jpeg',cat:'Colorate'},{name:'Gri argintiu',img:'assets/gri-argintiu.jpeg',cat:'Gri'},{name:'Gri deschis',img:'assets/gri-deschis.jpeg',cat:'Gri'},{name:'Maro brown',img:'assets/maro-brown.jpeg',cat:'Maro'},{name:'Maro nisip',img:'assets/maro-nisip.jpeg',cat:'Maro'},{name:'Maro nucă',img:'assets/maro-nuca.jpeg',cat:'Maro'},{name:'Maro',img:'assets/maro.jpeg',cat:'Maro'},{name:'Negru',img:'assets/negru.jpeg',cat:'Gri'},{name:'Orange',img:'assets/orange.jpeg',cat:'Colorate'}];
 let selected=[];
-let vacantSlots=[];
-let autoPresetMode=true;
 const INITIAL_PRESETS={1:[100],2:[50,50],3:[35,35,30],4:[25,25,25,25]};
+function applyAutoPreset(){
+  const preset=INITIAL_PRESETS[selected.length];
+  if(preset) selected.forEach((s,i)=>s.pct=preset[i]);
+}
 const imgs={}; products.forEach(p=>{const i=new Image();i.src=p.img;imgs[p.img]=i;i.onload=draw});
 function renderProducts(filter='Toate',query=''){const el=document.querySelector('#stones');el.innerHTML='';products.filter(p=>(filter==='Toate'||p.cat===filter)&&p.name.toLowerCase().includes(query.toLowerCase())).forEach(p=>{const d=document.createElement('div');d.className='stone'+(selected.some(s=>s.name===p.name)?' selected':'');d.innerHTML=`<img src="${p.img}"><div class="meta"><b>${p.name}</b><small>2 - 4 mm</small><button>+</button></div>`;d.onclick=()=>addStone(p);el.appendChild(d)})}
 function addStone(p){
   if(selected.some(s=>s.name===p.name))return;
   if(selected.length>=4){alert('Poți selecta maximum 4 pietre.');return}
-
-  // Dacă tocmai a fost scoasă o culoare, următoarea culoare îi ia locul
-  // și păstrează exact procentul ei. Nu modificăm celelalte culori.
-  if(vacantSlots.length){
-    vacantSlots.sort((a,b)=>a.index-b.index);
-    const slot=vacantSlots.shift();
-    const insertAt=Math.max(0,Math.min(slot.index,selected.length));
-    selected.splice(insertAt,0,{...p,pct:slot.pct});
-    renderAll();
-    return;
-  }
-
   selected.push({...p,pct:0});
-
-  // Preseturile automate sunt folosite doar cât timp clientul își construiește
-  // selecția inițială și nu a intervenit manual / nu a scos culori.
-  if(autoPresetMode){
-    const preset=INITIAL_PRESETS[selected.length];
-    if(preset) selected.forEach((s,i)=>s.pct=preset[i]);
-  }
+  // La orice adăugare, repartizăm automat procentele pentru un total de 100%.
+  // Clientul le poate modifica manual după aceea.
+  applyAutoPreset();
   renderAll();
 }
 function renderMix(){
@@ -82,14 +125,12 @@ function renderMix(){
       let value=Number(e.target.value||0);
       value=Math.max(0,Math.min(100,Math.round(value/5)*5));
       selected[idx].pct=value;
-      autoPresetMode=false;
       renderAll();
     };
     r.querySelector('.remove').onclick=()=>{
-      const removed=selected[idx];
-      vacantSlots.push({index:idx,pct:removed.pct});
       selected.splice(idx,1);
-      autoPresetMode=false;
+      // La orice ștergere, repartizăm automat culorile rămase la 100%.
+      applyAutoPreset();
       renderAll();
     };
     el.appendChild(r);
@@ -104,7 +145,7 @@ function renderMix(){
   else if(total<100) warning.textContent=`Mai trebuie să adaugi ${100-total}% pentru a ajunge la 100%.`;
   else if(total>100) warning.textContent=`Ai depășit totalul cu ${total-100}%. Redu manual unul sau mai multe procente.`;
   else warning.textContent='Compoziția este completă: total 100%.';
-  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—';
+  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—'; updateRecipeCard();
 }
 let drawVersion=0;
 function seededRandomFactory(seed){
@@ -134,6 +175,7 @@ function draw(){
     ctx.font='14px Arial';
     ctx.fillStyle='#4b535a';
     ctx.fillText(`Total curent: ${total}%`,W/2,H/2+24);
+    updateHouseThumbnail();
     return;
   }
 
@@ -267,13 +309,401 @@ function draw(){
       const r=2.7+rnd()*1.8;
       drawStone(idx,x,y,r,.92);
     }
+    updateHouseThumbnail();
   }
   drawChunk();
 }
+let houseHistoryActive=false;
+function drawHouseOverlay(overlay,houseImg,choice){
+  const mixCanvas=document.querySelector('#mixCanvas');
+  if(!overlay||!mixCanvas||!houseImg)return;
+
+  const total=selected.reduce((sum,item)=>sum+(Number(item.pct)||0),0);
+  const octx=overlay.getContext('2d');
+  if(selected.length<1||total!==100){
+    overlay.width=1; overlay.height=1;
+    octx.clearRect(0,0,1,1);
+    if(choice) choice.innerHTML='<b>Mixul tău</b><br>Finalizează compoziția la 100%.';
+    return;
+  }
+
+  // Nu transformăm canvas-ul mixului în imagine (toDataURL), deoarece în modul file://
+  // browserul poate bloca exportul când textura folosește fotografii locale.
+  // Copiem direct canvas -> canvas, ceea ce funcționează și local.
+  const cssW=Math.max(1,Math.round(houseImg.clientWidth||houseImg.getBoundingClientRect().width||900));
+  const cssH=Math.max(1,Math.round(houseImg.clientHeight||houseImg.getBoundingClientRect().height||600));
+  const dpr=Math.max(1,Math.min(window.devicePixelRatio||1,2));
+  overlay.width=Math.round(cssW*dpr);
+  overlay.height=Math.round(cssH*dpr);
+  overlay.style.width=cssW+'px';
+  overlay.style.height=cssH+'px';
+  octx.setTransform(dpr,0,0,dpr,0,0);
+  octx.clearRect(0,0,cssW,cssH);
+  octx.imageSmoothingEnabled=true;
+  octx.imageSmoothingQuality='high';
+
+  // Repetăm textura reală a mixului peste suprafața casei; CSS-ul o decupează strict
+  // în zona soclului. Folim canvas-ul existent ca sursă, deci apare exact mixul ales.
+  const tile=document.createElement('canvas');
+  const tileCtx=tile.getContext('2d');
+  const tileW=Math.max(220,Math.round(cssW*.34));
+  const tileH=Math.max(120,Math.round(tileW*.48));
+  tile.width=tileW; tile.height=tileH;
+  tileCtx.drawImage(mixCanvas,0,0,mixCanvas.width,mixCanvas.height,0,0,tileW,tileH);
+  const pattern=octx.createPattern(tile,'repeat');
+  octx.fillStyle=pattern;
+
+  // Masca soclului este definita ca mai multe suprafete separate, urmarind
+  // perspectiva reala a casei. Nu mai desenam textura ca un dreptunghi/paravan.
+  // Coordonatele sunt procente din fotografia casei si se adapteaza automat
+  // cand imaginea este afisata mai mare sau pe telefon.
+  const socleShapes=[
+    // fata stanga - pana la zona usii/scarilor
+    [[0.073,0.626],[0.414,0.622],[0.414,0.714],[0.376,0.714],[0.376,0.770],[0.073,0.770]],
+    // fata principala din dreapta - urmareste linia de perspectiva de jos
+    [[0.486,0.616],[0.894,0.614],[0.894,0.842],[0.486,0.806]],
+    // latura laterala din dreapta
+    [[0.894,0.614],[0.998,0.615],[0.998,0.825],[0.894,0.842]]
+  ];
+
+  function fillShape(points){
+    octx.save();
+    octx.beginPath();
+    points.forEach((pt,i)=>{
+      const x=pt[0]*cssW, y=pt[1]*cssH;
+      if(i===0)octx.moveTo(x,y); else octx.lineTo(x,y);
+    });
+    octx.closePath();
+    octx.clip();
+    octx.fillRect(0,0,cssW,cssH);
+    octx.restore();
+  }
+  socleShapes.forEach(fillShape);
+
+  // Obiectele aflate in fata soclului (burlan, tufe si ghivece) trebuie sa ramana
+  // vizibile peste textura. Le "decupam" din canvas-ul mixului, astfel incat fotografia
+  // originala a casei de dedesubt sa se vada natural prin aceste zone.
+  octx.save();
+  octx.globalCompositeOperation='destination-out';
+
+  function punchPolygon(points){
+    octx.beginPath();
+    points.forEach((pt,i)=>{
+      const x=pt[0]*cssW, y=pt[1]*cssH;
+      if(i===0)octx.moveTo(x,y); else octx.lineTo(x,y);
+    });
+    octx.closePath();
+    octx.fill();
+  }
+  function punchEllipse(cx,cy,rx,ry){
+    octx.beginPath();
+    octx.ellipse(cx*cssW,cy*cssH,rx*cssW,ry*cssH,0,0,Math.PI*2);
+    octx.fill();
+  }
+
+  // Burlanul din dreapta este restaurat de stratul foreground transparent,
+  // astfel incat sa nu mai descoperim deloc soclul original din jurul lui.
+
+  // Vegetatia este decupata mai strans decat in versiunea anterioara.
+  // Scopul este sa pastram frunzele in fata, fara haloul de soclu original
+  // care aparea in jurul tufelor.
+  [
+    [0.096,0.780,0.031,0.023],
+    [0.207,0.775,0.030,0.025],
+    [0.282,0.721,0.023,0.020],
+    [0.499,0.714,0.025,0.022],
+    [0.446,0.827,0.025,0.020]
+    // Tufele din dreapta NU se mai decupeaza din textura.
+    // Sunt readuse exact de house_foreground_right.png, peste mix,
+    // evitand astfel semicercurile/halourile de soclu original.
+  ].forEach(v=>punchEllipse(...v));
+
+  // Ghivecele: urmarim doar corpul inchis la culoare, fara margine suplimentara.
+  punchPolygon([[0.272,0.716],[0.299,0.716],[0.297,0.774],[0.274,0.774]]);
+  punchPolygon([[0.481,0.710],[0.515,0.710],[0.511,0.783],[0.485,0.783]]);
+
+  octx.restore();
+
+  if(choice) choice.innerHTML='<b>Mixul tău</b><br>'+selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');
+}
+function prepareHousePreview(){
+  drawHouseOverlay(document.querySelector('#houseMixOverlay'),document.querySelector('.house-stage>img'),document.querySelector('#houseChoice'));
+}
+function updateHouseThumbnail(){
+  const img=document.querySelector('#housePreview');
+  const overlay=document.querySelector('#houseThumbOverlay');
+  if(!img||!overlay)return;
+  const run=()=>drawHouseOverlay(overlay,img,null);
+  if(img.complete) requestAnimationFrame(run); else img.addEventListener('load',run,{once:true});
+}
+function openHousePreview(){
+  const modal=document.querySelector('#houseModal');
+  if(!modal)return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  // Așteptăm un frame ca imaginea casei să aibă dimensiunea finală pe ecran,
+  // apoi copiem mixul pe soclu.
+  requestAnimationFrame(()=>prepareHousePreview());
+  if(!houseHistoryActive){history.pushState({housePreview:true},'');houseHistoryActive=true;}
+}
+function closeHousePreview(fromPop=false){
+  const modal=document.querySelector('#houseModal');
+  if(!modal||!modal.classList.contains('open'))return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+  if(fromPop){houseHistoryActive=false;return;}
+  if(houseHistoryActive){history.back();}
+}
 function makeCode(){let h=0;selected.forEach(s=>{for(const ch of s.name)h=(h*31+ch.charCodeAt(0))>>>0;h=(h+s.pct*97)>>>0});return 'MX-'+h.toString(36).toUpperCase().slice(-5).padStart(5,'0')}
+function updateRecipeCard(){const codeEl=document.querySelector('#recipeCode'),listEl=document.querySelector('#recipeList');if(!codeEl||!listEl)return;const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){codeEl.textContent='—';listEl.textContent='Alege un mix de 100% pentru a genera fișa.';return}const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';codeEl.textContent=makeCode();listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')+`<br>Producător: <b>${brand}</b>`;}
 function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
-document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];vacantSlots=[];autoPresetMode=true;renderAll()};
-let sqm=25;function calc(){document.querySelector('#sqm').textContent=sqm;let buckets=Math.ceil(sqm/4);let primer=Math.ceil(sqm/200);let material=buckets*250;document.querySelector('#buckets').textContent=buckets+' găleți';document.querySelector('#primer').textContent=primer+' găleată';document.querySelector('#price').textContent=material.toLocaleString('ro-RO')+' lei';document.querySelector('#grand').textContent=(material+150).toLocaleString('ro-RO')+' lei'}document.querySelector('#plus').onclick=()=>{sqm++;calc()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(1,sqm-1);calc()};window.onresize=draw;renderAll();calc();
+document.querySelector('#housePreview').addEventListener('click',openHousePreview);
+document.querySelector('#houseClose').addEventListener('click',()=>closeHousePreview(false));
+document.querySelector('#houseModal').addEventListener('click',e=>{if(e.target.id==='houseModal')closeHousePreview(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHousePreview(false)});
+window.addEventListener('popstate',()=>closeHousePreview(true));
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];renderAll()};
+let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBrand='duraziv',primerBrand='auto';
+const MOSAIC_PRICES={duraziv:270,kober:240};
+const PRIMER_DATA={
+  duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
+  kober:{name:'Kober',bigKg:25,bigCoverage:60,bigPrice:195,smallKg:8,smallCoverage:15,smallPrice:88}
+};
+function getPrimerBrand(){return primerBrand==='auto'?mosaicBrand:primerBrand}
+function getPrimerData(){return PRIMER_DATA[getPrimerBrand()]||PRIMER_DATA.duraziv}
+function recommendedPrimer(area){
+  if(area<=0)return {big:0,small:0};
+  const d=getPrimerData();
+  const maxBig=Math.ceil(area/d.bigCoverage)+1;
+  const maxSmall=Math.ceil(area/d.smallCoverage)+1;
+  let best=null;
+  for(let big=0;big<=maxBig;big++){
+    for(let small=0;small<=maxSmall;small++){
+      if(big===0&&small===0)continue;
+      const coverage=big*d.bigCoverage+small*d.smallCoverage;
+      if(coverage<area)continue;
+      const cost=big*d.bigPrice+small*d.smallPrice;
+      const count=big+small;
+      const surplus=coverage-area;
+      const c={big,small,cost,count,surplus};
+      if(!best||cost<best.cost||(cost===best.cost&&count<best.count)||(cost===best.cost&&count===best.count&&surplus<best.surplus))best=c;
+    }
+  }
+  return best?{big:best.big,small:best.small}:{big:0,small:0};
+}
+function recommendQuantities(){mosaicBuckets=Math.ceil(sqm/4);const p=recommendedPrimer(sqm);primerBig=p.big;primerSmall=p.small;renderCalc()}
+function renderCalc(){
+  document.querySelector('#sqmInput').value=sqm;
+  document.querySelector('#buckets').textContent=mosaicBuckets+' găleți';
+  document.querySelector('#primerBig').textContent=primerBig+' găleți';
+  document.querySelector('#primerSmall').textContent=primerSmall+' găleți';
+  const pd=getPrimerData();
+  document.querySelector('#primerTitle').textContent='Grund recomandat '+pd.name;
+  document.querySelector('#primerHint').textContent=pd.smallKg+' kg = '+pd.smallCoverage+' m² · '+pd.bigKg+' kg = '+pd.bigCoverage+' m²';
+  document.querySelector('#primerBigLabel').textContent='Grund '+pd.name+' '+pd.bigKg+' kg · '+pd.bigPrice+' lei';
+  document.querySelector('#primerSmallLabel').textContent='Grund '+pd.name+' '+pd.smallKg+' kg · '+pd.smallPrice+' lei';
+  const primerCoverage=primerEnabled?(primerBig*pd.bigCoverage+primerSmall*pd.smallCoverage):0;
+  const rec=[];if(primerBig)rec.push(primerBig+' × '+pd.bigKg+' kg');if(primerSmall)rec.push(primerSmall+' × '+pd.smallKg+' kg');
+  document.querySelector('#primerRecommendation').textContent=sqm<=0?'—':(rec.length?rec.join(' + '):'0 găleți');
+  document.querySelector('#coverage').textContent=primerEnabled?primerCoverage+' m²':'Fără grund';
+  document.querySelector('#primerBigMinus').disabled=!primerEnabled;document.querySelector('#primerBigPlus').disabled=!primerEnabled;document.querySelector('#primerSmallMinus').disabled=!primerEnabled;document.querySelector('#primerSmallPlus').disabled=!primerEnabled;
+  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const mosaicTotal=mosaicBuckets*mosaicPrice;
+  const primerTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  document.querySelector('#price').textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
+  document.querySelector('#primerPrice').textContent=primerTotal.toLocaleString('ro-RO')+' lei';
+  document.querySelector('#grand').textContent=(mosaicTotal+primerTotal).toLocaleString('ro-RO')+' lei';
+  updateRecipeCard();
+}
+document.querySelector('#plus').onclick=()=>{sqm++;recommendQuantities()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(0,sqm-1);recommendQuantities()};
+document.querySelector('#sqmInput').addEventListener('input',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
+document.querySelector('#sqmInput').addEventListener('change',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
+document.querySelector('#mosaicMinus').onclick=()=>{mosaicBuckets=Math.max(0,mosaicBuckets-1);renderCalc()};document.querySelector('#mosaicPlus').onclick=()=>{mosaicBuckets++;renderCalc()};
+document.querySelector('#primerBigMinus').onclick=()=>{primerBig=Math.max(0,primerBig-1);renderCalc()};document.querySelector('#primerBigPlus').onclick=()=>{primerBig++;renderCalc()};
+document.querySelector('#primerSmallMinus').onclick=()=>{primerSmall=Math.max(0,primerSmall-1);renderCalc()};document.querySelector('#primerSmallPlus').onclick=()=>{primerSmall++;renderCalc()};
+document.querySelector('#primerEnabled').onchange=e=>{primerEnabled=e.target.checked;renderCalc()};
+document.querySelector('#mosaicBrand').onchange=e=>{mosaicBrand=e.target.value;recommendQuantities()};
+document.querySelector('#primerBrand').onchange=e=>{primerBrand=e.target.value;recommendQuantities()};
+document.querySelector('#copyRecipe').onclick=async()=>{const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){alert('Finalizează mai întâi mixul la 100%.');return}const brand=mosaicBrand==='kober'?'Kober':'Duraziv';const pd=getPrimerData();const code=makeCode();const recipe=selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');const text=`${code}
+${recipe}
+Producător: ${brand}
+Suprafață: ${sqm} m²
+Mozaic: ${mosaicBuckets} găleți x 25 kg
+Grund ${pd.name} ${pd.bigKg} kg: ${primerEnabled?primerBig:0}
+Grund ${pd.name} ${pd.smallKg} kg: ${primerEnabled?primerSmall:0}`;try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyRecipe');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază rețeta:',text)}};
+
+function getCheckoutData(){
+  const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  const pd=getPrimerData();
+  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const mosaicTotal=mosaicBuckets*mosaicPrice;
+  const primerTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  return {
+    valid:selected.length>=1&&totalPct===100&&sqm>0&&mosaicBuckets>0,
+    code:selected.length>=1&&totalPct===100?makeCode():'—',
+    recipe:selected.map(s=>({name:s.name,pct:s.pct})),
+    mosaicBrand:mosaicBrand==='kober'?'Kober':'Duraziv',
+    mosaicBuckets,mosaicPrice,mosaicTotal,sqm,
+    primerEnabled,primerBrand:pd.name,primerBig,primerSmall,
+    primerBigKg:pd.bigKg,primerSmallKg:pd.smallKg,primerTotal,
+    subtotal:mosaicTotal+primerTotal
+  };
+}
+function renderCheckoutSummary(){
+  const d=getCheckoutData();
+  const el=document.querySelector('#checkoutSummary');if(!el)return;
+  const recipe=d.recipe.length?d.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · '):'—';
+  el.innerHTML=`
+    <div class="summary-line"><span>Cod mix</span><b>${d.code}</b></div>
+    <div class="summary-recipe">${recipe}</div>
+    <div class="summary-line"><span>Mozaic</span><b>${d.mosaicBrand}</b></div>
+    <div class="summary-line"><span>Suprafață</span><b>${d.sqm} m²</b></div>
+    <div class="summary-line"><span>Mozaic 25 kg</span><b>${d.mosaicBuckets} găleți × ${d.mosaicPrice} lei</b></div>
+    <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?d.primerBrand:'Fără grund'}</b></div>
+    ${d.primerEnabled?`<div class="summary-line"><span>Grund ${d.primerBigKg} kg</span><b>${d.primerBig} găleți</b></div><div class="summary-line"><span>Grund ${d.primerSmallKg} kg</span><b>${d.primerSmall} găleți</b></div>`:''}
+    <div class="summary-line checkout-total"><span>Subtotal produse</span><span>${d.subtotal.toLocaleString('ro-RO')} lei</span></div>`;
+}
+function openCheckout(){
+  const d=getCheckoutData();
+  const err=document.querySelector('#checkoutError');
+  if(!d.valid){
+    const reasons=[];
+    if(!selected.length||selected.reduce((a,b)=>a+(Number(b.pct)||0),0)!==100)reasons.push('finalizează mixul la 100%');
+    if(sqm<=0)reasons.push('introdu suprafața');
+    if(mosaicBuckets<=0)reasons.push('verifică numărul de găleți');
+    alert('Pentru a continua la comandă: '+reasons.join(', ')+'.');return;
+  }
+  renderCheckoutSummary();
+  document.querySelector('#checkoutModal').classList.add('open');
+  document.querySelector('#checkoutModal').setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  err.classList.remove('show');
+}
+function closeCheckout(){document.querySelector('#checkoutModal').classList.remove('open');document.querySelector('#checkoutModal').setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
+function orderText(){
+  const d=getCheckoutData();
+  const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
+  const recipe=d.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ');
+  return `Cod mix: ${d.code}\nClient: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\nLivrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}\nMix: ${recipe}\nMozaic: ${d.mosaicBrand} — ${d.mosaicBuckets} găleți x 25 kg\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSuprafață: ${d.sqm} m²\nSubtotal produse: ${d.subtotal} lei\nTransport: se calculează după adresă\nObservații: ${customer.notes||'-'}`;
+}
+function validateCheckout(){
+  const required=[['custName','numele'],['custPhone','telefonul'],['custCounty','județul'],['custCity','localitatea'],['custAddress','adresa de livrare']];
+  const missing=required.filter(([id])=>!document.querySelector('#'+id).value.trim()).map(x=>x[1]);
+  if(!document.querySelector('#confirmOrder').checked)missing.push('confirmarea sumarului');
+  const err=document.querySelector('#checkoutError');
+  if(missing.length){err.textContent='Completează: '+missing.join(', ')+'.';err.classList.add('show');return false}
+  err.classList.remove('show');return true;
+}
+const SUPABASE_URL='https://kuwsoylhvvfkreoyfvjf.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_xQv5BWQ0REuNo2TM45mLBg_nOlw4Ee_';
+
+async function saveOrderToSupabase(){
+  if(!validateCheckout())return;
+  const d=getCheckoutData();
+  if(!d.valid)return;
+  const btn=document.querySelector('#prepareOrder');
+  const st=document.querySelector('#checkoutStatus');
+  const err=document.querySelector('#checkoutError');
+  const oldText=btn.textContent;
+  btn.disabled=true;btn.textContent='Se salvează...';
+  st.classList.remove('show');err.classList.remove('show');
+  const orderId='CMD-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+  const customer={
+    name:document.querySelector('#custName').value.trim(),
+    phone:document.querySelector('#custPhone').value.trim(),
+    email:document.querySelector('#custEmail').value.trim(),
+    county:document.querySelector('#custCounty').value.trim(),
+    city:document.querySelector('#custCity').value.trim(),
+    postcode:document.querySelector('#custPostcode').value.trim(),
+    address:document.querySelector('#custAddress').value.trim(),
+    notes:document.querySelector('#custNotes').value.trim()
+  };
+  const pd=getPrimerData();
+  const payload={
+    order_number:orderId,
+    mx_code:d.code,
+    customer_name:customer.name,
+    customer_phone:customer.phone,
+    customer_email:customer.email||null,
+    county:customer.county||null,
+    city:customer.city||null,
+    address:customer.address||null,
+    postal_code:customer.postcode||null,
+    customer_notes:customer.notes||null,
+    mosaic_brand:d.mosaicBrand,
+    surface_m2:d.sqm,
+    mosaic_buckets:d.mosaicBuckets,
+    mosaic_bucket_kg:25,
+    mosaic_unit_price:d.mosaicPrice,
+    mix_recipe:d.recipe,
+    primer_included:d.primerEnabled,
+    primer_brand:d.primerEnabled?d.primerBrand:null,
+    primer_small_bucket_kg:d.primerEnabled?d.primerSmallKg:null,
+    primer_small_buckets:d.primerEnabled?d.primerSmall:0,
+    primer_small_unit_price:d.primerEnabled?pd.smallPrice:null,
+    primer_large_bucket_kg:d.primerEnabled?d.primerBigKg:null,
+    primer_large_buckets:d.primerEnabled?d.primerBig:0,
+    primer_large_unit_price:d.primerEnabled?pd.bigPrice:null,
+    mosaic_total:d.mosaicTotal,
+    primer_total:d.primerTotal,
+    products_total:d.subtotal,
+    shipping_price:null,
+    final_total:null,
+    order_status:'noua',
+    repeated_from_mx:null
+  };
+  try{
+    const response=await fetch(SUPABASE_URL+'/rest/v1/orders',{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_PUBLISHABLE_KEY,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify(payload)
+    });
+    if(!response.ok){
+      let detail='';
+      try{detail=await response.text()}catch(_){}
+      throw new Error('Supabase '+response.status+(detail?' · '+detail:''));
+    }
+    // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
+    try{
+      const arr=JSON.parse(localStorage.getItem('mixPiatraSentOrders')||'[]');
+      arr.push({orderId,createdAt:new Date().toISOString(),mix:d,customer});
+      localStorage.setItem('mixPiatraSentOrders',JSON.stringify(arr));
+    }catch(_){}
+    st.innerHTML=`Comanda a fost salvată online. <b>${orderId}</b> · Mix <b>${d.code}</b>.<br>O poți identifica ulterior după codul MX, numărul comenzii, telefon, nume, email sau dată.`;
+    st.classList.add('show');
+    btn.textContent='Comandă salvată ✓';
+    setTimeout(()=>{btn.textContent=oldText;btn.disabled=false},2200);
+  }catch(e){
+    console.error(e);
+    err.textContent='Comanda nu a putut fi salvată online. Verifică conexiunea și încearcă din nou. '+(e?.message||'');
+    err.classList.add('show');
+    btn.textContent=oldText;btn.disabled=false;
+  }
+}
+
+function saveDraftOrder(){
+  if(!validateCheckout())return;
+  const d=getCheckoutData();
+  const orderId='CMD-'+Date.now().toString(36).toUpperCase();
+  const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
+  const draft={orderId,createdAt:new Date().toISOString(),mix:d,customer};
+  try{const arr=JSON.parse(localStorage.getItem('mixPiatraDraftOrders')||'[]');arr.push(draft);localStorage.setItem('mixPiatraDraftOrders',JSON.stringify(arr));}catch(e){}
+  const st=document.querySelector('#checkoutStatus');st.innerHTML=`Datele au fost pregătite. <b>${orderId}</b> · Mix <b>${d.code}</b>.<br>Aceasta este încă o salvare locală de test; comanda nu a fost transmisă către un server.`;st.classList.add('show');
+}
+document.querySelector('#openCheckout').onclick=openCheckout;
+document.querySelector('#checkoutClose').onclick=closeCheckout;
+document.querySelector('#checkoutModal').addEventListener('click',e=>{if(e.target.id==='checkoutModal')closeCheckout()});
+document.querySelector('#prepareOrder').onclick=saveOrderToSupabase;
+document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
+document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
+
+window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();
 </script>
 </body>
 </html>
