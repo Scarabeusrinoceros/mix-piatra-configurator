@@ -86,8 +86,7 @@
         </div>
         <div id="pickupInfo" class="pickup-info"><b>Ridicare personală: 0 lei</b><br>Str. Râului nr. 214, Craiova, Dolj, CP 200641.<br>Te contactăm când comanda este pregătită pentru ridicare.</div>
         <div id="shippingCalc" class="shipping-calc">
-          <div class="row"><span>Distanță rutieră</span><b id="shippingDistance">—</b></div>
-          <div class="row"><span>Transport estimat</span><b id="shippingPrice" class="shipping-price">—</b></div>
+          <div class="row"><span>Transport</span><b id="shippingPrice" class="shipping-price">—</b></div>
           <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
           <button id="calculateShipping" type="button">Calculează transportul</button>
         </div>
@@ -697,7 +696,7 @@ async function calculateShipping(){
       const raw=Math.round(shippingDistanceKm*SHIPPING_RATE_PER_KM);
       const cap=Math.round(d.subtotal*SHIPPING_MAX_SHARE);
       const capApplied=raw>cap && cap>=SHIPPING_MIN;
-      status.innerHTML=`Calcul automat: ${SHIPPING_RATE_PER_KM} lei/km, minimum ${SHIPPING_MIN} lei${capApplied?' · plafon comercial 25% din produse':''}.`;
+      status.textContent='Transport calculat.';
       status.className='status ok';
     }
 
@@ -733,7 +732,6 @@ function renderCheckoutSummary(){
     <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?d.primerBrand:'Fără grund'}</b></div>
     ${d.primerEnabled?`<div class="summary-line"><span>Grund ${d.primerBigKg} kg</span><b>${d.primerBig} găleți</b></div><div class="summary-line"><span>Grund ${d.primerSmallKg} kg</span><b>${d.primerSmall} găleți</b></div>`:''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
-    ${!pickup&&shippingDistanceKm!=null?`<div class="summary-line"><span>Distanță</span><b>${shippingDistanceKm.toLocaleString('ro-RO')} km</b></div>`:''}
     <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
     <div class="summary-line checkout-total"><span>${finalTotal==null?'Subtotal produse':'TOTAL FINAL'}</span><span>${(finalTotal??d.subtotal).toLocaleString('ro-RO')} lei</span></div>`;
 }
