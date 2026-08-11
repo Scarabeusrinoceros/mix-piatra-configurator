@@ -22,7 +22,7 @@
 
 /* Checkout V1 - formular si sumar, fara baza de date */
 .checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -91,13 +91,13 @@
           <button id="calculateShipping" type="button">Calculează transportul</button>
         </div>
         <div class="field-grid">
-          <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu"></div>
-          <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx"></div>
-          <div class="field"><label>Email</label><input id="custEmail" autocomplete="email" inputmode="email" placeholder="email@exemplu.ro"></div>
-          <div class="field delivery-field"><label>Județ *</label><input id="custCounty" autocomplete="address-level1" placeholder="Ex. Dolj"></div>
-          <div class="field delivery-field"><label>Localitate *</label><input id="custCity" autocomplete="address-level2" placeholder="Ex. Craiova"></div>
-          <div class="field delivery-field"><label>Cod poștal</label><input id="custPostcode" autocomplete="postal-code" inputmode="numeric"></div>
-          <div class="field full delivery-field"><label>Adresă de livrare *</label><input id="custAddress" autocomplete="street-address" placeholder="Stradă, număr, bloc etc."></div>
+          <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu" minlength="3"><div id="helpName" class="field-help"></div></div>
+          <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" maxlength="14"><div id="helpPhone" class="field-help"></div></div>
+          <div class="field"><label>Email</label><input id="custEmail" type="email" autocomplete="email" inputmode="email" placeholder="email@exemplu.ro"><div id="helpEmail" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Județ *</label><select id="custCounty" autocomplete="address-level1"><option value="">Alege județul</option><option>Alba</option><option>Arad</option><option>Argeș</option><option>Bacău</option><option>Bihor</option><option>Bistrița-Năsăud</option><option>Botoșani</option><option>Brăila</option><option>Brașov</option><option>București</option><option>Buzău</option><option>Călărași</option><option>Caraș-Severin</option><option>Cluj</option><option>Constanța</option><option>Covasna</option><option>Dâmbovița</option><option>Dolj</option><option>Galați</option><option>Giurgiu</option><option>Gorj</option><option>Harghita</option><option>Hunedoara</option><option>Ialomița</option><option>Iași</option><option>Ilfov</option><option>Maramureș</option><option>Mehedinți</option><option>Mureș</option><option>Neamț</option><option>Olt</option><option>Prahova</option><option>Sălaj</option><option>Satu Mare</option><option>Sibiu</option><option>Suceava</option><option>Teleorman</option><option>Timiș</option><option>Tulcea</option><option>Vâlcea</option><option>Vaslui</option><option>Vrancea</option></select><div id="helpCounty" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Localitate *</label><input id="custCity" autocomplete="address-level2" placeholder="Ex. Craiova" minlength="2"><div id="helpCity" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Cod poștal *</label><input id="custPostcode" autocomplete="postal-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="6 cifre"><div id="helpPostcode" class="field-help"></div></div>
+          <div class="field full delivery-field"><label>Adresă de livrare *</label><input id="custAddress" autocomplete="street-address" placeholder="Stradă și număr, ex. Str. Libertății nr. 10" minlength="5"><div id="helpAddress" class="field-help"></div></div>
           <div class="field full"><label>Observații</label><textarea id="custNotes" placeholder="Detalii pentru livrare sau comandă"></textarea></div>
         </div>
         <div id="checkoutError" class="checkout-error"></div>
@@ -609,6 +609,7 @@ function updateDeliveryUI(){
   if(pickup){
     shippingDistanceKm=0;
     shippingPrice=0;
+    ['custCounty','custCity','custPostcode','custAddress'].forEach(id=>setFieldState(id,null,''));
   }else{
     shippingDistanceKm=null;
     shippingPrice=null;
@@ -655,9 +656,11 @@ async function calculateShipping(){
   const county=document.querySelector('#custCounty')?.value.trim();
   const city=document.querySelector('#custCity')?.value.trim();
   const address=document.querySelector('#custAddress')?.value.trim();
+  const postcode=document.querySelector('#custPostcode')?.value.trim();
 
-  if(!county||!city||!address){
-    if(status){status.textContent='Completează județul, localitatea și adresa de livrare.';status.className='status error';}
+  const addressOk=validateCounty(true)&&validateCity(true)&&validatePostcode(true)&&validateAddress(true);
+  if(!addressOk||!county||!city||!address||!postcode){
+    if(status){status.textContent='Verifică județul, localitatea, codul poștal și adresa de livrare.';status.className='status error';}
     return;
   }
 
@@ -763,18 +766,104 @@ function orderText(){
     :(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
   return `Cod mix: ${d.code}\nClient: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\nMix: ${recipe}\nMozaic: ${d.mosaicBrand} — ${d.mosaicBuckets} găleți x 25 kg\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSuprafață: ${d.sqm} m²\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
 }
+
+function setFieldState(id, valid, message=''){
+  const el=document.querySelector('#'+id);
+  const help=document.querySelector('#help'+id.replace('cust',''));
+  if(el){
+    el.classList.remove('valid','invalid');
+    if(valid===true)el.classList.add('valid');
+    if(valid===false)el.classList.add('invalid');
+  }
+  if(help){
+    help.textContent=message;
+    help.className='field-help'+(valid===false?' error':valid===true&&message?' ok':'');
+  }
+}
+
+function validateName(show=true){
+  const v=document.querySelector('#custName').value.trim();
+  const ok=v.length>=3 && /[A-Za-zĂÂÎȘȚăâîșț]/.test(v);
+  if(show)setFieldState('custName',ok,ok?'':'Introdu numele complet.');
+  return ok;
+}
+
+function normalizePhoneValue(v){
+  return v.replace(/[^\d+]/g,'');
+}
+
+function validatePhone(show=true){
+  const el=document.querySelector('#custPhone');
+  const v=normalizePhoneValue(el.value.trim());
+  const ok=/^07\d{8}$/.test(v)||/^\+407\d{8}$/.test(v)||/^407\d{8}$/.test(v);
+  if(show)setFieldState('custPhone',ok,ok?'':'Telefon valid: 07xxxxxxxx sau +407xxxxxxxx.');
+  return ok;
+}
+
+function validateEmail(show=true){
+  const v=document.querySelector('#custEmail').value.trim();
+  if(!v){ if(show)setFieldState('custEmail',null,''); return true; }
+  const ok=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v);
+  if(show)setFieldState('custEmail',ok,ok?'':'Email invalid. Exemplu: nume@domeniu.ro');
+  return ok;
+}
+
+function validateCounty(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const ok=!!document.querySelector('#custCounty').value.trim();
+  if(show)setFieldState('custCounty',ok,ok?'':'Alege județul.');
+  return ok;
+}
+
+function validateCity(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custCity').value.trim();
+  const ok=v.length>=2;
+  if(show)setFieldState('custCity',ok,ok?'':'Introdu localitatea.');
+  return ok;
+}
+
+function validatePostcode(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custPostcode').value.trim();
+  const ok=/^\d{6}$/.test(v);
+  if(show)setFieldState('custPostcode',ok,ok?'':'Codul poștal trebuie să aibă exact 6 cifre.');
+  return ok;
+}
+
+function validateAddress(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custAddress').value.trim();
+  const hasNumber=/\d/.test(v);
+  const ok=v.length>=5 && hasNumber;
+  if(show)setFieldState('custAddress',ok,ok?'':'Introdu strada și numărul.');
+  return ok;
+}
+
+function validateAllCustomerFields(show=true){
+  return [
+    validateName(show),
+    validatePhone(show),
+    validateEmail(show),
+    validateCounty(show),
+    validateCity(show),
+    validatePostcode(show),
+    validateAddress(show)
+  ].every(Boolean);
+}
+
 function validateCheckout(){
   const pickup=getDeliveryMethod()==='pickup';
-  const required=[['custName','numele'],['custPhone','telefonul']];
-  if(!pickup) required.push(['custCounty','județul'],['custCity','localitatea'],['custAddress','adresa de livrare']);
-  const missing=required.filter(([id])=>!document.querySelector('#'+id).value.trim()).map(x=>x[1]);
+  const fieldsOk=validateAllCustomerFields(true);
+  const missing=[];
+  if(!fieldsOk) missing.push('datele clientului');
   if(!pickup){
     const currentAddress=getDeliveryAddressText();
     if(shippingPrice==null||shippingLastAddress!==currentAddress) missing.push('calculul transportului');
   }
   if(!document.querySelector('#confirmOrder').checked)missing.push('confirmarea sumarului');
   const err=document.querySelector('#checkoutError');
-  if(missing.length){err.textContent='Completează: '+missing.join(', ')+'.';err.classList.add('show');return false}
+  if(missing.length){err.textContent='Verifică: '+missing.join(', ')+'.';err.classList.add('show');return false}
   err.classList.remove('show');return true;
 }
 const SUPABASE_URL='https://kuwsoylhvvfkreoyfvjf.supabase.co';
@@ -884,6 +973,21 @@ document.querySelector('#checkoutModal').addEventListener('click',e=>{if(e.targe
 document.querySelector('#prepareOrder').onclick=saveOrderToSupabase;
 document.querySelectorAll('input[name="deliveryMethod"]').forEach(el=>el.addEventListener('change',updateDeliveryUI));
 document.querySelector('#calculateShipping').addEventListener('click',calculateShipping);
+
+document.querySelector('#custPostcode').addEventListener('input',e=>{
+  e.target.value=e.target.value.replace(/\D/g,'').slice(0,6);
+  validatePostcode(true);
+});
+document.querySelector('#custPhone').addEventListener('input',e=>{
+  e.target.value=e.target.value.replace(/[^\d+\s-]/g,'').slice(0,14);
+});
+document.querySelector('#custName').addEventListener('blur',()=>validateName(true));
+document.querySelector('#custPhone').addEventListener('blur',()=>validatePhone(true));
+document.querySelector('#custEmail').addEventListener('blur',()=>validateEmail(true));
+document.querySelector('#custCounty').addEventListener('change',()=>validateCounty(true));
+document.querySelector('#custCity').addEventListener('blur',()=>validateCity(true));
+document.querySelector('#custAddress').addEventListener('blur',()=>validateAddress(true));
+
 ['custCounty','custCity','custPostcode','custAddress'].forEach(id=>{
   document.querySelector('#'+id)?.addEventListener('input',()=>{
     if(getDeliveryMethod()!=='delivery')return;
