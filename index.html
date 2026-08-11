@@ -22,7 +22,7 @@
 
 /* Checkout V1 - formular si sumar, fara baza de date */
 .checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -85,6 +85,12 @@
           <label class="delivery-option"><input id="deliveryPickup" type="radio" name="deliveryMethod" value="pickup"><span><b>🏢 Ridicare personală — GRATUIT</b><small>Ridicare de la sediul PuroHome din Craiova.</small></span></label>
         </div>
         <div id="pickupInfo" class="pickup-info"><b>Ridicare personală: 0 lei</b><br>Str. Râului nr. 214, Craiova, Dolj, CP 200641.<br>Te contactăm când comanda este pregătită pentru ridicare.</div>
+        <div id="shippingCalc" class="shipping-calc">
+          <div class="row"><span>Distanță rutieră</span><b id="shippingDistance">—</b></div>
+          <div class="row"><span>Transport estimat</span><b id="shippingPrice" class="shipping-price">—</b></div>
+          <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
+          <button id="calculateShipping" type="button">Calculează transportul</button>
+        </div>
         <div class="field-grid">
           <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu"></div>
           <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx"></div>
@@ -580,6 +586,13 @@ function getCheckoutData(){
   };
 }
 const PICKUP_ADDRESS='Str. Râului nr. 214, Craiova, Dolj, CP 200641';
+const WAREHOUSE_QUERY='Strada Râului 214, Craiova, Dolj, 200641, Romania';
+const SHIPPING_RATE_PER_KM=2;
+const SHIPPING_MIN=50;
+const SHIPPING_MAX_SHARE=.25;
+let shippingDistanceKm=null;
+let shippingPrice=null;
+let shippingLastAddress='';
 
 function getDeliveryMethod(){
   return document.querySelector('input[name="deliveryMethod"]:checked')?.value||'delivery';
@@ -589,11 +602,119 @@ function updateDeliveryUI(){
   const pickup=getDeliveryMethod()==='pickup';
   document.querySelectorAll('.delivery-field').forEach(el=>el.classList.toggle('hidden',pickup));
   document.querySelector('#pickupInfo')?.classList.toggle('show',pickup);
+  document.querySelector('#shippingCalc')?.classList.toggle('hidden',pickup);
   const info=document.querySelector('#shippingInfo');
   if(info) info.innerHTML=pickup
     ?'<b>Transport:</b> 0 lei — ridicare personală de la sediul PuroHome.'
-    :'<b>Transport:</b> se calculează separat după adresa de livrare și cantitatea comandată.';
+    :'<b>Transport:</b> se calculează automat după adresa de livrare.';
+  if(pickup){
+    shippingDistanceKm=0;
+    shippingPrice=0;
+  }else{
+    shippingDistanceKm=null;
+    shippingPrice=null;
+    shippingLastAddress='';
+    const d=document.querySelector('#shippingDistance'); if(d)d.textContent='—';
+    const p=document.querySelector('#shippingPrice'); if(p)p.textContent='—';
+    const s=document.querySelector('#shippingStatus'); if(s){s.textContent='Completează județul, localitatea și adresa, apoi calculăm automat transportul.';s.className='status';}
+  }
   renderCheckoutSummary();
+}
+
+
+function getDeliveryAddressText(){
+  const county=document.querySelector('#custCounty')?.value.trim()||'';
+  const city=document.querySelector('#custCity')?.value.trim()||'';
+  const postcode=document.querySelector('#custPostcode')?.value.trim()||'';
+  const address=document.querySelector('#custAddress')?.value.trim()||'';
+  return [address,city,county,postcode,'Romania'].filter(Boolean).join(', ');
+}
+
+async function geocodeAddress(query){
+  const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=ro&q='+encodeURIComponent(query);
+  const response=await fetch(url,{headers:{'Accept':'application/json'}});
+  if(!response.ok) throw new Error('Geocodare '+response.status);
+  const data=await response.json();
+  if(!Array.isArray(data)||!data.length) throw new Error('Adresa nu a fost găsită.');
+  return {lat:Number(data[0].lat),lon:Number(data[0].lon),label:data[0].display_name||query};
+}
+
+function calculateShippingPrice(distanceKm,subtotal){
+  const distanceCost=distanceKm*SHIPPING_RATE_PER_KM;
+  const cappedCost=subtotal>0?Math.min(distanceCost,subtotal*SHIPPING_MAX_SHARE):distanceCost;
+  return Math.max(SHIPPING_MIN,Math.round(cappedCost));
+}
+
+async function calculateShipping(){
+  if(getDeliveryMethod()!=='delivery') return;
+  const err=document.querySelector('#checkoutError');
+  const status=document.querySelector('#shippingStatus');
+  const distanceEl=document.querySelector('#shippingDistance');
+  const priceEl=document.querySelector('#shippingPrice');
+  const btn=document.querySelector('#calculateShipping');
+  const addressText=getDeliveryAddressText();
+  const county=document.querySelector('#custCounty')?.value.trim();
+  const city=document.querySelector('#custCity')?.value.trim();
+  const address=document.querySelector('#custAddress')?.value.trim();
+
+  if(!county||!city||!address){
+    if(status){status.textContent='Completează județul, localitatea și adresa de livrare.';status.className='status error';}
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='Se calculează...';
+  if(status){status.textContent='Căutăm adresa și calculăm traseul rutier...';status.className='status';}
+
+  try{
+    let warehouse;
+    try{
+      const cached=JSON.parse(localStorage.getItem('purohomeWarehouseGeo')||'null');
+      if(cached&&Number.isFinite(cached.lat)&&Number.isFinite(cached.lon)) warehouse=cached;
+    }catch(_){}
+
+    if(!warehouse){
+      warehouse=await geocodeAddress(WAREHOUSE_QUERY);
+      try{localStorage.setItem('purohomeWarehouseGeo',JSON.stringify(warehouse));}catch(_){}
+    }
+
+    const dest=await geocodeAddress(addressText);
+    const routeUrl=`https://router.project-osrm.org/route/v1/driving/${warehouse.lon},${warehouse.lat};${dest.lon},${dest.lat}?overview=false&alternatives=false&steps=false`;
+    const response=await fetch(routeUrl);
+    if(!response.ok) throw new Error('Rutare '+response.status);
+    const data=await response.json();
+    if(data.code!=='Ok'||!data.routes?.length) throw new Error('Nu am putut calcula traseul.');
+
+    shippingDistanceKm=Math.max(1,Math.round((data.routes[0].distance/1000)*10)/10);
+    const d=getCheckoutData();
+    shippingPrice=calculateShippingPrice(shippingDistanceKm,d.subtotal);
+    shippingLastAddress=addressText;
+
+    if(distanceEl)distanceEl.textContent=shippingDistanceKm.toLocaleString('ro-RO')+' km';
+    if(priceEl)priceEl.textContent=shippingPrice.toLocaleString('ro-RO')+' lei';
+
+    if(status){
+      const raw=Math.round(shippingDistanceKm*SHIPPING_RATE_PER_KM);
+      const cap=Math.round(d.subtotal*SHIPPING_MAX_SHARE);
+      const capApplied=raw>cap && cap>=SHIPPING_MIN;
+      status.innerHTML=`Calcul automat: ${SHIPPING_RATE_PER_KM} lei/km, minimum ${SHIPPING_MIN} lei${capApplied?' · plafon comercial 25% din produse':''}.`;
+      status.className='status ok';
+    }
+
+    if(err)err.classList.remove('show');
+    renderCheckoutSummary();
+  }catch(e){
+    shippingDistanceKm=null;
+    shippingPrice=null;
+    shippingLastAddress='';
+    if(distanceEl)distanceEl.textContent='—';
+    if(priceEl)priceEl.textContent='—';
+    if(status){status.textContent='Nu am putut calcula automat transportul. Verifică adresa și încearcă din nou.';status.className='status error';}
+    console.error(e);
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Recalculează transportul';
+  }
 }
 
 function renderCheckoutSummary(){
@@ -601,6 +722,8 @@ function renderCheckoutSummary(){
   const el=document.querySelector('#checkoutSummary');if(!el)return;
   const pickup=getDeliveryMethod()==='pickup';
   const recipe=d.recipe.length?d.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · '):'—';
+  const ship=pickup?0:shippingPrice;
+  const finalTotal=ship==null?null:d.subtotal+ship;
   el.innerHTML=`
     <div class="summary-line"><span>Cod mix</span><b>${d.code}</b></div>
     <div class="summary-recipe">${recipe}</div>
@@ -610,8 +733,9 @@ function renderCheckoutSummary(){
     <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?d.primerBrand:'Fără grund'}</b></div>
     ${d.primerEnabled?`<div class="summary-line"><span>Grund ${d.primerBigKg} kg</span><b>${d.primerBig} găleți</b></div><div class="summary-line"><span>Grund ${d.primerSmallKg} kg</span><b>${d.primerSmall} găleți</b></div>`:''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
-    <div class="summary-line"><span>Transport</span><b>${pickup?'0 lei':'De calculat'}</b></div>
-    <div class="summary-line checkout-total"><span>${pickup?'TOTAL FINAL':'Subtotal produse'}</span><span>${d.subtotal.toLocaleString('ro-RO')} lei</span></div>`;
+    ${!pickup&&shippingDistanceKm!=null?`<div class="summary-line"><span>Distanță</span><b>${shippingDistanceKm.toLocaleString('ro-RO')} km</b></div>`:''}
+    <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
+    <div class="summary-line checkout-total"><span>${finalTotal==null?'Subtotal produse':'TOTAL FINAL'}</span><span>${(finalTotal??d.subtotal).toLocaleString('ro-RO')} lei</span></div>`;
 }
 function openCheckout(){
   const d=getCheckoutData();
@@ -632,15 +756,24 @@ function openCheckout(){
 function closeCheckout(){document.querySelector('#checkoutModal').classList.remove('open');document.querySelector('#checkoutModal').setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
 function orderText(){
   const d=getCheckoutData();
+  const pickup=getDeliveryMethod()==='pickup';
   const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
   const recipe=d.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ');
-  return `Cod mix: ${d.code}\nClient: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\nLivrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}\nMix: ${recipe}\nMozaic: ${d.mosaicBrand} — ${d.mosaicBuckets} găleți x 25 kg\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSuprafață: ${d.sqm} m²\nSubtotal produse: ${d.subtotal} lei\nTransport: se calculează după adresă\nObservații: ${customer.notes||'-'}`;
+  const deliveryLine=pickup?`Ridicare personală: ${PICKUP_ADDRESS}`:`Livrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}`;
+  const shippingLine=pickup
+    ?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`
+    :(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
+  return `Cod mix: ${d.code}\nClient: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\nMix: ${recipe}\nMozaic: ${d.mosaicBrand} — ${d.mosaicBuckets} găleți x 25 kg\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSuprafață: ${d.sqm} m²\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
 }
 function validateCheckout(){
   const pickup=getDeliveryMethod()==='pickup';
   const required=[['custName','numele'],['custPhone','telefonul']];
   if(!pickup) required.push(['custCounty','județul'],['custCity','localitatea'],['custAddress','adresa de livrare']);
   const missing=required.filter(([id])=>!document.querySelector('#'+id).value.trim()).map(x=>x[1]);
+  if(!pickup){
+    const currentAddress=getDeliveryAddressText();
+    if(shippingPrice==null||shippingLastAddress!==currentAddress) missing.push('calculul transportului');
+  }
   if(!document.querySelector('#confirmOrder').checked)missing.push('confirmarea sumarului');
   const err=document.querySelector('#checkoutError');
   if(missing.length){err.textContent='Completează: '+missing.join(', ')+'.';err.classList.add('show');return false}
@@ -700,8 +833,8 @@ async function saveOrderToSupabase(){
     mosaic_total:d.mosaicTotal,
     primer_total:d.primerTotal,
     products_total:d.subtotal,
-    shipping_price:pickup?0:null,
-    final_total:pickup?d.subtotal:null,
+    shipping_price:pickup?0:shippingPrice,
+    final_total:pickup?d.subtotal:(shippingPrice==null?null:d.subtotal+shippingPrice),
     order_status:'noua',
     repeated_from_mx:null
   };
@@ -752,6 +885,17 @@ document.querySelector('#checkoutClose').onclick=closeCheckout;
 document.querySelector('#checkoutModal').addEventListener('click',e=>{if(e.target.id==='checkoutModal')closeCheckout()});
 document.querySelector('#prepareOrder').onclick=saveOrderToSupabase;
 document.querySelectorAll('input[name="deliveryMethod"]').forEach(el=>el.addEventListener('change',updateDeliveryUI));
+document.querySelector('#calculateShipping').addEventListener('click',calculateShipping);
+['custCounty','custCity','custPostcode','custAddress'].forEach(id=>{
+  document.querySelector('#'+id)?.addEventListener('input',()=>{
+    if(getDeliveryMethod()!=='delivery')return;
+    shippingDistanceKm=null;shippingPrice=null;shippingLastAddress='';
+    const d=document.querySelector('#shippingDistance');if(d)d.textContent='—';
+    const p=document.querySelector('#shippingPrice');if(p)p.textContent='—';
+    const s=document.querySelector('#shippingStatus');if(s){s.textContent='Adresa s-a modificat. Recalculează transportul.';s.className='status';}
+    renderCheckoutSummary();
+  });
+});
 document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
 document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
 
