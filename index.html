@@ -940,6 +940,12 @@ async function saveOrderToSupabase(){
       try{detail=await response.text()}catch(_){}
       throw new Error('Supabase '+response.status+(detail?' · '+detail:''));
     }
+    // Dacă salvarea comenzii a reușit, pornim plata NETOPIA
+window.location.href =
+    'https://api.purohome.ro/netopia_start.php?orderId=' +
+    encodeURIComponent(orderId);
+
+return;
     // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
     try{
       const arr=JSON.parse(localStorage.getItem('mixPiatraSentOrders')||'[]');
