@@ -378,7 +378,11 @@ function drawHouseOverlay(overlay,houseImg,choice){
   // perspectiva reala a casei. Nu mai desenam textura ca un dreptunghi/paravan.
   // Coordonatele sunt procente din fotografia casei si se adapteaza automat
   // cand imaginea este afisata mai mare sau pe telefon.
-  const socleShapes=[
+  const socleShapes=customHouseMode ? [
+    // V1 fotografie client: banda inferioara automata, aproximativ ultimii 18% din fotografie.
+    // Nu cerem clientului sa traseze sau sa aleaga inaltimea.
+    [[0.00,0.82],[1.00,0.82],[1.00,1.00],[0.00,1.00]]
+  ] : [
     // fata stanga - pana la zona usii/scarilor
     [[0.073,0.626],[0.414,0.622],[0.414,0.714],[0.376,0.714],[0.376,0.770],[0.073,0.770]],
     // fata principala din dreapta - urmareste linia de perspectiva de jos
