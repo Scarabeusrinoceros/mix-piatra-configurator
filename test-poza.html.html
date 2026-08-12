@@ -378,11 +378,7 @@ function drawHouseOverlay(overlay,houseImg,choice){
   // perspectiva reala a casei. Nu mai desenam textura ca un dreptunghi/paravan.
   // Coordonatele sunt procente din fotografia casei si se adapteaza automat
   // cand imaginea este afisata mai mare sau pe telefon.
-  const socleShapes=customHouseMode ? [
-    // V1 fotografie client: banda inferioara automata, aproximativ ultimii 18% din fotografie.
-    // Nu cerem clientului sa traseze sau sa aleaga inaltimea.
-    [[0.00,0.82],[1.00,0.82],[1.00,1.00],[0.00,1.00]]
-  ] : [
+  const socleShapes=[
     // fata stanga - pana la zona usii/scarilor
     [[0.073,0.626],[0.414,0.622],[0.414,0.714],[0.376,0.714],[0.376,0.770],[0.073,0.770]],
     // fata principala din dreapta - urmareste linia de perspectiva de jos
@@ -451,11 +447,53 @@ function drawHouseOverlay(overlay,houseImg,choice){
 
   if(choice) choice.innerHTML='<b>Mixul tău</b><br>'+selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');
 }
+function drawCustomHouseOverlay(overlay,houseImg,choice){
+  const mixCanvas=document.querySelector('#mixCanvas');
+  if(!overlay||!houseImg||!mixCanvas)return;
+  const total=selected.reduce((sum,item)=>sum+(Number(item.pct)||0),0);
+  const octx=overlay.getContext('2d');
+  if(selected.length<1||total!==100){
+    overlay.width=1; overlay.height=1;
+    if(choice)choice.innerHTML='<b>Fotografia ta</b><br>Finalizează mixul la 100% pentru simulare.';
+    return;
+  }
+  const cssW=Math.max(1,Math.round(houseImg.clientWidth||houseImg.getBoundingClientRect().width||900));
+  const cssH=Math.max(1,Math.round(houseImg.clientHeight||houseImg.getBoundingClientRect().height||600));
+  const dpr=Math.max(1,Math.min(window.devicePixelRatio||1,2));
+  overlay.width=Math.round(cssW*dpr); overlay.height=Math.round(cssH*dpr);
+  overlay.style.width=cssW+'px'; overlay.style.height=cssH+'px';
+  octx.setTransform(dpr,0,0,dpr,0,0);
+  octx.clearRect(0,0,cssW,cssH);
+  const tile=document.createElement('canvas');
+  const tileCtx=tile.getContext('2d');
+  const tileW=Math.max(180,Math.round(cssW*.28));
+  const tileH=Math.max(100,Math.round(tileW*.45));
+  tile.width=tileW; tile.height=tileH;
+  tileCtx.drawImage(mixCanvas,0,0,mixCanvas.width,mixCanvas.height,0,0,tileW,tileH);
+  const pattern=octx.createPattern(tile,'repeat');
+  octx.fillStyle=pattern;
+  octx.globalAlpha=.86;
+
+  // V1 automată: estimăm soclul ca o bandă perspectivă în zona inferioară a fațadei.
+  // Evităm terenul lăsând ultimii ~6% din imagine neacoperiți.
+  const groundY=.94*cssH;
+  const topY=.74*cssH;
+  octx.beginPath();
+  octx.moveTo(.06*cssW,topY);
+  octx.lineTo(.94*cssW,topY+.01*cssH);
+  octx.lineTo(.96*cssW,groundY);
+  octx.lineTo(.04*cssW,groundY);
+  octx.closePath();
+  octx.clip();
+  octx.fillRect(0,0,cssW,cssH);
+  octx.globalAlpha=1;
+
+  if(choice)choice.innerHTML='<b>Fotografia ta</b><br>Simulare automată orientativă a mixului pe zona de soclu.';
+}
 function prepareHousePreview(){
   const choice=document.querySelector('#houseChoice');
   if(customHouseMode){
-    const overlay=document.querySelector('#houseMixOverlay'); if(overlay){overlay.width=1;overlay.height=1;}
-    if(choice)choice.innerHTML='<b>Fotografia ta</b><br>Aplicarea automată a mixului pe soclu va fi adăugată într-o etapă viitoare.';
+    drawCustomHouseOverlay(document.querySelector('#houseMixOverlay'),document.querySelector('.house-stage>img'),choice);
     return;
   }
   drawHouseOverlay(document.querySelector('#houseMixOverlay'),document.querySelector('.house-stage>img'),choice);
@@ -464,8 +502,7 @@ function updateHouseThumbnail(){
   const img=document.querySelector('#housePreview');
   const overlay=document.querySelector('#houseThumbOverlay');
   if(!img||!overlay)return;
-  if(customHouseMode){overlay.width=1;overlay.height=1;return;}
-  const run=()=>drawHouseOverlay(overlay,img,null);
+  const run=()=>customHouseMode?drawCustomHouseOverlay(overlay,img,null):drawHouseOverlay(overlay,img,null);
   if(img.complete) requestAnimationFrame(run); else img.addEventListener('load',run,{once:true});
 }
 function openHousePreview(){
