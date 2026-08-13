@@ -51,7 +51,12 @@
  <section class="card"><h2>4. CALCULATOR CONSUM</h2>
  <div class="calc-row"><span>Suprafață (m²)</span><div class="qty"><button id="minus">−</button><input id="sqmInput" class="sqm-input" type="number" min="0" step="1" value="0" inputmode="numeric" aria-label="Suprafață în metri pătrați"><button id="plus">+</button></div></div>
  <div class="calc-row"><div><span>Producător mozaic</span><div class="calc-hint">Aceeași rețetă de culoare, preț diferit</div></div><select id="mosaicBrand" class="brand-select" aria-label="Producător mozaic"><option value="duraziv">Duraziv — 270 lei / 25 kg</option><option value="kober">Kober — 240 lei / 25 kg</option></select></div>
- <div class="calc-row"><div><span>Mozaic 25 kg</span><div class="calc-hint">Consum calculat: 4 m² / găleată</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
+ <div class="calc-row">
+   <div id="mosaicProductVisual" style="text-align:center;margin:14px 0;">
+  <img id="mosaicProductImage" src="assets/duraziv-clima-protect-25kg.jfif" alt="Duraziv Clima Protect 25 kg" style="max-width:180px;width:100%;height:auto;">
+  <div id="mosaicProductName" style="font-weight:700;margin-top:6px;">Duraziv Clima Protect — 25 kg</div>
+</div>
+   <div><span>Mozaic 25 kg</span><div class="calc-hint">Consum calculat: 4 m² / găleată</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
  <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div></div><label class="primer-toggle"><input id="primerEnabled" type="checkbox" checked> Adaugă grund</label></div><div class="primer-brand-row"><label for="primerBrand">Vrei alt grund?</label><select id="primerBrand" class="brand-select primer-brand-select" aria-label="Alege marca grundului"><option value="auto">Recomandat automat</option><option value="duraziv">Duraziv</option><option value="kober">Kober</option></select></div>
  <div class="primer-line"><span>Recomandare</span><b id="primerRecommendation">—</b></div>
  <div class="primer-line"><span id="primerBigLabel">Grund 25 kg · 210 lei</span><div class="calc-control"><button id="primerBigMinus">−</button><b id="primerBig">0 găleți</b><button id="primerBigPlus">+</button></div></div>
@@ -558,7 +563,24 @@ document.querySelector('#mosaicMinus').onclick=()=>{mosaicBuckets=Math.max(0,mos
 document.querySelector('#primerBigMinus').onclick=()=>{primerBig=Math.max(0,primerBig-1);renderCalc()};document.querySelector('#primerBigPlus').onclick=()=>{primerBig++;renderCalc()};
 document.querySelector('#primerSmallMinus').onclick=()=>{primerSmall=Math.max(0,primerSmall-1);renderCalc()};document.querySelector('#primerSmallPlus').onclick=()=>{primerSmall++;renderCalc()};
 document.querySelector('#primerEnabled').onchange=e=>{primerEnabled=e.target.checked;renderCalc()};
-document.querySelector('#mosaicBrand').onchange=e=>{mosaicBrand=e.target.value;recommendQuantities()};
+document.querySelector('#mosaicBrand').onchange=e=>{
+  mosaicBrand=e.target.value;
+
+  const productImage=document.querySelector('#mosaicProductImage');
+  const productName=document.querySelector('#mosaicProductName');
+
+  if(mosaicBrand==='kober'){
+    productImage.src='assets/kober-mozaic-soclu.avif';
+    productImage.alt='Kober tencuiala mozaic soclu 25 kg';
+    productName.textContent='Köber Tencuială de soclu cuarț-mozaic — 25 kg';
+  }else{
+    productImage.src='assets/duraziv-clima-protect-25kg.jfif';
+    productImage.alt='Duraziv Clima Protect 25 kg';
+    productName.textContent='Duraziv Clima Protect — 25 kg';
+  }
+
+  recommendQuantities();
+};
 document.querySelector('#primerBrand').onchange=e=>{primerBrand=e.target.value;recommendQuantities()};
 document.querySelector('#copyRecipe').onclick=async()=>{const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){alert('Finalizează mai întâi mixul la 100%.');return}const brand=mosaicBrand==='kober'?'Kober':'Duraziv';const pd=getPrimerData();const code=makeCode();const recipe=selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');const text=`${code}
 ${recipe}
