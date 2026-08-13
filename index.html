@@ -456,6 +456,30 @@ function updateHouseThumbnail(){
   const run=()=>drawHouseOverlay(overlay,img,null);
   if(img.complete) requestAnimationFrame(run); else img.addEventListener('load',run,{once:true});
 }
+ const houseModels = [
+  'assets/casa.jpg',
+  'assets/casa_modern_p1.jpg',
+  'assets/casa_traditionala.jpg'
+];
+
+let currentHouseModel = 0;
+
+function changeHouseModel(){
+  currentHouseModel = (currentHouseModel + 1) % houseModels.length;
+
+  const newSrc = houseModels[currentHouseModel];
+
+  const thumb = document.querySelector('#housePreview');
+  const large = document.querySelector('.house-stage>img');
+
+  if(thumb) thumb.src = newSrc;
+  if(large) large.src = newSrc;
+
+  setTimeout(()=>{
+    updateHouseThumbnail();
+    prepareHousePreview();
+  },100);
+} 
 function openHousePreview(){
   const modal=document.querySelector('#houseModal');
   if(!modal)return;
