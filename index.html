@@ -1029,7 +1029,7 @@ document.querySelector('#custAddress').addEventListener('blur',()=>validateAddre
 });
 document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
 document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
-
+document.querySelector('#changeHouseModel')?.addEventListener('click', changeHouseModel);
 window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();updateDeliveryUI();
 </script>
   <footer style="
