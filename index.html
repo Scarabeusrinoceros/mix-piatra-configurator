@@ -24,6 +24,20 @@
 .checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 .delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
 .btn-row{display:none !important;}
+.mix-cart-box{margin-top:12px;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
+.mix-cart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.add-mix-btn{width:100%;padding:12px;border:0;border-radius:9px;background:#17212b;color:#fff;font-weight:800;cursor:pointer;margin-top:10px}
+.add-mix-btn:disabled{opacity:.45;cursor:not-allowed}
+.saved-mix{padding:10px 0;border-bottom:1px solid #e8ecef}
+.saved-mix:last-child{border-bottom:0}
+.saved-mix-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.saved-mix-code{font-weight:900}
+.saved-mix-recipe{font-size:12px;color:#56616b;margin:4px 0}
+.saved-mix-meta{font-size:12px;color:#68727b;line-height:1.5}
+.saved-mix-actions{display:flex;gap:6px}
+.saved-mix-actions button{border:1px solid #d6dce1;background:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;font-weight:700}
+.coverage-note{margin-top:10px;padding:10px 11px;border-radius:9px;background:#f7f9fa;border:1px solid #e2e7ea;font-size:12px;color:#5d6872;line-height:1.45}
+.recommendation-badge{font-size:11px;color:#68727b;margin-top:4px}
 </style>
 </head>
 <body>
@@ -56,7 +70,7 @@
   <img id="mosaicProductImage" src="assets/duraziv-clima-protect-25kg.jfif" alt="Duraziv Clima Protect 25 kg" style="max-width:180px;width:100%;height:auto;">
   <div id="mosaicProductName" style="font-weight:700;margin-top:6px;">Duraziv Clima Protect — 25 kg</div>
 </div>
-   <div><span>Mozaic 25 kg</span><div class="calc-hint">Consum calculat: 4 m² / găleată</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
+   <div><span>Mozaic 25 kg</span><div class="calc-hint">Consum mediu: 4 m² / găleată</div><div id="mosaicRecommendationHint" class="recommendation-badge">Cantitate recomandată: 0 găleți · o poți modifica liber</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
  <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div><div id="primerProductVisual" style="text-align:center;margin:10px 0;">
   <img id="primerProductImage" src="assets/duraziv-primer-4kg.webp" alt="Grund Duraziv 4 kg" style="max-width:120px;width:100%;height:auto;">
   <div id="primerProductName" style="font-weight:700;margin-top:4px;font-size:12px;">Grund Duraziv 4 kg</div>
@@ -70,6 +84,8 @@
  <div class="calc-row"><span>Transport</span><b>Se calculează după adresă</b></div>
  <div class="total-row"><span>SUBTOTAL PRODUSE</span><span id="grand">0 lei</span></div>
  <div class="recipe-box"><div class="recipe-code"><div><small>Cod mix</small><br><strong id="recipeCode">—</strong></div><button id="copyRecipe" class="copy-recipe" type="button">Copiază rețeta</button></div><div id="recipeList" class="recipe-list">Alege un mix de 100% pentru a genera fișa.</div></div>
+ <button id="addMixToOrder" class="add-mix-btn" type="button">Adaugă mixul în comandă</button>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Mixuri adăugate în comandă</b><span id="mixCartCount">0</span></div><div id="mixCartList"><div class="note">Nu ai adăugat încă niciun mix.</div></div></div>
  <button id="openCheckout" class="cart" type="button">Continuă la comandă</button><button id="whatsappOffer" class="wa" type="button">◉ Cere ofertă pe WhatsApp</button><div class="note" style="text-align:center;margin-top:8px">Telefon / WhatsApp: <a href="tel:+40735172091" style="color:inherit;font-weight:800">+40 735 172 091</a></div></section>
 </aside>
 </div>
@@ -110,7 +126,7 @@
           <div class="field full"><label>Observații</label><textarea id="custNotes" placeholder="Detalii pentru livrare sau comandă"></textarea></div>
         </div>
         <div id="checkoutError" class="checkout-error"></div>
-        <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat culorile, procentele, marca și cantitățile din sumarul comenzii.</span></label>
+        <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat mixurile, culorile, procentele, mărcile și cantitățile din sumarul comenzii.</span></label>
         <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Confirmă datele comenzii</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
         <div id="checkoutStatus" class="checkout-status"></div>
       </section>
@@ -508,6 +524,8 @@ document.addEventListener('keydown',e=>{
 });
 document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];renderAll()};
 let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBrand='duraziv',primerBrand='auto';
+let orderMixes=[];
+let recommendedMosaicBuckets=0;
 const MOSAIC_PRICES={duraziv:270,kober:240};
 const PRIMER_DATA={
   duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
@@ -535,10 +553,18 @@ function recommendedPrimer(area){
   }
   return best?{big:best.big,small:best.small}:{big:0,small:0};
 }
-function recommendQuantities(){mosaicBuckets=Math.ceil(sqm/4);const p=recommendedPrimer(sqm);primerBig=p.big;primerSmall=p.small;renderCalc()}
+function recommendQuantities(){
+  recommendedMosaicBuckets=Math.ceil(sqm/4);
+  mosaicBuckets=recommendedMosaicBuckets;
+  const p=recommendedPrimer(sqm);
+  primerBig=p.big;primerSmall=p.small;
+  renderCalc();
+}
 function renderCalc(){
   document.querySelector('#sqmInput').value=sqm;
   document.querySelector('#buckets').textContent=mosaicBuckets+' găleți';
+  const mrh=document.querySelector('#mosaicRecommendationHint');
+  if(mrh) mrh.textContent='Cantitate recomandată: '+recommendedMosaicBuckets+' găleți · o poți modifica liber';
   document.querySelector('#primerBig').textContent=primerBig+' găleți';
   document.querySelector('#primerSmall').textContent=primerSmall+' găleți';
   const pd=getPrimerData();
@@ -576,8 +602,10 @@ if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('k�
   const primerTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
   document.querySelector('#price').textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
   document.querySelector('#primerPrice').textContent=primerTotal.toLocaleString('ro-RO')+' lei';
-  document.querySelector('#grand').textContent=(mosaicTotal+primerTotal).toLocaleString('ro-RO')+' lei';
+  const savedMixTotal=orderMixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
+  document.querySelector('#grand').textContent=(savedMixTotal+primerTotal).toLocaleString('ro-RO')+' lei';
   updateRecipeCard();
+  renderMixCart();
 }
 document.querySelector('#plus').onclick=()=>{sqm++;recommendQuantities()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(0,sqm-1);recommendQuantities()};
 document.querySelector('#sqmInput').addEventListener('input',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
@@ -613,19 +641,72 @@ Mozaic: ${mosaicBuckets} găleți x 25 kg
 Grund ${pd.name} ${pd.bigKg} kg: ${primerEnabled?primerBig:0}
 Grund ${pd.name} ${pd.smallKg} kg: ${primerEnabled?primerSmall:0}`;try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyRecipe');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază rețeta:',text)}};
 
-function getCheckoutData(){
+
+function currentMixIsValid(){
   const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
-  const pd=getPrimerData();
-  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
-  const mosaicTotal=mosaicBuckets*mosaicPrice;
-  const primerTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
-  return {
-    valid:selected.length>=1&&totalPct===100&&sqm>0&&mosaicBuckets>0,
-    code:selected.length>=1&&totalPct===100?makeCode():'—',
-    recipe:selected.map(s=>({name:s.name,pct:s.pct})),
+  return selected.length>=1 && totalPct===100 && mosaicBuckets>0;
+}
+function addCurrentMixToOrder(){
+  if(!selected.length){alert('Alege cel puțin o culoare pentru mix.');return;}
+  const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  if(totalPct!==100){alert('Finalizează procentele mixului la 100%.');return;}
+  if(mosaicBuckets<=0){alert('Alege cel puțin o găleată de mozaic.');return;}
+  const price=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  orderMixes.push({
+    id:'MIX-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5),
+    code:makeCode(),
+    recipe:selected.map(s=>({name:s.name,pct:Number(s.pct)})),
     mosaicBrand:mosaicBrand==='kober'?'Kober':'Duraziv',
-    mosaicBuckets,mosaicPrice,mosaicTotal,sqm,
-    primerEnabled,primerBrand:pd.name,primerBig,primerSmall,
+    mosaicBrandKey:mosaicBrand,
+    mosaicBuckets:Number(mosaicBuckets),
+    mosaicPrice:price,
+    mosaicTotal:Number(mosaicBuckets)*price,
+    requestedSqm:Number(sqm)||0,
+    estimatedCoverage:Number(mosaicBuckets)*4
+  });
+  selected=[];
+  sqm=0;mosaicBuckets=0;recommendedMosaicBuckets=0;
+  renderAll();renderCalc();
+}
+function removeOrderMix(id){
+  orderMixes=orderMixes.filter(m=>m.id!==id);
+  renderCalc();
+}
+function renderMixCart(){
+  const list=document.querySelector('#mixCartList');
+  const count=document.querySelector('#mixCartCount');
+  if(!list||!count)return;
+  count.textContent=orderMixes.length+(orderMixes.length===1?' mix':' mixuri');
+  if(!orderMixes.length){list.innerHTML='<div class="note">Nu ai adăugat încă niciun mix.</div>';return;}
+  list.innerHTML=orderMixes.map((m,i)=>`
+    <div class="saved-mix">
+      <div class="saved-mix-top">
+        <div><span class="saved-mix-code">Mix ${i+1} · ${m.code}</span><div class="saved-mix-recipe">${m.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · ')}</div></div>
+        <div class="saved-mix-actions"><button type="button" onclick="removeOrderMix('${m.id}')">Șterge</button></div>
+      </div>
+      <div class="saved-mix-meta">${m.mosaicBrand} · ${m.mosaicBuckets} găleți × 25 kg · <b>acoperire estimată ~${m.estimatedCoverage} m²</b> · ${m.mosaicTotal.toLocaleString('ro-RO')} lei</div>
+    </div>`).join('');
+}
+document.querySelector('#addMixToOrder').onclick=addCurrentMixToOrder;
+
+function getCheckoutData(){
+  const pd=getPrimerData();
+  const primerHasQty=primerEnabled&&(primerBig>0||primerSmall>0);
+  const primerTotal=primerHasQty?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  const mixes=orderMixes.map(m=>({...m}));
+  const mosaicTotal=mixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
+  const hasProducts=mixes.length>0||primerHasQty;
+  return {
+    valid:hasProducts,
+    mixes,
+    code:mixes.length===1?mixes[0].code:(mixes.length>1?'MULTI-'+mixes.length:'—'),
+    recipe:mixes.flatMap(m=>m.recipe),
+    mosaicBrand:mixes.length===1?mixes[0].mosaicBrand:(mixes.length>1?'Multiplu':'—'),
+    mosaicBuckets:mixes.reduce((s,m)=>s+m.mosaicBuckets,0),
+    mosaicPrice:mixes.length===1?mixes[0].mosaicPrice:null,
+    mosaicTotal,
+    sqm:mixes.reduce((s,m)=>s+(m.requestedSqm||0),0),
+    primerEnabled:primerHasQty,primerBrand:pd.name,primerBig,primerSmall,
     primerBigKg:pd.bigKg,primerSmallKg:pd.smallKg,primerTotal,
     subtotal:mosaicTotal+primerTotal
   };
@@ -769,15 +850,20 @@ function renderCheckoutSummary(){
   const d=getCheckoutData();
   const el=document.querySelector('#checkoutSummary');if(!el)return;
   const pickup=getDeliveryMethod()==='pickup';
-  const recipe=d.recipe.length?d.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · '):'—';
   const ship=pickup?0:shippingPrice;
   const finalTotal=ship==null?null:d.subtotal+ship;
+  const mixesHtml=d.mixes.length?d.mixes.map((m,i)=>`
+    <div class="summary-recipe">
+      <div><b>Mix ${i+1} · ${m.code}</b></div>
+      <div>${m.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · ')}</div>
+      <div class="summary-line"><span>Producător</span><b>${m.mosaicBrand}</b></div>
+      <div class="summary-line"><span>Cantitate</span><b>${m.mosaicBuckets} găleți × 25 kg</b></div>
+      <div class="summary-line"><span>Acoperire estimată</span><b>~${m.estimatedCoverage} m²</b></div>
+      <div class="summary-line"><span>Valoare mix</span><b>${m.mosaicTotal.toLocaleString('ro-RO')} lei</b></div>
+    </div>`).join(''):'<div class="summary-recipe">Fără mozaic — comandă de grund.</div>';
   el.innerHTML=`
-    <div class="summary-line"><span>Cod mix</span><b>${d.code}</b></div>
-    <div class="summary-recipe">${recipe}</div>
-    <div class="summary-line"><span>Mozaic</span><b>${d.mosaicBrand}</b></div>
-    <div class="summary-line"><span>Suprafață</span><b>${d.sqm} m²</b></div>
-    <div class="summary-line"><span>Mozaic 25 kg</span><b>${d.mosaicBuckets} găleți × ${d.mosaicPrice} lei</b></div>
+    ${mixesHtml}
+    <div class="coverage-note"><b>Suprafața de acoperire este orientativă</b>, calculată pe baza unui consum mediu. În practică, aceasta poate varia în funcție de suport, grosimea aplicării, modul de lucru și pierderile de material.</div>
     <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?d.primerBrand:'Fără grund'}</b></div>
     ${d.primerEnabled?`<div class="summary-line"><span>Grund ${d.primerBigKg} kg</span><b>${d.primerBig} găleți</b></div><div class="summary-line"><span>Grund ${d.primerSmallKg} kg</span><b>${d.primerSmall} găleți</b></div>`:''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
@@ -788,11 +874,8 @@ function openCheckout(){
   const d=getCheckoutData();
   const err=document.querySelector('#checkoutError');
   if(!d.valid){
-    const reasons=[];
-    if(!selected.length||selected.reduce((a,b)=>a+(Number(b.pct)||0),0)!==100)reasons.push('finalizează mixul la 100%');
-    if(sqm<=0)reasons.push('introdu suprafața');
-    if(mosaicBuckets<=0)reasons.push('verifică numărul de găleți');
-    alert('Pentru a continua la comandă: '+reasons.join(', ')+'.');return;
+    alert('Adaugă cel puțin un mix în comandă sau alege cel puțin o găleată de grund.');
+    return;
   }
   updateDeliveryUI();
   document.querySelector('#checkoutModal').classList.add('open');
@@ -805,14 +888,11 @@ function orderText(){
   const d=getCheckoutData();
   const pickup=getDeliveryMethod()==='pickup';
   const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
-  const recipe=d.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ');
   const deliveryLine=pickup?`Ridicare personală: ${PICKUP_ADDRESS}`:`Livrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}`;
-  const shippingLine=pickup
-    ?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`
-    :(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
-  return `Cod mix: ${d.code}\nClient: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\nMix: ${recipe}\nMozaic: ${d.mosaicBrand} — ${d.mosaicBuckets} găleți x 25 kg\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSuprafață: ${d.sqm} m²\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
+  const shippingLine=pickup?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`:(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
+  const mixLines=d.mixes.length?d.mixes.map((m,i)=>`Mix ${i+1}: ${m.code}\n${m.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ')}\n${m.mosaicBrand}: ${m.mosaicBuckets} găleți x 25 kg\nAcoperire estimată: ~${m.estimatedCoverage} m²`).join('\n\n'):'Fără mozaic';
+  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
 }
-
 function setFieldState(id, valid, message=''){
   const el=document.querySelector('#'+id);
   const help=document.querySelector('#help'+id.replace('cust',''));
@@ -954,7 +1034,7 @@ async function saveOrderToSupabase(){
     mosaic_buckets:d.mosaicBuckets,
     mosaic_bucket_kg:25,
     mosaic_unit_price:d.mosaicPrice,
-    mix_recipe:d.recipe,
+    mix_recipe:{version:2,mixes:d.mixes},
     primer_included:d.primerEnabled,
     primer_brand:d.primerEnabled?d.primerBrand:null,
     primer_small_bucket_kg:d.primerEnabled?d.primerSmallKg:null,
