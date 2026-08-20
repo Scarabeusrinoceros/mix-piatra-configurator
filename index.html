@@ -26,8 +26,8 @@
 .btn-row{display:none !important;}
 .mix-cart-box{margin-top:12px;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
 .mix-cart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
-.add-mix-btn{width:100%;padding:12px;border:0;border-radius:9px;background:#17212b;color:#fff;font-weight:800;cursor:pointer;margin-top:10px}
-.add-mix-btn:disabled{opacity:.45;cursor:not-allowed}
+.add-mix-btn,.add-primer-btn{width:100%;padding:12px;border:0;border-radius:9px;background:#17212b;color:#fff;font-weight:800;cursor:pointer;margin-top:10px}
+.add-mix-btn:disabled,.add-primer-btn:disabled{opacity:.45;cursor:not-allowed}
 .saved-mix{padding:10px 0;border-bottom:1px solid #e8ecef}
 .saved-mix:last-child{border-bottom:0}
 .saved-mix-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
@@ -77,7 +77,10 @@
 </div></div><label class="primer-toggle"><input id="primerEnabled" type="checkbox" checked> Adaugă grund</label></div><div class="primer-brand-row"><label for="primerBrand">Vrei alt grund?</label><select id="primerBrand" class="brand-select primer-brand-select" aria-label="Alege marca grundului"><option value="auto">Recomandat automat</option><option value="duraziv">Duraziv</option><option value="kober">Kober</option></select></div>
  <div class="primer-line"><span>Recomandare</span><b id="primerRecommendation">—</b></div>
  <div class="primer-line"><span id="primerBigLabel">Grund 25 kg · 210 lei</span><div class="calc-control"><button id="primerBigMinus">−</button><b id="primerBig">0 găleți</b><button id="primerBigPlus">+</button></div></div>
- <div class="primer-line"><span id="primerSmallLabel">Grund 4 kg · 59 lei</span><div class="calc-control"><button id="primerSmallMinus">−</button><b id="primerSmall">0 găleți</b><button id="primerSmallPlus">+</button></div></div></div>
+ <div class="primer-line"><span id="primerSmallLabel">Grund 4 kg · 59 lei</span><div class="calc-control"><button id="primerSmallMinus">−</button><b id="primerSmall">0 găleți</b><button id="primerSmallPlus">+</button></div></div>
+ <button id="addPrimerToOrder" class="add-primer-btn" type="button">Adaugă grundul în comandă</button>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Grunduri adăugate în comandă</b><span id="primerCartCount">0</span></div><div id="primerCartList"><div class="note">Nu ai adăugat încă grund în comandă.</div></div></div>
+ </div>
  <div class="calc-row"><span>Acoperire grund</span><b id="coverage">—</b></div>
  <div class="calc-row"><span>Mozaic</span><b id="price">0 lei</b></div>
  <div class="calc-row"><span>Grund</span><b id="primerPrice">0 lei</b></div>
@@ -531,6 +534,7 @@ document.addEventListener('keydown',e=>{
 document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];renderAll()};
 let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBrand='duraziv',primerBrand='auto';
 let orderMixes=[];
+let orderPrimers=[];
 let recommendedMosaicBuckets=0;
 const MOSAIC_PRICES={duraziv:270,kober:240};
 const PRIMER_DATA={
@@ -606,13 +610,17 @@ if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('k�
   document.querySelector('#primerBigMinus').disabled=!primerEnabled;document.querySelector('#primerBigPlus').disabled=!primerEnabled;document.querySelector('#primerSmallMinus').disabled=!primerEnabled;document.querySelector('#primerSmallPlus').disabled=!primerEnabled;
   const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
   const mosaicTotal=mosaicBuckets*mosaicPrice;
-  const primerTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  const primerSelectionTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
   document.querySelector('#price').textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
-  document.querySelector('#primerPrice').textContent=primerTotal.toLocaleString('ro-RO')+' lei';
+  document.querySelector('#primerPrice').textContent=primerSelectionTotal.toLocaleString('ro-RO')+' lei';
   const savedMixTotal=orderMixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
-  document.querySelector('#grand').textContent=(savedMixTotal+primerTotal).toLocaleString('ro-RO')+' lei';
+  const savedPrimerTotal=orderPrimers.reduce((sum,p)=>sum+p.total,0);
+  document.querySelector('#grand').textContent=(savedMixTotal+savedPrimerTotal).toLocaleString('ro-RO')+' lei';
+  const primerAddBtn=document.querySelector('#addPrimerToOrder');
+  if(primerAddBtn) primerAddBtn.disabled=!primerEnabled||(primerBig<=0&&primerSmall<=0);
   updateRecipeCard();
   renderMixCart();
+  renderPrimerCart();
 }
 document.querySelector('#plus').onclick=()=>{sqm++;recommendQuantities()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(0,sqm-1);recommendQuantities()};
 document.querySelector('#sqmInput').addEventListener('input',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
@@ -702,16 +710,51 @@ function renderMixCart(){
 }
 document.querySelector('#addMixToOrder').onclick=addCurrentMixToOrder;
 
-function getCheckoutData(){
+
+function addPrimerSelectionToOrder(){
+  if(!primerEnabled || (primerBig<=0 && primerSmall<=0)){ alert('Alege cel puțin o găleată de grund.'); return; }
   const pd=getPrimerData();
-  const primerHasQty=primerEnabled&&(primerBig>0||primerSmall>0);
-  const primerTotal=primerHasQty?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  if(primerBig>0) orderPrimers.push({id:'PR-'+Date.now().toString(36)+'-B-'+Math.random().toString(36).slice(2,5),brand:pd.name,kg:pd.bigKg,quantity:Number(primerBig),unitPrice:pd.bigPrice,coveragePerBucket:pd.bigCoverage,total:Number(primerBig)*pd.bigPrice});
+  if(primerSmall>0) orderPrimers.push({id:'PR-'+Date.now().toString(36)+'-S-'+Math.random().toString(36).slice(2,5),brand:pd.name,kg:pd.smallKg,quantity:Number(primerSmall),unitPrice:pd.smallPrice,coveragePerBucket:pd.smallCoverage,total:Number(primerSmall)*pd.smallPrice});
+  primerBig=0; primerSmall=0; renderCalc();
+}
+function removePrimerItem(id){ orderPrimers=orderPrimers.filter(p=>p.id!==id); renderCalc(); }
+function changePrimerItemQty(id,delta){
+  const item=orderPrimers.find(p=>p.id===id); if(!item)return;
+  item.quantity=Math.max(0,Number(item.quantity||0)+delta);
+  if(item.quantity<=0) orderPrimers=orderPrimers.filter(p=>p.id!==id);
+  else item.total=item.quantity*item.unitPrice;
+  renderCalc();
+}
+function renderPrimerCart(){
+  const list=document.querySelector('#primerCartList'), count=document.querySelector('#primerCartCount');
+  if(!list||!count)return;
+  const totalQty=orderPrimers.reduce((s,p)=>s+p.quantity,0);
+  count.textContent=totalQty+' găleți';
+  if(!orderPrimers.length){ list.innerHTML='<div class="note">Nu ai adăugat încă grund în comandă.</div>'; return; }
+  list.innerHTML=orderPrimers.map(p=>`
+    <div class="saved-mix">
+      <div class="saved-mix-top">
+        <div><span class="saved-mix-code">${p.brand} · ${p.kg} kg</span>
+        <div class="saved-mix-meta">${p.quantity} găleți × ${p.unitPrice} lei · acoperire estimată ~${p.quantity*p.coveragePerBucket} m² · <b>${p.total.toLocaleString('ro-RO')} lei</b></div></div>
+        <div class="saved-mix-actions">
+          <button type="button" onclick="changePrimerItemQty('${p.id}',-1)">−</button>
+          <button type="button" onclick="changePrimerItemQty('${p.id}',1)">+</button>
+          <button type="button" onclick="removePrimerItem('${p.id}')">Șterge</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+document.querySelector('#addPrimerToOrder').onclick=addPrimerSelectionToOrder;
+
+function getCheckoutData(){
   const mixes=orderMixes.map(m=>({...m}));
+  const primers=orderPrimers.map(p=>({...p}));
   const mosaicTotal=mixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
-  const hasProducts=mixes.length>0||primerHasQty;
+  const primerTotal=primers.reduce((sum,p)=>sum+p.total,0);
+  const hasProducts=mixes.length>0||primers.length>0;
   return {
-    valid:hasProducts,
-    mixes,
+    valid:hasProducts,mixes,primers,
     code:mixes.length===1?mixes[0].code:(mixes.length>1?'MULTI-'+mixes.length:'—'),
     recipe:mixes.flatMap(m=>m.recipe),
     mosaicBrand:mixes.length===1?mixes[0].mosaicBrand:(mixes.length>1?'Multiplu':'—'),
@@ -719,8 +762,7 @@ function getCheckoutData(){
     mosaicPrice:mixes.length===1?mixes[0].mosaicPrice:null,
     mosaicTotal,
     sqm:mixes.reduce((s,m)=>s+(m.requestedSqm||0),0),
-    primerEnabled:primerHasQty,primerBrand:pd.name,primerBig,primerSmall,
-    primerBigKg:pd.bigKg,primerSmallKg:pd.smallKg,primerTotal,
+    primerEnabled:primers.length>0,primerItems:primers,primerTotal,
     subtotal:mosaicTotal+primerTotal
   };
 }
@@ -877,8 +919,8 @@ function renderCheckoutSummary(){
   el.innerHTML=`
     ${mixesHtml}
     <div class="coverage-note"><b>Suprafața de acoperire este orientativă</b>, calculată pe baza unui consum mediu. În practică, aceasta poate varia în funcție de suport, grosimea aplicării, modul de lucru și pierderile de material.</div>
-    <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?d.primerBrand:'Fără grund'}</b></div>
-    ${d.primerEnabled?`<div class="summary-line"><span>Grund ${d.primerBigKg} kg</span><b>${d.primerBig} găleți</b></div><div class="summary-line"><span>Grund ${d.primerSmallKg} kg</span><b>${d.primerSmall} găleți</b></div>`:''}
+    <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?'Produse selectate':'Fără grund'}</b></div>
+    ${d.primerEnabled?d.primerItems.map(p=>`<div class="summary-line"><span>${p.brand} ${p.kg} kg</span><b>${p.quantity} găleți × ${p.unitPrice} lei</b></div>`).join(''):''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
     <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
     <div class="summary-line checkout-total"><span>${finalTotal==null?'Subtotal produse':'TOTAL FINAL'}</span><span>${(finalTotal??d.subtotal).toLocaleString('ro-RO')} lei</span></div>`;
@@ -887,7 +929,7 @@ function openCheckout(){
   const d=getCheckoutData();
   const err=document.querySelector('#checkoutError');
   if(!d.valid){
-    alert('Adaugă cel puțin un mix în comandă sau alege cel puțin o găleată de grund.');
+    alert('Adaugă cel puțin un mix sau cel puțin un produs de grund în comandă.');
     return;
   }
   updateDeliveryUI();
@@ -904,7 +946,7 @@ function orderText(){
   const deliveryLine=pickup?`Ridicare personală: ${PICKUP_ADDRESS}`:`Livrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}`;
   const shippingLine=pickup?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`:(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
   const mixLines=d.mixes.length?d.mixes.map((m,i)=>`Mix ${i+1}: ${m.code}\n${m.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ')}\n${m.mosaicBrand}: ${m.mosaicBuckets} găleți x 25 kg\nAcoperire estimată: ~${m.estimatedCoverage} m²`).join('\n\n'):'Fără mozaic';
-  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?`${d.primerBrand} — ${d.primerBig} x ${d.primerBigKg} kg + ${d.primerSmall} x ${d.primerSmallKg} kg`:'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
+  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?d.primerItems.map(p=>`${p.brand} ${p.kg} kg — ${p.quantity} găleți`).join(' + '):'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
 }
 function setFieldState(id, valid, message=''){
   const el=document.querySelector('#'+id);
@@ -1031,6 +1073,10 @@ async function saveOrderToSupabase(){
     notes:document.querySelector('#custNotes').value.trim()
   };
   const pd=getPrimerData();
+  const primerSmallItems=(d.primerItems||[]).filter(p=>p.kg<20);
+  const primerLargeItems=(d.primerItems||[]).filter(p=>p.kg>=20);
+  const primerSmallBuckets=primerSmallItems.reduce((s,p)=>s+p.quantity,0);
+  const primerLargeBuckets=primerLargeItems.reduce((s,p)=>s+p.quantity,0);
   const payload={
     order_number:orderId,
     mx_code:d.code,
@@ -1047,15 +1093,15 @@ async function saveOrderToSupabase(){
     mosaic_buckets:d.mosaicBuckets,
     mosaic_bucket_kg:25,
     mosaic_unit_price:d.mosaicPrice,
-    mix_recipe:{version:2,mixes:d.mixes},
+    mix_recipe:{version:3,mixes:d.mixes,primers:d.primerItems},
     primer_included:d.primerEnabled,
-    primer_brand:d.primerEnabled?d.primerBrand:null,
-    primer_small_bucket_kg:d.primerEnabled?d.primerSmallKg:null,
-    primer_small_buckets:d.primerEnabled?d.primerSmall:0,
-    primer_small_unit_price:d.primerEnabled?pd.smallPrice:null,
-    primer_large_bucket_kg:d.primerEnabled?d.primerBigKg:null,
-    primer_large_buckets:d.primerEnabled?d.primerBig:0,
-    primer_large_unit_price:d.primerEnabled?pd.bigPrice:null,
+    primer_brand:d.primerEnabled?(d.primerItems.length===1?d.primerItems[0].brand:'Multiplu'):null,
+    primer_small_bucket_kg:primerSmallItems.length===1?primerSmallItems[0].kg:null,
+    primer_small_buckets:primerSmallBuckets,
+    primer_small_unit_price:primerSmallItems.length===1?primerSmallItems[0].unitPrice:null,
+    primer_large_bucket_kg:primerLargeItems.length===1?primerLargeItems[0].kg:null,
+    primer_large_buckets:primerLargeBuckets,
+    primer_large_unit_price:primerLargeItems.length===1?primerLargeItems[0].unitPrice:null,
     mosaic_total:d.mosaicTotal,
     primer_total:d.primerTotal,
     products_total:d.subtotal,
