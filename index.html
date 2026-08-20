@@ -110,7 +110,10 @@
  <div class="order-summary-box">
   <div class="order-summary-head"><span>Rezumat comandă</span><span id="orderSummaryCount">0 produse</span></div>
   <div id="orderSummaryCompact" class="order-summary-empty">Nu ai adăugat încă produse în comandă.</div>
-  <button id="startAnotherMix" class="add-mix-btn" type="button" style="display:none;margin-top:10px">Adaugă alt mix</button>
+  <div id="mixNextActions" style="display:none;gap:8px;margin-top:10px">
+    <button id="startAnotherMix" class="add-mix-btn" type="button" style="margin:0;flex:1">Adaugă alt mix</button>
+    <button id="cancelCurrentMix" type="button" style="flex:1;border:1px solid #d6dce1;background:#fff;border-radius:9px;padding:12px;font-weight:800;cursor:pointer">Anulează configurația curentă</button>
+  </div>
  </div>
  <div class="calc-row"><span>Transport</span><b>Se calculează la comandă</b></div>
  <div class="total-row"><span>TOTAL PRODUSE</span><span id="grand">0 lei</span></div>
@@ -224,8 +227,16 @@ function renderMix(){
   document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—';
   const addBtn=document.querySelector('#addMixToOrder');
   if(addBtn){
-    addBtn.disabled=selected.length<1||total!==100||mosaicBuckets<=0;
-    addBtn.textContent=selected.length<1?'Adaugă un mix după ce alegi culoarea':'Adaugă mixul în comandă';
+    const mixReady=selected.length>=1 && total===100 && mosaicBuckets>0;
+    if(currentMixAdded){
+      addBtn.disabled=true;
+      addBtn.textContent='Mix adăugat în comandă';
+    }else{
+      addBtn.disabled=!mixReady;
+      addBtn.textContent=selected.length<1
+        ? 'Adaugă un mix după ce alegi culoarea'
+        : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+    }
   }
   updateRecipeCard();
 }
@@ -763,14 +774,21 @@ function addCurrentMixToOrder(){
   });
   currentMixAdded=true;
   currentAddedMixId=newId;
+  renderAll();
   renderCalc();
-  setSectionCollapsed('mosaic',true);
+  setSectionCollapsed('mosaic',false);
+  setSectionCollapsed('primer',false);
 }
 function removeOrderMix(id){
   orderMixes=orderMixes.filter(m=>m.id!==id);
   if(id===currentAddedMixId){
+    selected=[];
+    sqm=0;
+    mosaicBuckets=0;
+    recommendedMosaicBuckets=0;
     currentMixAdded=false;
     currentAddedMixId=null;
+    renderAll();
   }
   renderCalc();
 }
@@ -830,7 +848,7 @@ function renderPrimerCart(){
 document.querySelector('#addPrimerToOrder').onclick=addPrimerSelectionToOrder;
 
 
-function startAnotherMix(){
+function resetCurrentMixConfiguration(){
   selected=[];
   sqm=0;
   mosaicBuckets=0;
@@ -839,9 +857,22 @@ function startAnotherMix(){
   currentAddedMixId=null;
   renderAll();
   renderCalc();
+}
+function startAnotherMix(){
+  resetCurrentMixConfiguration();
   setSectionCollapsed('mosaic',false);
+  setSectionCollapsed('primer',false);
+}
+function cancelCurrentMix(){
+  if(currentAddedMixId){
+    orderMixes=orderMixes.filter(m=>m.id!==currentAddedMixId);
+  }
+  resetCurrentMixConfiguration();
+  setSectionCollapsed('mosaic',false);
+  renderCompactOrderSummary();
 }
 document.querySelector('#startAnotherMix').onclick=startAnotherMix;
+document.querySelector('#cancelCurrentMix').onclick=cancelCurrentMix;
 
 function setSectionCollapsed(which,collapsed){
   const body=document.querySelector('#'+which+'SectionBody');
@@ -881,8 +912,8 @@ function renderCompactOrderSummary(){
   });
   const productsCount=orderMixes.length+orderPrimers.reduce((s,p)=>s+p.quantity,0);
   count.textContent=productsCount+(productsCount===1?' produs':' produse');
-  const anotherMixBtn=document.querySelector('#startAnotherMix');
-  if(anotherMixBtn) anotherMixBtn.style.display=orderMixes.length>0?'block':'none';
+  const nextActions=document.querySelector('#mixNextActions');
+  if(nextActions) nextActions.style.display=orderMixes.length>0?'flex':'none';
   if(!rows.length){
     box.className='order-summary-empty';
     box.textContent='Nu ai adăugat încă produse în comandă.';
