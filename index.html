@@ -110,6 +110,7 @@
  <div class="order-summary-box">
   <div class="order-summary-head"><span>Rezumat comandă</span><span id="orderSummaryCount">0 produse</span></div>
   <div id="orderSummaryCompact" class="order-summary-empty">Nu ai adăugat încă produse în comandă.</div>
+  <button id="startAnotherMix" class="add-mix-btn" type="button" style="display:none;margin-top:10px">Adaugă alt mix</button>
  </div>
  <div class="calc-row"><span>Transport</span><b>Se calculează la comandă</b></div>
  <div class="total-row"><span>TOTAL PRODUSE</span><span id="grand">0 lei</span></div>
@@ -577,6 +578,8 @@ let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBra
 let orderMixes=[];
 let orderPrimers=[];
 let recommendedMosaicBuckets=0;
+let currentMixAdded=false;
+let currentAddedMixId=null;
 const MOSAIC_PRICES={duraziv:270,kober:240};
 const PRIMER_DATA={
   duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
@@ -680,10 +683,15 @@ if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('k�
   if(mixAddBtn){
     const mixTotalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
     const mixReady=selected.length>=1 && mixTotalPct===100 && mosaicBuckets>0;
-    mixAddBtn.disabled=!mixReady;
-    mixAddBtn.textContent=selected.length<1
-      ? 'Adaugă un mix după ce alegi culoarea'
-      : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+    if(currentMixAdded){
+      mixAddBtn.disabled=true;
+      mixAddBtn.textContent='Mix adăugat în comandă';
+    }else{
+      mixAddBtn.disabled=!mixReady;
+      mixAddBtn.textContent=selected.length<1
+        ? 'Adaugă un mix după ce alegi culoarea'
+        : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+    }
   }
 
   updateRecipeCard();
@@ -731,13 +739,18 @@ function currentMixIsValid(){
   return selected.length>=1 && totalPct===100 && mosaicBuckets>0;
 }
 function addCurrentMixToOrder(){
+  if(currentMixAdded){
+    alert('Acest mix este deja adăugat în comandă. Folosește „Adaugă alt mix” pentru o configurație nouă.');
+    return;
+  }
   if(!selected.length){alert('Alege cel puțin o culoare pentru mix.');return;}
   const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
   if(totalPct!==100){alert('Finalizează procentele mixului la 100%.');return;}
   if(mosaicBuckets<=0){alert('Alege cel puțin o găleată de mozaic.');return;}
   const price=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const newId='MIX-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5);
   orderMixes.push({
-    id:'MIX-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5),
+    id:newId,
     code:makeCode(),
     recipe:selected.map(s=>({name:s.name,pct:Number(s.pct)})),
     mosaicBrand:mosaicBrand==='kober'?'Kober':'Duraziv',
@@ -748,19 +761,17 @@ function addCurrentMixToOrder(){
     requestedSqm:Number(sqm)||0,
     estimatedCoverage:Number(mosaicBuckets)*4
   });
-  selected=[];
-  sqm=0;
-  mosaicBuckets=0;
-  recommendedMosaicBuckets=0;
-  primerBig=0;
-  primerSmall=0;
-  primerEnabled=true;
-  renderAll();
+  currentMixAdded=true;
+  currentAddedMixId=newId;
   renderCalc();
   setSectionCollapsed('mosaic',true);
 }
 function removeOrderMix(id){
   orderMixes=orderMixes.filter(m=>m.id!==id);
+  if(id===currentAddedMixId){
+    currentMixAdded=false;
+    currentAddedMixId=null;
+  }
   renderCalc();
 }
 function renderMixCart(){
@@ -819,6 +830,19 @@ function renderPrimerCart(){
 document.querySelector('#addPrimerToOrder').onclick=addPrimerSelectionToOrder;
 
 
+function startAnotherMix(){
+  selected=[];
+  sqm=0;
+  mosaicBuckets=0;
+  recommendedMosaicBuckets=0;
+  currentMixAdded=false;
+  currentAddedMixId=null;
+  renderAll();
+  renderCalc();
+  setSectionCollapsed('mosaic',false);
+}
+document.querySelector('#startAnotherMix').onclick=startAnotherMix;
+
 function setSectionCollapsed(which,collapsed){
   const body=document.querySelector('#'+which+'SectionBody');
   const cap=which.charAt(0).toUpperCase()+which.slice(1);
@@ -857,6 +881,8 @@ function renderCompactOrderSummary(){
   });
   const productsCount=orderMixes.length+orderPrimers.reduce((s,p)=>s+p.quantity,0);
   count.textContent=productsCount+(productsCount===1?' produs':' produse');
+  const anotherMixBtn=document.querySelector('#startAnotherMix');
+  if(anotherMixBtn) anotherMixBtn.style.display=orderMixes.length>0?'block':'none';
   if(!rows.length){
     box.className='order-summary-empty';
     box.textContent='Nu ai adăugat încă produse în comandă.';
