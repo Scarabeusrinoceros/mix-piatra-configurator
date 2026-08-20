@@ -71,7 +71,7 @@
   <div id="mosaicProductName" style="font-weight:700;margin-top:6px;">Duraziv Clima Protect — 25 kg</div>
 </div>
    <div><span>Mozaic 25 kg</span><div class="calc-hint">Consum mediu: 4 m² / găleată</div><div id="mosaicRecommendationHint" class="recommendation-badge">Cantitate recomandată: 0 găleți · o poți modifica liber</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
- <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div><div id="primerProductVisual" style="text-align:center;margin:10px 0;">
+ <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div><div class="calc-hint" style="margin-top:5px">Poți comanda grund separat, fără mix de piatră, în orice cantitate dorești.</div><div id="primerProductVisual" style="text-align:center;margin:10px 0;">
   <img id="primerProductImage" src="assets/duraziv-primer-4kg.webp" alt="Grund Duraziv 4 kg" style="max-width:120px;width:100%;height:auto;">
   <div id="primerProductName" style="font-weight:700;margin-top:4px;font-size:12px;">Grund Duraziv 4 kg</div>
 </div></div><label class="primer-toggle"><input id="primerEnabled" type="checkbox" checked> Adaugă grund</label></div><div class="primer-brand-row"><label for="primerBrand">Vrei alt grund?</label><select id="primerBrand" class="brand-select primer-brand-select" aria-label="Alege marca grundului"><option value="auto">Recomandat automat</option><option value="duraziv">Duraziv</option><option value="kober">Kober</option></select></div>
@@ -191,7 +191,13 @@ function renderMix(){
   else if(total<100) warning.textContent=`Mai trebuie să adaugi ${100-total}% pentru a ajunge la 100%.`;
   else if(total>100) warning.textContent=`Ai depășit totalul cu ${total-100}%. Redu manual unul sau mai multe procente.`;
   else warning.textContent='Compoziția este completă: total 100%.';
-  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—'; updateRecipeCard();
+  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—';
+  const addBtn=document.querySelector('#addMixToOrder');
+  if(addBtn){
+    addBtn.disabled=selected.length<1||total!==100||mosaicBuckets<=0;
+    addBtn.textContent=selected.length<1?'Adaugă un mix după ce alegi culoarea':'Adaugă mixul în comandă';
+  }
+  updateRecipeCard();
 }
 let drawVersion=0;
 function seededRandomFactory(seed){
@@ -556,8 +562,6 @@ function recommendedPrimer(area){
 function recommendQuantities(){
   recommendedMosaicBuckets=Math.ceil(sqm/4);
   mosaicBuckets=recommendedMosaicBuckets;
-  const p=recommendedPrimer(sqm);
-  primerBig=p.big;primerSmall=p.small;
   renderCalc();
 }
 function renderCalc(){
@@ -575,7 +579,10 @@ function renderCalc(){
   document.querySelector('#primerSmallLabel').textContent='Grund '+pd.name+' '+pd.smallKg+' kg · '+pd.smallPrice+' lei';
   const primerCoverage=primerEnabled?(primerBig*pd.bigCoverage+primerSmall*pd.smallCoverage):0;
   
-  const rec=[];if(primerBig)rec.push(primerBig+' × '+pd.bigKg+' kg');if(primerSmall)rec.push(primerSmall+' × '+pd.smallKg+' kg');
+  const primerRec=recommendedPrimer(sqm);
+  const rec=[];
+  if(primerRec.big)rec.push(primerRec.big+' × '+pd.bigKg+' kg');
+  if(primerRec.small)rec.push(primerRec.small+' × '+pd.smallKg+' kg');
   const primerProductImage=document.querySelector('#primerProductImage');
 const primerProductName=document.querySelector('#primerProductName');
 
@@ -665,8 +672,14 @@ function addCurrentMixToOrder(){
     estimatedCoverage:Number(mosaicBuckets)*4
   });
   selected=[];
-  sqm=0;mosaicBuckets=0;recommendedMosaicBuckets=0;
-  renderAll();renderCalc();
+  sqm=0;
+  mosaicBuckets=0;
+  recommendedMosaicBuckets=0;
+  primerBig=0;
+  primerSmall=0;
+  primerEnabled=true;
+  renderAll();
+  renderCalc();
 }
 function removeOrderMix(id){
   orderMixes=orderMixes.filter(m=>m.id!==id);
