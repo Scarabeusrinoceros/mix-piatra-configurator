@@ -522,7 +522,10 @@ function updateRecipeCard(){
   if(!valid){codeEl.textContent='—';listEl.textContent='';return}
   const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';
   codeEl.textContent=makeCode();
-  listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')+`<br>${brand}`;
+  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const currentValue=mosaicBuckets*mosaicPrice;
+  listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')
+    +`<br>${brand} · ${mosaicBuckets} găleți · <b>${currentValue.toLocaleString('ro-RO')} lei</b>`;
 }
 function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
 document.querySelector('#housePreview').addEventListener('click',openHousePreview);
@@ -633,6 +636,17 @@ if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('k�
   document.querySelector('#grand').textContent=(savedMixTotal+savedPrimerTotal).toLocaleString('ro-RO')+' lei';
   const primerAddBtn=document.querySelector('#addPrimerToOrder');
   if(primerAddBtn) primerAddBtn.disabled=!primerEnabled||(primerBig<=0&&primerSmall<=0);
+
+  const mixAddBtn=document.querySelector('#addMixToOrder');
+  if(mixAddBtn){
+    const mixTotalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+    const mixReady=selected.length>=1 && mixTotalPct===100 && mosaicBuckets>0;
+    mixAddBtn.disabled=!mixReady;
+    mixAddBtn.textContent=selected.length<1
+      ? 'Adaugă un mix după ce alegi culoarea'
+      : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+  }
+
   updateRecipeCard();
   renderMixCart();
   renderPrimerCart();
