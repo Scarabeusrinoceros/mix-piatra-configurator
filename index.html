@@ -79,16 +79,16 @@
  <div class="primer-line"><span id="primerBigLabel">Grund 25 kg · 210 lei</span><div class="calc-control"><button id="primerBigMinus">−</button><b id="primerBig">0 găleți</b><button id="primerBigPlus">+</button></div></div>
  <div class="primer-line"><span id="primerSmallLabel">Grund 4 kg · 59 lei</span><div class="calc-control"><button id="primerSmallMinus">−</button><b id="primerSmall">0 găleți</b><button id="primerSmallPlus">+</button></div></div>
  <button id="addPrimerToOrder" class="add-primer-btn" type="button">Adaugă grundul în comandă</button>
- <div class="mix-cart-box"><div class="mix-cart-head"><b>Grunduri adăugate în comandă</b><span id="primerCartCount">0</span></div><div id="primerCartList"><div class="note">Nu ai adăugat încă grund în comandă.</div></div></div>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Grund în comandă</b><span id="primerCartCount">0</span></div><div id="primerCartList"><div class="note">Nu ai adăugat încă grund în comandă.</div></div></div>
  </div>
- <div class="calc-row"><span>Acoperire grund</span><b id="coverage">—</b></div>
- <div class="calc-row"><span>Mozaic</span><b id="price">0 lei</b></div>
- <div class="calc-row"><span>Grund</span><b id="primerPrice">0 lei</b></div>
- <div class="calc-row"><span>Transport</span><b>Se calculează după adresă</b></div>
- <div class="total-row"><span>SUBTOTAL PRODUSE</span><span id="grand">0 lei</span></div>
- <div class="recipe-box"><div class="recipe-code"><div><small>Cod mix</small><br><strong id="recipeCode">—</strong></div><button id="copyRecipe" class="copy-recipe" type="button">Copiază rețeta</button></div><div id="recipeList" class="recipe-list">Alege un mix de 100% pentru a genera fișa.</div></div>
+
+
+
+ <div class="calc-row"><span>Transport</span><b>Se calculează la comandă</b></div>
+ <div class="total-row"><span>TOTAL PRODUSE</span><span id="grand">0 lei</span></div>
+ <div id="recipeBox" class="recipe-box" style="display:none"><div class="recipe-code"><div><small>Mix curent</small><br><strong id="recipeCode">—</strong></div><button id="copyRecipe" class="copy-recipe" type="button">Copiază</button></div><div id="recipeList" class="recipe-list"></div></div>
  <button id="addMixToOrder" class="add-mix-btn" type="button">Adaugă mixul în comandă</button>
- <div class="mix-cart-box"><div class="mix-cart-head"><b>Mixuri adăugate în comandă</b><span id="mixCartCount">0</span></div><div id="mixCartList"><div class="note">Nu ai adăugat încă niciun mix.</div></div></div>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Mixuri în comandă</b><span id="mixCartCount">0</span></div><div id="mixCartList"><div class="note">Nu ai adăugat încă niciun mix.</div></div></div>
  <button id="openCheckout" class="cart" type="button">Continuă la comandă</button><button id="whatsappOffer" class="wa" type="button">◉ Cere ofertă pe WhatsApp</button><div class="note" style="text-align:center;margin-top:8px">Telefon / WhatsApp: <a href="tel:+40735172091" style="color:inherit;font-weight:800">+40 735 172 091</a></div></section>
 </aside>
 </div>
@@ -511,7 +511,19 @@ function closeHousePreview(){
   document.body.classList.remove('modal-open');
 }
 function makeCode(){let h=0;selected.forEach(s=>{for(const ch of s.name)h=(h*31+ch.charCodeAt(0))>>>0;h=(h+s.pct*97)>>>0});return 'MX-'+h.toString(36).toUpperCase().slice(-5).padStart(5,'0')}
-function updateRecipeCard(){const codeEl=document.querySelector('#recipeCode'),listEl=document.querySelector('#recipeList');if(!codeEl||!listEl)return;const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){codeEl.textContent='—';listEl.textContent='Alege un mix de 100% pentru a genera fișa.';return}const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';codeEl.textContent=makeCode();listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')+`<br>Producător: <b>${brand}</b>`;}
+function updateRecipeCard(){
+  const box=document.querySelector('#recipeBox');
+  const codeEl=document.querySelector('#recipeCode');
+  const listEl=document.querySelector('#recipeList');
+  if(!codeEl||!listEl)return;
+  const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  const valid=selected.length>=1&&total===100;
+  if(box)box.style.display=valid?'block':'none';
+  if(!valid){codeEl.textContent='—';listEl.textContent='';return}
+  const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';
+  codeEl.textContent=makeCode();
+  listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')+`<br>${brand}`;
+}
 function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
 document.querySelector('#housePreview').addEventListener('click',openHousePreview);
 
@@ -606,13 +618,16 @@ if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('k�
   }
 }
   document.querySelector('#primerRecommendation').textContent=sqm<=0?'—':(rec.length?rec.join(' + '):'0 găleți');
-  document.querySelector('#coverage').textContent=primerEnabled?primerCoverage+' m²':'Fără grund';
+  const coverageEl=document.querySelector('#coverage');
+  if(coverageEl) coverageEl.textContent=primerEnabled?primerCoverage+' m²':'Fără grund';
   document.querySelector('#primerBigMinus').disabled=!primerEnabled;document.querySelector('#primerBigPlus').disabled=!primerEnabled;document.querySelector('#primerSmallMinus').disabled=!primerEnabled;document.querySelector('#primerSmallPlus').disabled=!primerEnabled;
   const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
   const mosaicTotal=mosaicBuckets*mosaicPrice;
   const primerSelectionTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
-  document.querySelector('#price').textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
-  document.querySelector('#primerPrice').textContent=primerSelectionTotal.toLocaleString('ro-RO')+' lei';
+  const priceEl=document.querySelector('#price');
+  const primerPriceEl=document.querySelector('#primerPrice');
+  if(priceEl) priceEl.textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
+  if(primerPriceEl) primerPriceEl.textContent=primerSelectionTotal.toLocaleString('ro-RO')+' lei';
   const savedMixTotal=orderMixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
   const savedPrimerTotal=orderPrimers.reduce((sum,p)=>sum+p.total,0);
   document.querySelector('#grand').textContent=(savedMixTotal+savedPrimerTotal).toLocaleString('ro-RO')+' lei';
