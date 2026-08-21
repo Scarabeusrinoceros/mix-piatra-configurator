@@ -1,0 +1,1536 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWDRJBDBLH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CWDRJBDBLH');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIX PIATRĂ — Configurator 1.0</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root{--orange:#f28a00;--dark:#0d1217;--dark2:#151b21;--line:#29313a;--muted:#9ba6b1;--green:#25b85a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#eef1f4;color:#111}.app{min-height:100vh;display:grid;grid-template-columns:300px minmax(560px,1fr) 380px}.left{background:linear-gradient(180deg,#0a0f14,#111820);color:#fff;padding:20px 16px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.logo{width:48px;height:48px;border:2px solid var(--orange);border-radius:14px;display:grid;place-items:center;font-weight:800;color:var(--orange)}.brand h1{font-size:27px;margin:0;letter-spacing:.5px}.brand h1 span{color:var(--orange)}.brand p{margin:2px 0 0;color:#d7dde3;font-size:13px}.left h2,.center h2,.right h2{font-size:16px;margin:0 0 6px}.sub{font-size:13px;color:#aeb7c0;margin-bottom:14px}.search{width:100%;background:#10161c;border:1px solid #35404b;color:#fff;padding:12px 14px;border-radius:10px;margin-bottom:12px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{border:0;border-radius:999px;padding:7px 10px;background:#202831;color:#fff;cursor:pointer}.filter.active{background:var(--orange)}.stones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:calc(100vh - 300px);overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:#4b5661 #111820}.stones::-webkit-scrollbar{width:8px}.stones::-webkit-scrollbar-track{background:#111820;border-radius:8px}.stones::-webkit-scrollbar-thumb{background:#4b5661;border-radius:8px}.stones::-webkit-scrollbar-thumb:hover{background:#66727d}.stone{background:#151c23;border:1px solid #2d3741;border-radius:11px;overflow:hidden;cursor:pointer;transition:.18s}.stone:hover{transform:translateY(-2px);border-color:#f28a00}.stone.selected{outline:2px solid var(--orange)}.stone img{width:100%;height:92px;object-fit:cover;display:block}.stone .meta{padding:8px}.stone b{font-size:13px;display:block}.stone small{color:#c5ccd2}.stone button{float:right;margin-top:-31px;width:28px;height:28px;border-radius:50%;border:1px solid #dce1e5;background:transparent;color:#fff;font-size:20px;cursor:pointer}.all{margin-top:14px;width:100%;padding:11px;border-radius:10px;border:1px solid #3b4651;background:transparent;color:#fff}.center{background:linear-gradient(180deg,#0a0e12,#11161b);color:#fff;padding:16px;overflow:auto}.steps{height:62px;display:flex;align-items:flex-start;justify-content:space-around;border-bottom:1px solid #242d35;margin:-2px -16px 14px;padding-top:4px}.step{font-size:12px;text-align:center;color:#c9d0d6;min-width:95px}.step i{display:block;margin:auto auto 7px;width:28px;height:28px;border-radius:50%;background:#ddd;color:#111;font-style:normal;line-height:28px}.step.active i{background:var(--orange);color:#fff}.preview-card{border:1px solid #2b343c;border-radius:14px;background:#111820;padding:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.actions{display:flex;gap:8px}.ghost{background:#151d24;color:#fff;border:1px solid #35404a;padding:9px 12px;border-radius:9px;cursor:pointer}.preview{height:365px;border-radius:10px;overflow:hidden;background:#222}.preview canvas{width:100%;height:100%;display:block}.mix-title{display:flex;justify-content:space-between;align-items:end;margin:16px 0 9px}.mix-list{display:flex;flex-direction:column;gap:8px}.mix-row{display:grid;grid-template-columns:46px 150px 1fr 28px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #263039}.thumb{width:46px;height:46px;border-radius:8px;object-fit:cover}.mix-name b{display:block}.mix-name small{color:#aab3bc}.pct-input{width:100%;background:#131a20;border:1px solid #39434d;color:#fff;border-radius:8px;padding:10px;text-align:center;font-size:20px;font-weight:700}.pct-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.empty-state{height:100%;display:grid;place-items:center;text-align:center;color:#d7dde3;background:linear-gradient(135deg,#d9d9d6,#bfc2c0)}.empty-state b{display:block;color:#111;font-size:20px;margin-bottom:6px}.empty-state span{color:#3f464d;font-size:14px}.total-warning{margin-top:10px;padding:10px 12px;border-radius:9px;font-weight:700}.total-warning.ok{background:rgba(37,184,90,.14);color:#4ee27f;border:1px solid rgba(37,184,90,.45)}.total-warning.low{background:rgba(242,138,0,.12);color:#ffb24a;border:1px solid rgba(242,138,0,.45)}.total-warning.high{background:rgba(225,72,72,.12);color:#ff7a7a;border:1px solid rgba(225,72,72,.5)}.remove{background:none;border:0;color:#dbe1e5;font-size:24px;cursor:pointer}.mix-foot{display:flex;justify-content:space-between;padding-top:14px;font-size:14px}.mix-foot strong{color:#33d66b;font-size:22px}.right{background:#f6f7f8;padding:16px;overflow:auto}.right-top{height:62px;display:flex;align-items:flex-start;justify-content:flex-end;gap:28px;color:#222;padding:6px 8px 0}.card{background:#fff;border:1px solid #dfe4e8;border-radius:14px;padding:15px;margin-bottom:14px}.card h2{font-size:16px}.house{width:100%;height:245px;border-radius:10px;object-fit:cover;display:block;margin:10px 0}.house-thumb-stage{position:relative;margin:10px 0;border-radius:10px;overflow:hidden}.house-thumb-stage .house{margin:0}.house-thumb-overlay,.house-thumb-foreground{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.house-thumb-overlay{z-index:2;opacity:.93;filter:brightness(.94) contrast(1.03)}.house-thumb-foreground{z-index:3;object-fit:cover}.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{padding:11px;border-radius:9px;border:1px solid #d7dde2;background:#fff;font-weight:700;cursor:pointer}.btn.green{background:#159447;color:#fff;border-color:#159447}.calc-row,.total-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e4e7ea}.qty{display:flex;align-items:center;gap:8px}.sqm-input{width:76px;height:30px;border:1px solid #d6dce1;border-radius:8px;text-align:center;font-size:16px;font-weight:800;background:#fff;color:#111}.sqm-input:focus{outline:2px solid var(--orange);border-color:var(--orange)}.qty button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px}.calc-control{display:flex;align-items:center;gap:8px}.calc-control button{width:30px;height:30px;border:0;border-radius:8px;font-size:18px;cursor:pointer}.calc-hint{font-size:11px;color:#68727b;margin-top:3px}.primer-box{padding:8px 0}.primer-line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 0}.primer-toggle{display:flex;align-items:center;gap:7px;font-size:13px;color:#4d5963}.primer-toggle input{width:17px;height:17px}.brand-select{width:100%;border:1px solid #d6dce1;border-radius:9px;background:#fff;color:#111;padding:9px 10px;font-weight:800}.primer-brand-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0 3px}.primer-brand-row label{font-size:12px;color:#68727b}.primer-brand-select{max-width:190px;padding:7px 9px;font-size:12px}.recipe-box{margin-top:10px;padding:11px;border:1px solid #e0e5e9;border-radius:10px;background:#f8fafb}.recipe-code{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:7px}.recipe-list{font-size:12px;line-height:1.55;color:#4d5963}.copy-recipe{border:1px solid #d6dce1;background:#fff;border-radius:8px;padding:7px 9px;font-weight:700;cursor:pointer}.total-row{font-size:21px;font-weight:800;border:0}.cart{width:100%;padding:15px;border:0;border-radius:10px;background:var(--orange);color:#fff;font-size:18px;font-weight:800;margin-bottom:9px}.wa{width:100%;padding:13px;border:1px solid #cfd6db;border-radius:10px;background:#fff;color:#111;font-size:16px;font-weight:800}.note{font-size:12px;color:#68727b}.mobile-tabs{display:none}.house{cursor:zoom-in}.house-modal{position:fixed;inset:0;background:rgba(5,8,11,.96);z-index:9999;display:none;align-items:center;justify-content:center;padding:18px}.house-modal.open{display:flex}.house-stage{position:relative;max-width:96vw;max-height:92vh}.house-stage>img{display:block;max-width:96vw;max-height:92vh;width:auto;height:auto}.house-mix-overlay{position:absolute;inset:0;width:100%;height:100%;opacity:.93;pointer-events:none;filter:brightness(.94) contrast(1.03);z-index:2}.house-foreground{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:3}.house-close{position:absolute;right:12px;top:12px;z-index:4;width:46px;height:46px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(0,0,0,.72);color:#fff;font-size:28px;cursor:pointer}.house-choice{position:absolute;left:16px;bottom:16px;z-index:4;background:rgba(5,8,11,.78);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:10px 13px;font-size:13px;line-height:1.5;backdrop-filter:blur(5px);max-width:70%}body.modal-open{overflow:hidden}@media(max-width:780px){.house-modal{padding:0}.house-stage,.house-stage>img{max-width:100vw;max-height:100vh}.house-close{position:fixed;right:10px;top:10px}.house-choice{position:fixed;left:10px;right:68px;bottom:10px;max-width:none;font-size:12px}}
+@media(max-width:1150px){.app{grid-template-columns:270px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}.right-top{display:none}.right .card{margin:0}.right .card:first-of-type{grid-column:1/2}}
+@media(max-width:780px){.app{display:block}.left,.center,.right{padding:14px}.stones{grid-template-columns:repeat(2,1fr);max-height:420px}.steps{display:none}.mix-row{grid-template-columns:42px 105px 1fr 64px 20px}.right{display:block}.card{margin-bottom:12px}.preview{height:280px}.mobile-tabs{display:flex;position:sticky;bottom:0;z-index:10;background:#fff;border-top:1px solid #ddd}.mobile-tabs button{flex:1;padding:12px;border:0;background:#fff}.left,.center,.right{min-height:auto}}
+
+/* Checkout V1 - formular si sumar, fara baza de date */
+.checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.payment-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;background:#fff}.payment-option.active{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.payment-option.disabled{opacity:.6;background:#f5f6f7}.payment-option input{margin-top:3px}.payment-option b{display:block;font-size:13px}.payment-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.bank-transfer-info{display:none;margin:0 0 12px;padding:12px;border-radius:10px;background:#f7f9fa;border:1px solid #dfe4e8;font-size:13px;line-height:1.5}.bank-transfer-info.show{display:block}.bank-transfer-info b{font-weight:900}.bank-transfer-info code{font-family:inherit;font-weight:900}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
+.btn-row{display:none !important;}
+.mix-cart-box{margin-top:12px;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
+.mix-cart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.add-mix-btn,.add-primer-btn{width:100%;padding:12px;border:0;border-radius:9px;background:#17212b;color:#fff;font-weight:800;cursor:pointer;margin-top:10px}
+.add-mix-btn:disabled,.add-primer-btn:disabled{opacity:.45;cursor:not-allowed}
+.saved-mix{padding:10px 0;border-bottom:1px solid #e8ecef}
+.saved-mix:last-child{border-bottom:0}
+.saved-mix-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.saved-mix-code{font-weight:900}
+.saved-mix-recipe{font-size:12px;color:#56616b;margin:4px 0}
+.saved-mix-meta{font-size:12px;color:#68727b;line-height:1.5}
+.saved-mix-actions{display:flex;gap:6px}
+.saved-mix-actions button{border:1px solid #d6dce1;background:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;font-weight:700}
+.coverage-note{margin-top:10px;padding:10px 11px;border-radius:9px;background:#f7f9fa;border:1px solid #e2e7ea;font-size:12px;color:#5d6872;line-height:1.45}
+.collapse-bar{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 12px;margin:8px 0;border:1px solid #dfe4e8;border-radius:9px;background:#f7f9fa;font-weight:800;cursor:pointer}
+.collapse-arrow{transition:transform .2s ease}
+.collapse-bar.closed .collapse-arrow{transform:rotate(-90deg)}
+.collapsible-body.collapsed{display:none!important}
+.order-summary-box{margin:12px 0;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
+.order-summary-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px;font-weight:900}
+.order-summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2;font-size:13px}
+.order-summary-line:last-child{border-bottom:0}
+.order-summary-line small{color:#68727b}
+.order-summary-empty{font-size:12px;color:#69737c}
+.recommendation-badge{font-size:11px;color:#68727b;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="left">
+  <div class="brand"><div class="logo">◆</div><div><h1>MIX <span>PIATRĂ</span></h1><p>Creează-ți mixul perfect</p></div></div>
+  <h2>1. ALEGE PIETRELE TALE</h2><div class="sub">Poți folosi 1 până la 4 culori. Lista se poate derula.</div>
+  <input id="search" class="search" placeholder="Caută piatră...">
+  <div class="filters"><button class="filter active">Toate</button><button class="filter">Albe</button><button class="filter">Gri</button><button class="filter">Maro</button><button class="filter">Colorate</button></div>
+  <div id="stones" class="stones"></div><button class="all">▦ Vezi toate pietrele</button>
+</aside>
+<main class="center">
+ <div class="steps"><div class="step active"><i>1</i>Alege pietrele</div><div class="step"><i>2</i>Construiește mixul</div><div class="step"><i>3</i>Calculează</div><div class="step"><i>4</i>Comandă</div></div>
+ <section class="preview-card">
+  <div class="preview-head"><div><h2>2. MIXUL TĂU PERSONALIZAT</h2><div class="sub">La selecția inițială propunem automat procentele; apoi le poți modifica manual din 5 în 5.</div></div><div class="actions"><button id="reset" class="ghost">Resetare</button></div></div>
+  <div class="preview"><canvas id="mixCanvas"></canvas></div>
+  <div class="mix-title"><div><h2>Compoziție</h2><div class="sub">Totalul trebuie să fie 100%</div></div></div>
+  <div id="mixList" class="mix-list"></div>
+  <div id="totalWarning" class="total-warning low">Alege o piatră pentru a începe.</div><div class="mix-foot"><span>Total: <strong id="total">0%</strong></span><span>Cod mix: <b id="code">—</b></span></div>
+ </section>
+</main>
+<aside class="right">
+ <div class="right-top"><a href="tel:+40735172091" style="color:inherit;text-decoration:none;text-align:center">☎<br><small>+40 735 172 091</small></a><span>❔<br><small>Ajutor</small></span><span>♡<br><small>Favorite</small></span><span>◉<br><small>Contul meu</small></span></div>
+ <section class="card"><h2>3. VEZI PE CASA TA</h2><div class="note">Previzualizare orientativă a produsului aplicat pe soclu.</div><div class="house-thumb-stage"><img id="housePreview" class="house" src="assets/casa.jpg" alt="Casă cu soclu decorativ" title="Apasă pentru vizualizare pe tot ecranul"><canvas id="houseThumbOverlay" class="house-thumb-overlay" aria-hidden="true"></canvas><img class="house-thumb-foreground" src="assets/house_foreground_right.png" alt="" aria-hidden="true"></div><div class="btn-row"><button class="btn">Schimbă model</button><button class="btn green">Încarcă poza ta</button></div></section>
+ <section class="card"><h2>4. CALCULATOR CONSUM</h2>
+ <div class="calc-row"><span>Suprafață (m²)</span><div class="qty"><button id="minus">−</button><input id="sqmInput" class="sqm-input" type="number" min="0" step="1" value="0" inputmode="numeric" aria-label="Suprafață în metri pătrați"><button id="plus">+</button></div></div>
+ <button id="toggleMosaicSection" class="collapse-bar" type="button">
+  <span id="mosaicCollapseLabel">Mozaic</span><span class="collapse-arrow">▼</span>
+ </button>
+ <div id="mosaicSectionBody" class="collapsible-body">
+ <div class="calc-row"><div><span>Producător mozaic</span><div class="calc-hint">Aceeași rețetă de culoare, preț diferit</div></div><select id="mosaicBrand" class="brand-select" aria-label="Producător mozaic"><option value="duraziv">Duraziv — 270 lei / 25 kg</option><option value="kober">Kober — 240 lei / 25 kg</option></select></div>
+ <div class="calc-row">
+   <div id="mosaicProductVisual" style="text-align:center;margin:14px 0;">
+  <img id="mosaicProductImage" src="assets/duraziv-clima-protect-25kg.jfif" alt="Duraziv Clima Protect 25 kg" style="max-width:180px;width:100%;height:auto;">
+  <div id="mosaicProductName" style="font-weight:700;margin-top:6px;">Duraziv Clima Protect — 25 kg</div>
+</div>
+   <div><span>Mozaic 25 kg</span><div class="calc-hint">Consum mediu: 4 m² / găleată</div><div id="mosaicRecommendationHint" class="recommendation-badge">Cantitate recomandată: 0 găleți · o poți modifica liber</div></div><div class="calc-control"><button id="mosaicMinus">−</button><b id="buckets">0 găleți</b><button id="mosaicPlus">+</button></div></div>
+ <button id="addMixToOrder" class="add-mix-btn" type="button" style="margin:10px 0 14px">Adaugă mixul în comandă</button>
+
+ </div>
+ <button id="togglePrimerSection" class="collapse-bar" type="button">
+  <span id="primerCollapseLabel">Grund</span><span class="collapse-arrow">▼</span>
+ </button>
+ <div id="primerSectionBody" class="collapsible-body">
+ <div class="primer-box"><div class="primer-line"><div><b id="primerTitle">Grund recomandat</b><div id="primerHint" class="calc-hint">4 kg = 8 m² · 25 kg = 60 m²</div><div class="calc-hint" style="margin-top:5px">Poți comanda grund separat, fără mix de piatră, în orice cantitate dorești.</div><div id="primerProductVisual" style="text-align:center;margin:10px 0;">
+  <img id="primerProductImage" src="assets/duraziv-primer-4kg.webp" alt="Grund Duraziv 4 kg" style="max-width:120px;width:100%;height:auto;">
+  <div id="primerProductName" style="font-weight:700;margin-top:4px;font-size:12px;">Grund Duraziv 4 kg</div>
+</div></div><label class="primer-toggle"><input id="primerEnabled" type="checkbox" checked> Adaugă grund</label></div><div class="primer-brand-row"><label for="primerBrand">Vrei alt grund?</label><select id="primerBrand" class="brand-select primer-brand-select" aria-label="Alege marca grundului"><option value="auto">Recomandat automat</option><option value="duraziv">Duraziv</option><option value="kober">Kober</option></select></div>
+ <div class="primer-line"><span>Recomandare</span><b id="primerRecommendation">—</b></div>
+ <div class="primer-line"><span id="primerBigLabel">Grund 25 kg · 210 lei</span><div class="calc-control"><button id="primerBigMinus">−</button><b id="primerBig">0 găleți</b><button id="primerBigPlus">+</button></div></div>
+ <div class="primer-line"><span id="primerSmallLabel">Grund 4 kg · 59 lei</span><div class="calc-control"><button id="primerSmallMinus">−</button><b id="primerSmall">0 găleți</b><button id="primerSmallPlus">+</button></div></div>
+ <button id="addPrimerToOrder" class="add-primer-btn" type="button">Adaugă grundul în comandă</button>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Grund în comandă</b><span id="primerCartCount">0</span></div><div id="primerCartList"><div class="note">Nu ai adăugat încă grund în comandă.</div></div></div>
+ </div>
+
+
+
+
+ </div>
+ <div class="order-summary-box">
+  <div class="order-summary-head"><span>Rezumat comandă</span><span id="orderSummaryCount">0 produse</span></div>
+  <div id="orderSummaryCompact" class="order-summary-empty">Nu ai adăugat încă produse în comandă.</div>
+  <div id="mixNextActions" style="display:none;gap:8px;margin-top:10px">
+    <button id="startAnotherMix" class="add-mix-btn" type="button" style="margin:0;flex:1">Adaugă alt mix</button>
+    <button id="cancelCurrentMix" type="button" style="flex:1;border:1px solid #d6dce1;background:#fff;border-radius:9px;padding:12px;font-weight:800;cursor:pointer">Anulează configurația curentă</button>
+  </div>
+ </div>
+ <div class="calc-row"><span>Transport</span><b>Se calculează la comandă</b></div>
+ <div class="total-row"><span>TOTAL PRODUSE</span><span id="grand">0 lei</span></div>
+ <div id="recipeBox" class="recipe-box" style="display:none"><div class="recipe-code"><div><small>Mix curent</small><br><strong id="recipeCode">—</strong></div><button id="copyRecipe" class="copy-recipe" type="button">Copiază</button></div><div id="recipeList" class="recipe-list"></div></div>
+ <div class="mix-cart-box"><div class="mix-cart-head"><b>Mixuri în comandă</b><span id="mixCartCount">0</span></div><div id="mixCartList"><div class="note">Nu ai adăugat încă niciun mix.</div></div></div>
+ <button id="openCheckout" class="cart" type="button">Continuă la comandă</button><button id="whatsappOffer" class="wa" type="button">◉ Cere ofertă pe WhatsApp</button><div class="note" style="text-align:center;margin-top:8px">Telefon / WhatsApp: <a href="tel:+40735172091" style="color:inherit;font-weight:800">+40 735 172 091</a></div></section>
+</aside>
+</div>
+<div id="houseModal" class="house-modal" aria-hidden="true">
+  <div class="house-stage">
+    <img src="assets/casa.jpg" alt="Previzualizare casă">
+    <canvas id="houseMixOverlay" class="house-mix-overlay" aria-hidden="true"></canvas>
+    <img class="house-foreground" src="assets/house_foreground_right.png" alt="" aria-hidden="true">
+    <button id="houseClose" class="house-close" type="button" aria-label="Închide">×</button>
+    <div id="houseChoice" class="house-choice"><b>Mixul tău</b><br>Alege o compoziție pentru previzualizare.</div>
+  </div>
+</div>
+
+<div id="checkoutModal" class="checkout-modal" aria-hidden="true">
+  <div class="checkout-panel">
+    <div class="checkout-head"><div><h2>Finalizare comandă</h2><div class="note">Codul mixului și rețeta rămân asociate acestei comenzi.</div></div><button id="checkoutClose" class="checkout-close" type="button" aria-label="Închide">×</button></div>
+    <div class="checkout-grid">
+      <section class="checkout-card">
+        <h3>Date client și predare</h3>
+        <div class="delivery-options" role="radiogroup" aria-label="Metoda de predare">
+          <label class="delivery-option"><input id="deliveryDelivery" type="radio" name="deliveryMethod" value="delivery" checked><span><b>🚚 Livrare la adresă</b><small>Transportul se calculează separat până implementăm calculatorul automat.</small></span></label>
+          <label class="delivery-option"><input id="deliveryPickup" type="radio" name="deliveryMethod" value="pickup"><span><b>🏢 Ridicare personală — GRATUIT</b><small>Ridicare de la sediul PuroHome din Craiova.</small></span></label>
+        </div>
+        <div id="pickupInfo" class="pickup-info"><b>Ridicare personală: 0 lei</b><br>Str. Râului nr. 214, Craiova, Dolj, CP 200641.<br>Te contactăm când comanda este pregătită pentru ridicare.</div>
+
+        <h3 style="margin-top:14px">Metoda de plată</h3>
+        <div class="payment-options" role="radiogroup" aria-label="Metoda de plată">
+          <label class="payment-option active"><input id="paymentBank" type="radio" name="paymentMethod" value="bank" checked><span><b>🏦 Transfer bancar (OP)</b><small>Comanda se înregistrează imediat. Primești datele pentru plată și numărul comenzii.</small></span></label>
+          <label class="payment-option disabled"><input id="paymentCard" type="radio" name="paymentMethod" value="card" disabled><span><b>💳 Plată online cu cardul</b><small>Disponibilă în curând.</small></span></label>
+        </div>
+        <div id="bankTransferInfo" class="bank-transfer-info show">
+          <b>Plată prin transfer bancar</b><br>
+          Beneficiar: SC Sabaki Impex SRL<br>
+          CUI: RO 14172138<br>
+          Nr. Reg. Comerțului: J16/611/2001<br>
+          IBAN RON: <code>RO44 BTRL RONC RT05 8012 5601</code><br>
+          La detaliile plății vei trece numărul comenzii afișat după confirmare.
+        </div>
+
+        <div id="shippingCalc" class="shipping-calc">
+          <div class="row"><span>Transport</span><b id="shippingPrice" class="shipping-price">—</b></div>
+          <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
+          <button id="calculateShipping" type="button">Calculează transportul</button>
+        </div>
+        <div class="field-grid">
+          <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu" minlength="3"><div id="helpName" class="field-help"></div></div>
+          <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" maxlength="14"><div id="helpPhone" class="field-help"></div></div>
+          <div class="field"><label>Email</label><input id="custEmail" type="email" autocomplete="email" inputmode="email" placeholder="email@exemplu.ro"><div id="helpEmail" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Județ *</label><select id="custCounty" autocomplete="address-level1"><option value="">Alege județul</option><option>Alba</option><option>Arad</option><option>Argeș</option><option>Bacău</option><option>Bihor</option><option>Bistrița-Năsăud</option><option>Botoșani</option><option>Brăila</option><option>Brașov</option><option>București</option><option>Buzău</option><option>Călărași</option><option>Caraș-Severin</option><option>Cluj</option><option>Constanța</option><option>Covasna</option><option>Dâmbovița</option><option>Dolj</option><option>Galați</option><option>Giurgiu</option><option>Gorj</option><option>Harghita</option><option>Hunedoara</option><option>Ialomița</option><option>Iași</option><option>Ilfov</option><option>Maramureș</option><option>Mehedinți</option><option>Mureș</option><option>Neamț</option><option>Olt</option><option>Prahova</option><option>Sălaj</option><option>Satu Mare</option><option>Sibiu</option><option>Suceava</option><option>Teleorman</option><option>Timiș</option><option>Tulcea</option><option>Vâlcea</option><option>Vaslui</option><option>Vrancea</option></select><div id="helpCounty" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Localitate *</label><input id="custCity" autocomplete="address-level2" placeholder="Ex. Craiova" minlength="2"><div id="helpCity" class="field-help"></div></div>
+          <div class="field delivery-field"><label>Cod poștal *</label><input id="custPostcode" autocomplete="postal-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="6 cifre"><div id="helpPostcode" class="field-help"></div></div>
+          <div class="field full delivery-field"><label>Adresă de livrare *</label><input id="custAddress" autocomplete="street-address" placeholder="Stradă și număr, ex. Str. Libertății nr. 10" minlength="5"><div id="helpAddress" class="field-help"></div></div>
+          <div class="field full"><label>Observații</label><textarea id="custNotes" placeholder="Detalii pentru livrare sau comandă"></textarea></div>
+        </div>
+        <div id="checkoutError" class="checkout-error"></div>
+        <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat mixurile, culorile, procentele, mărcile și cantitățile din sumarul comenzii.</span></label>
+        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Înregistrează comanda</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
+        <div id="checkoutStatus" class="checkout-status"></div>
+      </section>
+      <aside class="checkout-card">
+        <h3>Sumar comandă</h3>
+        <div id="checkoutSummary" class="checkout-summary"></div>
+        <div id="shippingInfo" class="checkout-info"><b>Transport:</b> se calculează separat după adresa de livrare și cantitatea comandată.</div>
+        <div class="checkout-info">Comanda se înregistrează după confirmare.</div>
+      </aside>
+    </div>
+  </div>
+</div>
+<script>
+const products=[
+{name:'Alb',img:'assets/alb.jpeg',cat:'Albe'},{name:'Albastru',img:'assets/albastru.jpeg',cat:'Colorate'},{name:'Galben',img:'assets/galben.jpeg',cat:'Colorate'},{name:'Gri argintiu',img:'assets/gri-argintiu.jpeg',cat:'Gri'},{name:'Gri deschis',img:'assets/gri-deschis.jpeg',cat:'Gri'},{name:'Maro brown',img:'assets/maro-brown.jpeg',cat:'Maro'},{name:'Maro nisip',img:'assets/maro-nisip.jpeg',cat:'Maro'},{name:'Maro nucă',img:'assets/maro-nuca.jpeg',cat:'Maro'},{name:'Maro',img:'assets/maro.jpeg',cat:'Maro'},{name:'Negru',img:'assets/negru.jpeg',cat:'Gri'},{name:'Orange',img:'assets/orange.jpeg',cat:'Colorate'}];
+let selected=[];
+const INITIAL_PRESETS={1:[100],2:[50,50],3:[35,35,30],4:[25,25,25,25]};
+function applyAutoPreset(){
+  const preset=INITIAL_PRESETS[selected.length];
+  if(preset) selected.forEach((s,i)=>s.pct=preset[i]);
+}
+const imgs={}; products.forEach(p=>{const i=new Image();i.src=p.img;imgs[p.img]=i;i.onload=draw});
+function renderProducts(filter='Toate',query=''){const el=document.querySelector('#stones');el.innerHTML='';products.filter(p=>(filter==='Toate'||p.cat===filter)&&p.name.toLowerCase().includes(query.toLowerCase())).forEach(p=>{const d=document.createElement('div');d.className='stone'+(selected.some(s=>s.name===p.name)?' selected':'');d.innerHTML=`<img src="${p.img}"><div class="meta"><b>${p.name}</b><small>2 - 4 mm</small><button>+</button></div>`;d.onclick=()=>addStone(p);el.appendChild(d)})}
+function addStone(p){
+  if(selected.some(s=>s.name===p.name))return;
+  if(selected.length>=4){alert('Poți selecta maximum 4 pietre.');return}
+  selected.push({...p,pct:0});
+  // La orice adăugare, repartizăm automat procentele pentru un total de 100%.
+  // Clientul le poate modifica manual după aceea.
+  applyAutoPreset();
+  renderAll();
+}
+function renderMix(){
+  const el=document.querySelector('#mixList');
+  el.innerHTML='';
+  selected.forEach((s,idx)=>{
+    const r=document.createElement('div');
+    r.className='mix-row';
+    r.innerHTML=`<img class="thumb" src="${s.img}"><div class="mix-name"><b>${s.name}</b><small>2 - 4 mm</small></div><input class="pct-input" type="number" min="0" max="100" step="5" value="${s.pct}" aria-label="Procent ${s.name}"><button class="remove">×</button>`;
+    const input=r.querySelector('.pct-input');
+    input.onchange=e=>{
+      let value=Number(e.target.value||0);
+      value=Math.max(0,Math.min(100,Math.round(value/5)*5));
+      selected[idx].pct=value;
+      renderAll();
+    };
+    r.querySelector('.remove').onclick=()=>{
+      selected.splice(idx,1);
+      // La orice ștergere, repartizăm automat culorile rămase la 100%.
+      applyAutoPreset();
+      renderAll();
+    };
+    el.appendChild(r);
+  });
+  const total=selected.reduce((a,b)=>a+b.pct,0);
+  const totalEl=document.querySelector('#total');
+  const warning=document.querySelector('#totalWarning');
+  totalEl.textContent=total+'%';
+  totalEl.style.color=total===100&&selected.length>=1?'#33d66b':total>100?'#ff6767':'#ffb24a';
+  warning.className='total-warning '+(total===100&&selected.length>=1?'ok':total>100?'high':'low');
+  if(selected.length<1) warning.textContent='Alege o piatră pentru a începe.';
+  else if(total<100) warning.textContent=`Mai trebuie să adaugi ${100-total}% pentru a ajunge la 100%.`;
+  else if(total>100) warning.textContent=`Ai depășit totalul cu ${total-100}%. Redu manual unul sau mai multe procente.`;
+  else warning.textContent='Compoziția este completă: total 100%.';
+  document.querySelector('#code').textContent=total===100&&selected.length>=1?makeCode():'—';
+  const addBtn=document.querySelector('#addMixToOrder');
+  if(addBtn){
+    const mixReady=selected.length>=1 && total===100 && mosaicBuckets>0;
+    if(currentMixAdded){
+      addBtn.disabled=true;
+      addBtn.textContent='Mix adăugat în comandă';
+    }else{
+      addBtn.disabled=!mixReady;
+      addBtn.textContent=selected.length<1
+        ? 'Adaugă un mix după ce alegi culoarea'
+        : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+    }
+  }
+  updateRecipeCard();
+}
+let drawVersion=0;
+function seededRandomFactory(seed){
+  return function(){ seed=(seed*9301+49297)%233280; return seed/233280; };
+}
+function draw(){
+  const version=++drawVersion;
+  const c=document.querySelector('#mixCanvas');
+  const ctx=c.getContext('2d');
+  const rect=c.getBoundingClientRect();
+  const dpr=Math.max(1,Math.min(window.devicePixelRatio||1,2));
+  const W=Math.max(640,Math.round(rect.width));
+  const H=Math.max(360,Math.round(rect.height));
+  c.width=Math.round(W*dpr); c.height=Math.round(H*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const total=selected.reduce((a,b)=>a+b.pct,0);
+  if(selected.length<1 || total!==100){
+    const g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#d9dad8'); g.addColorStop(1,'#bfc2bf');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#20262b';
+    ctx.textAlign='center';
+    ctx.font='700 20px Arial';
+    ctx.fillText(selected.length<1?'Alege între 1 și 4 pietre':'Completează manual procentele până la 100%',W/2,H/2-4);
+    ctx.font='14px Arial';
+    ctx.fillStyle='#4b535a';
+    ctx.fillText(`Total curent: ${total}%`,W/2,H/2+24);
+    updateHouseThumbnail();
+    return;
+  }
+
+  const loaded=selected.every(s=>imgs[s.img]&&imgs[s.img].complete&&imgs[s.img].naturalWidth);
+  if(!loaded){ setTimeout(()=>{if(version===drawVersion)draw()},100); return; }
+
+  // MOTOR 2.0 - pietre neregulate, nu fragmente pătrate.
+  // Fiecare element final este o formă organică decupată din fotografia reală.
+  let codeSeed=2166136261;
+  selected.forEach(s=>{
+    for(const ch of s.name) codeSeed=(codeSeed^ch.charCodeAt(0))*16777619>>>0;
+    codeSeed=(codeSeed+s.pct*131)>>>0;
+  });
+  const rnd=seededRandomFactory(codeSeed||17);
+
+  // Fundal foarte discret. În mod normal nu rămâne vizibil deoarece pietrele se suprapun.
+  ctx.fillStyle='#2b2926';
+  ctx.fillRect(0,0,W,H);
+
+  // Zoom-out: multe pietre mici pe o suprafață mare.
+  const STEP=5.4;
+  const RMIN=3.8;
+  const RMAX=5.7;
+  const SOURCE_MIN=14;
+  const SOURCE_MAX=28;
+  const JITTER=2.2;
+  const cols=Math.ceil(W/STEP)+6;
+  const rows=Math.ceil(H/STEP)+6;
+  const totalStones=cols*rows;
+  const perPercent=totalStones/100;
+
+  // Distribuție exactă după procente, apoi amestecare aleatoare.
+  let bag=[];
+  selected.forEach((stone,idx)=>{
+    const n=Math.round(stone.pct*perPercent);
+    for(let k=0;k<n;k++) bag.push(idx);
+  });
+  while(bag.length<totalStones) bag.push(0);
+  while(bag.length>totalStones) bag.pop();
+  for(let i=bag.length-1;i>0;i--){
+    const j=Math.floor(rnd()*(i+1));
+    [bag[i],bag[j]]=[bag[j],bag[i]];
+  }
+
+  function stonePath(cx,cy,r,rot,seedOffset=0){
+    const pts=7+Math.floor(rnd()*4); // 7-10 colțuri neregulate
+    ctx.beginPath();
+    for(let n=0;n<pts;n++){
+      const a=rot+Math.PI*2*n/pts;
+      const wobble=.78+rnd()*.34;
+      const rr=r*wobble;
+      const x=cx+Math.cos(a)*rr;
+      const y=cy+Math.sin(a)*rr*(.82+rnd()*.22);
+      if(n===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+  }
+
+  function drawStone(stoneIdx,cx,cy,r,alpha=1){
+    const stone=selected[stoneIdx];
+    const img=imgs[stone.img];
+    const sw=Math.round(SOURCE_MIN+rnd()*(SOURCE_MAX-SOURCE_MIN));
+    const sh=Math.max(8,Math.round(sw*(.78+rnd()*.44)));
+    const sx=Math.floor(rnd()*Math.max(1,img.naturalWidth-sw));
+    const sy=Math.floor(rnd()*Math.max(1,img.naturalHeight-sh));
+    const rot=(rnd()-.5)*Math.PI*.7;
+    const rw=r*(1.05+rnd()*.18);
+
+    ctx.save();
+    stonePath(cx,cy,rw,rot);
+    ctx.clip();
+
+    // Folosim textura reală, mărită doar cât să umple forma pietrei.
+    // Nu există margine dreptunghiulară vizibilă, fiindcă desenul este decupat de contur.
+    const dw=rw*2.7;
+    const dh=rw*2.45;
+    ctx.globalAlpha=alpha;
+    ctx.translate(cx,cy);
+    ctx.rotate((rnd()-.5)*.5);
+    if(rnd()<.5) ctx.scale(-1,1);
+    ctx.drawImage(img,sx,sy,sw,sh,-dw/2,-dh/2,dw,dh);
+    ctx.restore();
+
+    // Umbră fină de contact între pietre - fără efect de bilă.
+    ctx.save();
+    ctx.globalAlpha=.16*alpha;
+    ctx.strokeStyle='#090909';
+    ctx.lineWidth=.55;
+    stonePath(cx,cy,rw,rot);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Poziții tip rețea neregulată. Rândurile sunt decalate pentru a evita tiparul pătrat.
+  const stones=[];
+  for(let row=0;row<rows;row++){
+    for(let col=0;col<cols;col++){
+      const i=row*cols+col;
+      const stagger=(row%2)*STEP*.48;
+      const x=col*STEP+stagger-STEP*3+(rnd()*2*JITTER-JITTER);
+      const y=row*STEP-STEP*3+(rnd()*2*JITTER-JITTER);
+      const r=RMIN+rnd()*(RMAX-RMIN);
+      stones.push({idx:bag[i],x,y,r});
+    }
+  }
+
+  // Ordine aleatoare pentru suprapuneri naturale.
+  for(let i=stones.length-1;i>0;i--){
+    const j=Math.floor(rnd()*(i+1));
+    [stones[i],stones[j]]=[stones[j],stones[i]];
+  }
+
+  ctx.imageSmoothingEnabled=true;
+  ctx.imageSmoothingQuality='high';
+  let pidx=0;
+  function drawChunk(){
+    if(version!==drawVersion) return;
+    const end=Math.min(stones.length,pidx+1100);
+    for(;pidx<end;pidx++){
+      const p=stones[pidx];
+      drawStone(p.idx,p.x,p.y,p.r,.98);
+    }
+    if(pidx<stones.length){ requestAnimationFrame(drawChunk); return; }
+
+    // Strat de umplere: pietre ceva mai mici, doar pentru eventualele micro-goluri.
+    const fillers=Math.round(totalStones*.22);
+    for(let t=0;t<fillers;t++){
+      const idx=bag[Math.floor(rnd()*bag.length)];
+      const x=rnd()*W;
+      const y=rnd()*H;
+      const r=2.7+rnd()*1.8;
+      drawStone(idx,x,y,r,.92);
+    }
+    updateHouseThumbnail();
+  }
+  drawChunk();
+}
+
+function drawHouseOverlay(overlay,houseImg,choice){
+  const mixCanvas=document.querySelector('#mixCanvas');
+  if(!overlay||!mixCanvas||!houseImg)return;
+
+  const total=selected.reduce((sum,item)=>sum+(Number(item.pct)||0),0);
+  const octx=overlay.getContext('2d');
+  if(selected.length<1||total!==100){
+    overlay.width=1; overlay.height=1;
+    octx.clearRect(0,0,1,1);
+    if(choice) choice.innerHTML='<b>Mixul tău</b><br>Finalizează compoziția la 100%.';
+    return;
+  }
+
+  // Nu transformăm canvas-ul mixului în imagine (toDataURL), deoarece în modul file://
+  // browserul poate bloca exportul când textura folosește fotografii locale.
+  // Copiem direct canvas -> canvas, ceea ce funcționează și local.
+  const cssW=Math.max(1,Math.round(houseImg.clientWidth||houseImg.getBoundingClientRect().width||900));
+  const cssH=Math.max(1,Math.round(houseImg.clientHeight||houseImg.getBoundingClientRect().height||600));
+  const dpr=Math.max(1,Math.min(window.devicePixelRatio||1,2));
+  overlay.width=Math.round(cssW*dpr);
+  overlay.height=Math.round(cssH*dpr);
+  overlay.style.width=cssW+'px';
+  overlay.style.height=cssH+'px';
+  octx.setTransform(dpr,0,0,dpr,0,0);
+  octx.clearRect(0,0,cssW,cssH);
+  octx.imageSmoothingEnabled=true;
+  octx.imageSmoothingQuality='high';
+
+  // Repetăm textura reală a mixului peste suprafața casei; CSS-ul o decupează strict
+  // în zona soclului. Folim canvas-ul existent ca sursă, deci apare exact mixul ales.
+  const tile=document.createElement('canvas');
+  const tileCtx=tile.getContext('2d');
+  const tileW=Math.max(220,Math.round(cssW*.34));
+  const tileH=Math.max(120,Math.round(tileW*.48));
+  tile.width=tileW; tile.height=tileH;
+  tileCtx.drawImage(mixCanvas,0,0,mixCanvas.width,mixCanvas.height,0,0,tileW,tileH);
+  const pattern=octx.createPattern(tile,'repeat');
+  octx.fillStyle=pattern;
+
+  // Masca soclului este definita ca mai multe suprafete separate, urmarind
+  // perspectiva reala a casei. Nu mai desenam textura ca un dreptunghi/paravan.
+  // Coordonatele sunt procente din fotografia casei si se adapteaza automat
+  // cand imaginea este afisata mai mare sau pe telefon.
+  const socleShapes=[
+    // fata stanga - pana la zona usii/scarilor
+    [[0.073,0.626],[0.414,0.622],[0.414,0.714],[0.376,0.714],[0.376,0.770],[0.073,0.770]],
+    // fata principala din dreapta - urmareste linia de perspectiva de jos
+    [[0.486,0.616],[0.894,0.614],[0.894,0.842],[0.486,0.806]],
+    // latura laterala din dreapta
+    [[0.894,0.614],[0.998,0.615],[0.998,0.825],[0.894,0.842]]
+  ];
+
+  function fillShape(points){
+    octx.save();
+    octx.beginPath();
+    points.forEach((pt,i)=>{
+      const x=pt[0]*cssW, y=pt[1]*cssH;
+      if(i===0)octx.moveTo(x,y); else octx.lineTo(x,y);
+    });
+    octx.closePath();
+    octx.clip();
+    octx.fillRect(0,0,cssW,cssH);
+    octx.restore();
+  }
+  socleShapes.forEach(fillShape);
+
+  // Obiectele aflate in fata soclului (burlan, tufe si ghivece) trebuie sa ramana
+  // vizibile peste textura. Le "decupam" din canvas-ul mixului, astfel incat fotografia
+  // originala a casei de dedesubt sa se vada natural prin aceste zone.
+  octx.save();
+  octx.globalCompositeOperation='destination-out';
+
+  function punchPolygon(points){
+    octx.beginPath();
+    points.forEach((pt,i)=>{
+      const x=pt[0]*cssW, y=pt[1]*cssH;
+      if(i===0)octx.moveTo(x,y); else octx.lineTo(x,y);
+    });
+    octx.closePath();
+    octx.fill();
+  }
+  function punchEllipse(cx,cy,rx,ry){
+    octx.beginPath();
+    octx.ellipse(cx*cssW,cy*cssH,rx*cssW,ry*cssH,0,0,Math.PI*2);
+    octx.fill();
+  }
+
+  // Burlanul din dreapta este restaurat de stratul foreground transparent,
+  // astfel incat sa nu mai descoperim deloc soclul original din jurul lui.
+
+  // Vegetatia este decupata mai strans decat in versiunea anterioara.
+  // Scopul este sa pastram frunzele in fata, fara haloul de soclu original
+  // care aparea in jurul tufelor.
+  [
+    [0.096,0.780,0.031,0.023],
+    [0.207,0.775,0.030,0.025],
+    [0.282,0.721,0.023,0.020],
+    [0.499,0.714,0.025,0.022],
+    [0.446,0.827,0.025,0.020]
+    // Tufele din dreapta NU se mai decupeaza din textura.
+    // Sunt readuse exact de house_foreground_right.png, peste mix,
+    // evitand astfel semicercurile/halourile de soclu original.
+  ].forEach(v=>punchEllipse(...v));
+
+  // Ghivecele: urmarim doar corpul inchis la culoare, fara margine suplimentara.
+  punchPolygon([[0.272,0.716],[0.299,0.716],[0.297,0.774],[0.274,0.774]]);
+  punchPolygon([[0.481,0.710],[0.515,0.710],[0.511,0.783],[0.485,0.783]]);
+
+  octx.restore();
+
+  if(choice) choice.innerHTML='<b>Mixul tău</b><br>'+selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');
+}
+function prepareHousePreview(){
+  drawHouseOverlay(document.querySelector('#houseMixOverlay'),document.querySelector('.house-stage>img'),document.querySelector('#houseChoice'));
+}
+function updateHouseThumbnail(){
+  const img=document.querySelector('#housePreview');
+  const overlay=document.querySelector('#houseThumbOverlay');
+  if(!img||!overlay)return;
+  const run=()=>drawHouseOverlay(overlay,img,null);
+  if(img.complete) requestAnimationFrame(run); else img.addEventListener('load',run,{once:true});
+}
+function openHousePreview(){
+  const modal=document.querySelector('#houseModal');
+  if(!modal)return;
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+
+  requestAnimationFrame(()=>prepareHousePreview());
+}
+
+function closeHousePreview(){
+  const modal=document.querySelector('#houseModal');
+  if(!modal)return;
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+function makeCode(){let h=0;selected.forEach(s=>{for(const ch of s.name)h=(h*31+ch.charCodeAt(0))>>>0;h=(h+s.pct*97)>>>0});return 'MX-'+h.toString(36).toUpperCase().slice(-5).padStart(5,'0')}
+function updateRecipeCard(){
+  const box=document.querySelector('#recipeBox');
+  const codeEl=document.querySelector('#recipeCode');
+  const listEl=document.querySelector('#recipeList');
+  if(!codeEl||!listEl)return;
+  const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  const valid=selected.length>=1&&total===100;
+  if(box)box.style.display=valid?'block':'none';
+  if(!valid){codeEl.textContent='—';listEl.textContent='';return}
+  const brand=document.querySelector('#mosaicBrand')?.value==='kober'?'Kober':'Duraziv';
+  codeEl.textContent=makeCode();
+  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const currentValue=mosaicBuckets*mosaicPrice;
+  listEl.innerHTML=selected.map(s=>`<b>${s.name}</b> ${s.pct}%`).join(' · ')
+    +`<br>${brand} · ${mosaicBuckets} găleți · <b>${currentValue.toLocaleString('ro-RO')} lei</b>`;
+}
+function renderAll(){renderProducts(document.querySelector('.filter.active').textContent,document.querySelector('#search').value);renderMix();draw()}
+document.querySelector('#housePreview').addEventListener('click',openHousePreview);
+
+document.querySelector('#houseClose').addEventListener('click',e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  closeHousePreview();
+});
+
+document.querySelector('#houseModal').addEventListener('click',e=>{
+  if(e.target.id==='houseModal'){
+    e.preventDefault();
+    closeHousePreview();
+  }
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeHousePreview();
+});
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.textContent,document.querySelector('#search').value)});document.querySelector('#search').oninput=e=>renderProducts(document.querySelector('.filter.active').textContent,e.target.value);document.querySelector('#reset').onclick=()=>{selected=[];renderAll()};
+let sqm=0,mosaicBuckets=0,primerBig=0,primerSmall=0,primerEnabled=true,mosaicBrand='duraziv',primerBrand='auto';
+let orderMixes=[];
+let orderPrimers=[];
+let recommendedMosaicBuckets=0;
+let currentMixAdded=false;
+let currentAddedMixId=null;
+const MOSAIC_PRICES={duraziv:270,kober:240};
+const PRIMER_DATA={
+  duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
+  kober:{name:'Kober',bigKg:25,bigCoverage:60,bigPrice:195,smallKg:8,smallCoverage:15,smallPrice:88}
+};
+function getPrimerBrand(){return primerBrand==='auto'?mosaicBrand:primerBrand}
+function getPrimerData(){return PRIMER_DATA[getPrimerBrand()]||PRIMER_DATA.duraziv}
+function recommendedPrimer(area){
+  if(area<=0)return {big:0,small:0};
+  const d=getPrimerData();
+  const maxBig=Math.ceil(area/d.bigCoverage)+1;
+  const maxSmall=Math.ceil(area/d.smallCoverage)+1;
+  let best=null;
+  for(let big=0;big<=maxBig;big++){
+    for(let small=0;small<=maxSmall;small++){
+      if(big===0&&small===0)continue;
+      const coverage=big*d.bigCoverage+small*d.smallCoverage;
+      if(coverage<area)continue;
+      const cost=big*d.bigPrice+small*d.smallPrice;
+      const count=big+small;
+      const surplus=coverage-area;
+      const c={big,small,cost,count,surplus};
+      if(!best||cost<best.cost||(cost===best.cost&&count<best.count)||(cost===best.cost&&count===best.count&&surplus<best.surplus))best=c;
+    }
+  }
+  return best?{big:best.big,small:best.small}:{big:0,small:0};
+}
+function recommendQuantities(){
+  recommendedMosaicBuckets=Math.ceil(sqm/4);
+  mosaicBuckets=recommendedMosaicBuckets;
+  renderCalc();
+}
+function renderCalc(){
+  document.querySelector('#sqmInput').value=sqm;
+  document.querySelector('#buckets').textContent=mosaicBuckets+' găleți';
+  const mrh=document.querySelector('#mosaicRecommendationHint');
+  if(mrh) mrh.textContent='Cantitate recomandată: '+recommendedMosaicBuckets+' găleți · o poți modifica liber';
+  document.querySelector('#primerBig').textContent=primerBig+' găleți';
+  document.querySelector('#primerSmall').textContent=primerSmall+' găleți';
+  const pd=getPrimerData();
+  document.querySelector('#primerTitle').textContent='Grund recomandat '+pd.name;
+  document.querySelector('#primerHint').textContent=pd.smallKg+' kg = '+pd.smallCoverage+' m² · '+pd.bigKg+' kg = '+pd.bigCoverage+' m²';
+  
+  document.querySelector('#primerBigLabel').textContent='Grund '+pd.name+' '+pd.bigKg+' kg · '+pd.bigPrice+' lei';
+  document.querySelector('#primerSmallLabel').textContent='Grund '+pd.name+' '+pd.smallKg+' kg · '+pd.smallPrice+' lei';
+  const primerCoverage=primerEnabled?(primerBig*pd.bigCoverage+primerSmall*pd.smallCoverage):0;
+  
+  const primerRec=recommendedPrimer(sqm);
+  const rec=[];
+  if(primerRec.big)rec.push(primerRec.big+' × '+pd.bigKg+' kg');
+  if(primerRec.small)rec.push(primerRec.small+' × '+pd.smallKg+' kg');
+  const primerProductImage=document.querySelector('#primerProductImage');
+const primerProductName=document.querySelector('#primerProductName');
+
+if(pd.name.toLowerCase().includes('kober') || pd.name.toLowerCase().includes('köber')){
+  primerProductImage.src='assets/kober-grund.png';
+  primerProductImage.alt='Grund Kober';
+  primerProductName.textContent='Grund Kober';
+}else{
+  if(primerBig>0){
+    primerProductImage.src='assets/duraziv-primer-25kg.webp';
+    primerProductImage.alt='Grund Duraziv 25 kg';
+    primerProductName.textContent='Grund Duraziv 25 kg';
+  }else{
+    primerProductImage.src='assets/duraziv-primer-4kg.webp';
+    primerProductImage.alt='Grund Duraziv 4 kg';
+    primerProductName.textContent='Grund Duraziv 4 kg';
+  }
+}
+  document.querySelector('#primerRecommendation').textContent=sqm<=0?'—':(rec.length?rec.join(' + '):'0 găleți');
+  const coverageEl=document.querySelector('#coverage');
+  if(coverageEl) coverageEl.textContent=primerEnabled?primerCoverage+' m²':'Fără grund';
+  document.querySelector('#primerBigMinus').disabled=!primerEnabled;document.querySelector('#primerBigPlus').disabled=!primerEnabled;document.querySelector('#primerSmallMinus').disabled=!primerEnabled;document.querySelector('#primerSmallPlus').disabled=!primerEnabled;
+  const mosaicPrice=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const mosaicTotal=mosaicBuckets*mosaicPrice;
+  const primerSelectionTotal=primerEnabled?(primerBig*pd.bigPrice+primerSmall*pd.smallPrice):0;
+  const priceEl=document.querySelector('#price');
+  const primerPriceEl=document.querySelector('#primerPrice');
+  if(priceEl) priceEl.textContent=mosaicTotal.toLocaleString('ro-RO')+' lei';
+  if(primerPriceEl) primerPriceEl.textContent=primerSelectionTotal.toLocaleString('ro-RO')+' lei';
+  const savedMixTotal=orderMixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
+  const savedPrimerTotal=orderPrimers.reduce((sum,p)=>sum+p.total,0);
+  document.querySelector('#grand').textContent=(savedMixTotal+savedPrimerTotal).toLocaleString('ro-RO')+' lei';
+  const mosaicCollapseLabel=document.querySelector('#mosaicCollapseLabel');
+  if(mosaicCollapseLabel){
+    const pct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+    mosaicCollapseLabel.textContent=(selected.length&&pct===100&&mosaicBuckets>0)
+      ? `Mozaic · ${mosaicBuckets} găleți`
+      : 'Mozaic';
+  }
+  const primerCollapseLabel=document.querySelector('#primerCollapseLabel');
+  if(primerCollapseLabel){
+    const q=primerBig+primerSmall;
+    primerCollapseLabel.textContent=q>0?`Grund · ${q} găleți selectate`:'Grund';
+  }
+
+  const primerAddBtn=document.querySelector('#addPrimerToOrder');
+  if(primerAddBtn) primerAddBtn.disabled=!primerEnabled||(primerBig<=0&&primerSmall<=0);
+
+  const mixAddBtn=document.querySelector('#addMixToOrder');
+  if(mixAddBtn){
+    const mixTotalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+    const mixReady=selected.length>=1 && mixTotalPct===100 && mosaicBuckets>0;
+    if(currentMixAdded){
+      mixAddBtn.disabled=true;
+      mixAddBtn.textContent='Mix adăugat în comandă';
+    }else{
+      mixAddBtn.disabled=!mixReady;
+      mixAddBtn.textContent=selected.length<1
+        ? 'Adaugă un mix după ce alegi culoarea'
+        : (mixReady ? 'Adaugă mixul în comandă' : 'Completează mixul pentru a-l adăuga');
+    }
+  }
+
+  updateRecipeCard();
+  renderMixCart();
+  renderPrimerCart();
+  renderCompactOrderSummary();
+}
+document.querySelector('#plus').onclick=()=>{sqm++;recommendQuantities()};document.querySelector('#minus').onclick=()=>{sqm=Math.max(0,sqm-1);recommendQuantities()};
+document.querySelector('#sqmInput').addEventListener('input',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
+document.querySelector('#sqmInput').addEventListener('change',e=>{const v=Math.max(0,Math.floor(Number(e.target.value)||0));sqm=v;recommendQuantities()});
+document.querySelector('#mosaicMinus').onclick=()=>{mosaicBuckets=Math.max(0,mosaicBuckets-1);renderCalc()};document.querySelector('#mosaicPlus').onclick=()=>{mosaicBuckets++;renderCalc()};
+document.querySelector('#primerBigMinus').onclick=()=>{primerBig=Math.max(0,primerBig-1);renderCalc()};document.querySelector('#primerBigPlus').onclick=()=>{primerBig++;renderCalc()};
+document.querySelector('#primerSmallMinus').onclick=()=>{primerSmall=Math.max(0,primerSmall-1);renderCalc()};document.querySelector('#primerSmallPlus').onclick=()=>{primerSmall++;renderCalc()};
+document.querySelector('#primerEnabled').onchange=e=>{primerEnabled=e.target.checked;renderCalc()};
+document.querySelector('#mosaicBrand').onchange=e=>{
+  mosaicBrand=e.target.value;
+
+  const productImage=document.querySelector('#mosaicProductImage');
+  const productName=document.querySelector('#mosaicProductName');
+
+  if(mosaicBrand==='kober'){
+    productImage.src='assets/kober-mozaic-soclu.avif';
+    productImage.alt='Kober tencuiala mozaic soclu 25 kg';
+    productName.textContent='Köber Tencuială de soclu cuarț-mozaic — 25 kg';
+  }else{
+    productImage.src='assets/duraziv-clima-protect-25kg.jfif';
+    productImage.alt='Duraziv Clima Protect 25 kg';
+    productName.textContent='Duraziv Clima Protect — 25 kg';
+  }
+
+  recommendQuantities();
+};
+document.querySelector('#primerBrand').onchange=e=>{primerBrand=e.target.value;recommendQuantities()};
+document.querySelector('#copyRecipe').onclick=async()=>{const total=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);if(selected.length<1||total!==100){alert('Finalizează mai întâi mixul la 100%.');return}const brand=mosaicBrand==='kober'?'Kober':'Duraziv';const pd=getPrimerData();const code=makeCode();const recipe=selected.map(s=>`${s.name} ${s.pct}%`).join(' · ');const text=`${code}
+${recipe}
+Producător: ${brand}
+Suprafață: ${sqm} m²
+Mozaic: ${mosaicBuckets} găleți x 25 kg
+Grund ${pd.name} ${pd.bigKg} kg: ${primerEnabled?primerBig:0}
+Grund ${pd.name} ${pd.smallKg} kg: ${primerEnabled?primerSmall:0}`;try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyRecipe');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază rețeta:',text)}};
+
+
+function currentMixIsValid(){
+  const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  return selected.length>=1 && totalPct===100 && mosaicBuckets>0;
+}
+function addCurrentMixToOrder(){
+  if(currentMixAdded){
+    alert('Acest mix este deja adăugat în comandă. Folosește „Adaugă alt mix” pentru o configurație nouă.');
+    return;
+  }
+  if(!selected.length){alert('Alege cel puțin o culoare pentru mix.');return;}
+  const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
+  if(totalPct!==100){alert('Finalizează procentele mixului la 100%.');return;}
+  if(mosaicBuckets<=0){alert('Alege cel puțin o găleată de mozaic.');return;}
+  const price=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
+  const newId='MIX-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5);
+  orderMixes.push({
+    id:newId,
+    code:makeCode(),
+    recipe:selected.map(s=>({name:s.name,pct:Number(s.pct)})),
+    mosaicBrand:mosaicBrand==='kober'?'Kober':'Duraziv',
+    mosaicBrandKey:mosaicBrand,
+    mosaicBuckets:Number(mosaicBuckets),
+    mosaicPrice:price,
+    mosaicTotal:Number(mosaicBuckets)*price,
+    requestedSqm:Number(sqm)||0,
+    estimatedCoverage:Number(mosaicBuckets)*4
+  });
+  currentMixAdded=true;
+  currentAddedMixId=newId;
+  renderAll();
+  renderCalc();
+  setSectionCollapsed('mosaic',true);
+  setSectionCollapsed('primer',false);
+}
+function removeOrderMix(id){
+  orderMixes=orderMixes.filter(m=>m.id!==id);
+  if(id===currentAddedMixId){
+    selected=[];
+    sqm=0;
+    mosaicBuckets=0;
+    recommendedMosaicBuckets=0;
+    currentMixAdded=false;
+    currentAddedMixId=null;
+    renderAll();
+  }
+  renderCalc();
+}
+function renderMixCart(){
+  const list=document.querySelector('#mixCartList');
+  const count=document.querySelector('#mixCartCount');
+  if(!list||!count)return;
+  count.textContent=orderMixes.length+(orderMixes.length===1?' mix':' mixuri');
+  if(!orderMixes.length){list.innerHTML='<div class="note">Nu ai adăugat încă niciun mix.</div>';return;}
+  list.innerHTML=orderMixes.map((m,i)=>`
+    <div class="saved-mix">
+      <div class="saved-mix-top">
+        <div><span class="saved-mix-code">Mix ${i+1} · ${m.code}</span><div class="saved-mix-recipe">${m.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · ')}</div></div>
+        <div class="saved-mix-actions"><button type="button" onclick="removeOrderMix('${m.id}')">Șterge</button></div>
+      </div>
+      <div class="saved-mix-meta">${m.mosaicBrand} · ${m.mosaicBuckets} găleți × 25 kg · <b>acoperire estimată ~${m.estimatedCoverage} m²</b> · ${m.mosaicTotal.toLocaleString('ro-RO')} lei</div>
+    </div>`).join('');
+}
+document.querySelector('#addMixToOrder').onclick=addCurrentMixToOrder;
+
+
+function addPrimerSelectionToOrder(){
+  if(!primerEnabled || (primerBig<=0 && primerSmall<=0)){ alert('Alege cel puțin o găleată de grund.'); return; }
+  const pd=getPrimerData();
+  if(primerBig>0) orderPrimers.push({id:'PR-'+Date.now().toString(36)+'-B-'+Math.random().toString(36).slice(2,5),brand:pd.name,kg:pd.bigKg,quantity:Number(primerBig),unitPrice:pd.bigPrice,coveragePerBucket:pd.bigCoverage,total:Number(primerBig)*pd.bigPrice});
+  if(primerSmall>0) orderPrimers.push({id:'PR-'+Date.now().toString(36)+'-S-'+Math.random().toString(36).slice(2,5),brand:pd.name,kg:pd.smallKg,quantity:Number(primerSmall),unitPrice:pd.smallPrice,coveragePerBucket:pd.smallCoverage,total:Number(primerSmall)*pd.smallPrice});
+  primerBig=0; primerSmall=0; renderCalc();
+  setSectionCollapsed('primer',true);
+}
+function removePrimerItem(id){ orderPrimers=orderPrimers.filter(p=>p.id!==id); renderCalc(); }
+function changePrimerItemQty(id,delta){
+  const item=orderPrimers.find(p=>p.id===id); if(!item)return;
+  item.quantity=Math.max(0,Number(item.quantity||0)+delta);
+  if(item.quantity<=0) orderPrimers=orderPrimers.filter(p=>p.id!==id);
+  else item.total=item.quantity*item.unitPrice;
+  renderCalc();
+}
+function renderPrimerCart(){
+  const list=document.querySelector('#primerCartList'), count=document.querySelector('#primerCartCount');
+  if(!list||!count)return;
+  const totalQty=orderPrimers.reduce((s,p)=>s+p.quantity,0);
+  count.textContent=totalQty+' găleți';
+  if(!orderPrimers.length){ list.innerHTML='<div class="note">Nu ai adăugat încă grund în comandă.</div>'; return; }
+  list.innerHTML=orderPrimers.map(p=>`
+    <div class="saved-mix">
+      <div class="saved-mix-top">
+        <div><span class="saved-mix-code">${p.brand} · ${p.kg} kg</span>
+        <div class="saved-mix-meta">${p.quantity} găleți × ${p.unitPrice} lei · acoperire estimată ~${p.quantity*p.coveragePerBucket} m² · <b>${p.total.toLocaleString('ro-RO')} lei</b></div></div>
+        <div class="saved-mix-actions">
+          <button type="button" onclick="changePrimerItemQty('${p.id}',-1)">−</button>
+          <button type="button" onclick="changePrimerItemQty('${p.id}',1)">+</button>
+          <button type="button" onclick="removePrimerItem('${p.id}')">Șterge</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+document.querySelector('#addPrimerToOrder').onclick=addPrimerSelectionToOrder;
+
+
+function resetCurrentMixConfiguration(){
+  selected=[];
+  sqm=0;
+  mosaicBuckets=0;
+  recommendedMosaicBuckets=0;
+  currentMixAdded=false;
+  currentAddedMixId=null;
+  renderAll();
+  renderCalc();
+}
+function startAnotherMix(){
+  resetCurrentMixConfiguration();
+  setSectionCollapsed('mosaic',false);
+  setSectionCollapsed('primer',false);
+}
+function cancelCurrentMix(){
+  if(currentAddedMixId){
+    orderMixes=orderMixes.filter(m=>m.id!==currentAddedMixId);
+  }
+  resetCurrentMixConfiguration();
+  setSectionCollapsed('mosaic',false);
+  renderCompactOrderSummary();
+}
+document.querySelector('#startAnotherMix').onclick=startAnotherMix;
+document.querySelector('#cancelCurrentMix').onclick=cancelCurrentMix;
+
+function setSectionCollapsed(which,collapsed){
+  const body=document.querySelector('#'+which+'SectionBody');
+  const cap=which.charAt(0).toUpperCase()+which.slice(1);
+  const btn=document.querySelector('#toggle'+cap+'Section');
+  if(!body||!btn)return;
+  body.classList.toggle('collapsed',collapsed);
+  btn.classList.toggle('closed',collapsed);
+}
+document.querySelector('#toggleMosaicSection').onclick=()=>{
+  const body=document.querySelector('#mosaicSectionBody');
+  setSectionCollapsed('mosaic',!body.classList.contains('collapsed'));
+};
+document.querySelector('#togglePrimerSection').onclick=()=>{
+  const body=document.querySelector('#primerSectionBody');
+  setSectionCollapsed('primer',!body.classList.contains('collapsed'));
+};
+
+function renderCompactOrderSummary(){
+  const box=document.querySelector('#orderSummaryCompact');
+  const count=document.querySelector('#orderSummaryCount');
+  if(!box||!count)return;
+  const rows=[];
+  orderMixes.forEach((m,i)=>{
+    rows.push({
+      title:`Mix ${i+1} · ${m.recipe.map(x=>x.name+' '+x.pct+'%').join(' + ')}`,
+      meta:`${m.mosaicBuckets} găleți · acoperire ~${m.estimatedCoverage} m²`,
+      total:m.mosaicTotal
+    });
+  });
+  orderPrimers.forEach(p=>{
+    rows.push({
+      title:`${p.brand} ${p.kg} kg`,
+      meta:`${p.quantity} găleți`,
+      total:p.total
+    });
+  });
+  const productsCount=orderMixes.length+orderPrimers.reduce((s,p)=>s+p.quantity,0);
+  count.textContent=productsCount+(productsCount===1?' produs':' produse');
+  const nextActions=document.querySelector('#mixNextActions');
+  if(nextActions) nextActions.style.display=orderMixes.length>0?'flex':'none';
+  if(!rows.length){
+    box.className='order-summary-empty';
+    box.textContent='Nu ai adăugat încă produse în comandă.';
+    return;
+  }
+  box.className='';
+  box.innerHTML=rows.map(r=>`<div class="order-summary-line"><span><b>${r.title}</b><br><small>${r.meta}</small></span><b>${r.total.toLocaleString('ro-RO')} lei</b></div>`).join('');
+}
+
+function getCheckoutData(){
+  const mixes=orderMixes.map(m=>({...m}));
+  const primers=orderPrimers.map(p=>({...p}));
+  const mosaicTotal=mixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
+  const primerTotal=primers.reduce((sum,p)=>sum+p.total,0);
+  const hasProducts=mixes.length>0||primers.length>0;
+  return {
+    valid:hasProducts,mixes,primers,
+    code:mixes.length===1?mixes[0].code:(mixes.length>1?'MULTI-'+mixes.length:'—'),
+    recipe:mixes.flatMap(m=>m.recipe),
+    mosaicBrand:mixes.length===1?mixes[0].mosaicBrand:(mixes.length>1?'Multiplu':'—'),
+    mosaicBuckets:mixes.reduce((s,m)=>s+m.mosaicBuckets,0),
+    mosaicPrice:mixes.length===1?mixes[0].mosaicPrice:null,
+    mosaicTotal,
+    sqm:mixes.reduce((s,m)=>s+(m.requestedSqm||0),0),
+    primerEnabled:primers.length>0,primerItems:primers,primerTotal,
+    subtotal:mosaicTotal+primerTotal
+  };
+}
+const PICKUP_ADDRESS='Str. Râului nr. 214, Craiova, Dolj, CP 200641';
+const BANK_TRANSFER={
+  beneficiary:'SC Sabaki Impex SRL',
+  cui:'RO 14172138',
+  reg:'J16/611/2001',
+  iban:'RO44 BTRL RONC RT05 8012 5601'
+};
+
+const ORDER_EMAIL_ENDPOINT='https://api.purohome.ro/order_email.php';
+
+const WAREHOUSE_QUERY='Strada Râului 214, Craiova, Dolj, 200641, Romania';
+const SHIPPING_RATE_PER_KM=2;
+const SHIPPING_MIN=50;
+const SHIPPING_MAX_SHARE=.25;
+let shippingDistanceKm=null;
+let shippingPrice=null;
+let shippingLastAddress='';
+
+function getPaymentMethod(){
+  return document.querySelector('input[name="paymentMethod"]:checked')?.value||'bank';
+}
+
+function getDeliveryMethod(){
+  return document.querySelector('input[name="deliveryMethod"]:checked')?.value||'delivery';
+}
+
+function updateDeliveryUI(){
+  const pickup=getDeliveryMethod()==='pickup';
+  document.querySelectorAll('.delivery-field').forEach(el=>el.classList.toggle('hidden',pickup));
+  document.querySelector('#pickupInfo')?.classList.toggle('show',pickup);
+  document.querySelector('#shippingCalc')?.classList.toggle('hidden',pickup);
+  const info=document.querySelector('#shippingInfo');
+  if(info) info.innerHTML=pickup
+    ?'<b>Transport:</b> 0 lei — ridicare personală de la sediul PuroHome.'
+    :'<b>Transport:</b> se calculează automat după adresa de livrare.';
+  if(pickup){
+    shippingDistanceKm=0;
+    shippingPrice=0;
+    ['custCounty','custCity','custPostcode','custAddress'].forEach(id=>setFieldState(id,null,''));
+  }else{
+    shippingDistanceKm=null;
+    shippingPrice=null;
+    shippingLastAddress='';
+    const d=document.querySelector('#shippingDistance'); if(d)d.textContent='—';
+    const p=document.querySelector('#shippingPrice'); if(p)p.textContent='—';
+    const s=document.querySelector('#shippingStatus'); if(s){s.textContent='Completează județul, localitatea și adresa, apoi calculăm automat transportul.';s.className='status';}
+  }
+  renderCheckoutSummary();
+}
+
+
+function getDeliveryAddressText(){
+  const county=document.querySelector('#custCounty')?.value.trim()||'';
+  const city=document.querySelector('#custCity')?.value.trim()||'';
+  const postcode=document.querySelector('#custPostcode')?.value.trim()||'';
+  const address=document.querySelector('#custAddress')?.value.trim()||'';
+  return [address,city,county,postcode,'Romania'].filter(Boolean).join(', ');
+}
+
+async function geocodeAddress(query){
+  const url='https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=ro&q='+encodeURIComponent(query);
+  const response=await fetch(url,{headers:{'Accept':'application/json'}});
+  if(!response.ok) throw new Error('Geocodare '+response.status);
+  const data=await response.json();
+  if(!Array.isArray(data)||!data.length) throw new Error('Adresa nu a fost găsită.');
+  return {lat:Number(data[0].lat),lon:Number(data[0].lon),label:data[0].display_name||query};
+}
+
+function calculateShippingPrice(distanceKm,subtotal){
+  const distanceCost=distanceKm*SHIPPING_RATE_PER_KM;
+  const cappedCost=subtotal>0?Math.min(distanceCost,subtotal*SHIPPING_MAX_SHARE):distanceCost;
+  return Math.max(SHIPPING_MIN,Math.round(cappedCost));
+}
+
+async function calculateShipping(){
+  if(getDeliveryMethod()!=='delivery') return;
+  const err=document.querySelector('#checkoutError');
+  const status=document.querySelector('#shippingStatus');
+  const distanceEl=document.querySelector('#shippingDistance');
+  const priceEl=document.querySelector('#shippingPrice');
+  const btn=document.querySelector('#calculateShipping');
+  const addressText=getDeliveryAddressText();
+  const county=document.querySelector('#custCounty')?.value.trim();
+  const city=document.querySelector('#custCity')?.value.trim();
+  const address=document.querySelector('#custAddress')?.value.trim();
+  const postcode=document.querySelector('#custPostcode')?.value.trim();
+
+  const addressOk=validateCounty(true)&&validateCity(true)&&validatePostcode(true)&&validateAddress(true);
+  if(!addressOk||!county||!city||!address||!postcode){
+    if(status){status.textContent='Verifică județul, localitatea, codul poștal și adresa de livrare.';status.className='status error';}
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='Se calculează...';
+  if(status){status.textContent='Căutăm adresa și calculăm traseul rutier...';status.className='status';}
+
+  try{
+    let warehouse;
+    try{
+      const cached=JSON.parse(localStorage.getItem('purohomeWarehouseGeo')||'null');
+      if(cached&&Number.isFinite(cached.lat)&&Number.isFinite(cached.lon)) warehouse=cached;
+    }catch(_){}
+
+    if(!warehouse){
+      warehouse=await geocodeAddress(WAREHOUSE_QUERY);
+      try{localStorage.setItem('purohomeWarehouseGeo',JSON.stringify(warehouse));}catch(_){}
+    }
+
+    const dest=await geocodeAddress(addressText);
+    const routeUrl=`https://router.project-osrm.org/route/v1/driving/${warehouse.lon},${warehouse.lat};${dest.lon},${dest.lat}?overview=false&alternatives=false&steps=false`;
+    const response=await fetch(routeUrl);
+    if(!response.ok) throw new Error('Rutare '+response.status);
+    const data=await response.json();
+    if(data.code!=='Ok'||!data.routes?.length) throw new Error('Nu am putut calcula traseul.');
+
+    shippingDistanceKm=Math.max(1,Math.round((data.routes[0].distance/1000)*10)/10);
+    const d=getCheckoutData();
+    shippingPrice=calculateShippingPrice(shippingDistanceKm,d.subtotal);
+    shippingLastAddress=addressText;
+
+    if(distanceEl)distanceEl.textContent=shippingDistanceKm.toLocaleString('ro-RO')+' km';
+    if(priceEl)priceEl.textContent=shippingPrice.toLocaleString('ro-RO')+' lei';
+
+    if(status){
+      const raw=Math.round(shippingDistanceKm*SHIPPING_RATE_PER_KM);
+      const cap=Math.round(d.subtotal*SHIPPING_MAX_SHARE);
+      const capApplied=raw>cap && cap>=SHIPPING_MIN;
+      status.textContent='Transport calculat.';
+      status.className='status ok';
+    }
+
+    if(err)err.classList.remove('show');
+    renderCheckoutSummary();
+  }catch(e){
+    shippingDistanceKm=null;
+    shippingPrice=null;
+    shippingLastAddress='';
+    if(distanceEl)distanceEl.textContent='—';
+    if(priceEl)priceEl.textContent='—';
+    if(status){status.textContent='Nu am putut calcula automat transportul. Verifică adresa și încearcă din nou.';status.className='status error';}
+    console.error(e);
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Recalculează transportul';
+  }
+}
+
+function renderCheckoutSummary(){
+  const d=getCheckoutData();
+  const el=document.querySelector('#checkoutSummary');if(!el)return;
+  const pickup=getDeliveryMethod()==='pickup';
+  const ship=pickup?0:shippingPrice;
+  const finalTotal=ship==null?null:d.subtotal+ship;
+  const mixesHtml=d.mixes.length?d.mixes.map((m,i)=>`
+    <div class="summary-recipe">
+      <div><b>Mix ${i+1} · ${m.code}</b></div>
+      <div>${m.recipe.map(x=>`<b>${x.name}</b> ${x.pct}%`).join(' · ')}</div>
+      <div class="summary-line"><span>Producător</span><b>${m.mosaicBrand}</b></div>
+      <div class="summary-line"><span>Cantitate</span><b>${m.mosaicBuckets} găleți × 25 kg</b></div>
+      <div class="summary-line"><span>Acoperire estimată</span><b>~${m.estimatedCoverage} m²</b></div>
+      <div class="summary-line"><span>Valoare mix</span><b>${m.mosaicTotal.toLocaleString('ro-RO')} lei</b></div>
+    </div>`).join(''):'<div class="summary-recipe">Fără mozaic — comandă de grund.</div>';
+  el.innerHTML=`
+    ${mixesHtml}
+    <div class="coverage-note"><b>Suprafața de acoperire este orientativă</b>, calculată pe baza unui consum mediu. În practică, aceasta poate varia în funcție de suport, grosimea aplicării, modul de lucru și pierderile de material.</div>
+    <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?'Produse selectate':'Fără grund'}</b></div>
+    ${d.primerEnabled?d.primerItems.map(p=>`<div class="summary-line"><span>${p.brand} ${p.kg} kg</span><b>${p.quantity} găleți × ${p.unitPrice} lei</b></div>`).join(''):''}
+    <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
+    <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
+    <div class="summary-line"><span>Plată</span><b>${getPaymentMethod()==='bank'?'Transfer bancar (OP)':'Card'}</b></div>
+    <div class="summary-line checkout-total"><span>${finalTotal==null?'Subtotal produse':'TOTAL FINAL'}</span><span>${(finalTotal??d.subtotal).toLocaleString('ro-RO')} lei</span></div>`;
+}
+function openCheckout(){
+  const d=getCheckoutData();
+  const err=document.querySelector('#checkoutError');
+  if(!d.valid){
+    alert('Adaugă cel puțin un mix sau cel puțin un produs de grund în comandă.');
+    return;
+  }
+  updateDeliveryUI();
+  document.querySelector('#checkoutModal').classList.add('open');
+  document.querySelector('#checkoutModal').setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  err.classList.remove('show');
+}
+function closeCheckout(){document.querySelector('#checkoutModal').classList.remove('open');document.querySelector('#checkoutModal').setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
+function orderText(){
+  const d=getCheckoutData();
+  const pickup=getDeliveryMethod()==='pickup';
+  const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
+  const deliveryLine=pickup?`Ridicare personală: ${PICKUP_ADDRESS}`:`Livrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}`;
+  const shippingLine=pickup?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`:(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
+  const mixLines=d.mixes.length?d.mixes.map((m,i)=>`Mix ${i+1}: ${m.code}\n${m.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ')}\n${m.mosaicBrand}: ${m.mosaicBuckets} găleți x 25 kg\nAcoperire estimată: ~${m.estimatedCoverage} m²`).join('\n\n'):'Fără mozaic';
+  const paymentLine=getPaymentMethod()==='bank'
+    ?`Plată: Transfer bancar (OP)\nIBAN: ${BANK_TRANSFER.iban}`
+    :'Plată: Card';
+  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?d.primerItems.map(p=>`${p.brand} ${p.kg} kg — ${p.quantity} găleți`).join(' + '):'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\n${paymentLine}\nObservații: ${customer.notes||'-'}`;
+}
+function setFieldState(id, valid, message=''){
+  const el=document.querySelector('#'+id);
+  const help=document.querySelector('#help'+id.replace('cust',''));
+  if(el){
+    el.classList.remove('valid','invalid');
+    if(valid===true)el.classList.add('valid');
+    if(valid===false)el.classList.add('invalid');
+  }
+  if(help){
+    help.textContent=message;
+    help.className='field-help'+(valid===false?' error':valid===true&&message?' ok':'');
+  }
+}
+
+function validateName(show=true){
+  const v=document.querySelector('#custName').value.trim();
+  const ok=v.length>=3 && /[A-Za-zĂÂÎȘȚăâîșț]/.test(v);
+  if(show)setFieldState('custName',ok,ok?'':'Introdu numele complet.');
+  return ok;
+}
+
+function normalizePhoneValue(v){
+  return v.replace(/[^\d+]/g,'');
+}
+
+function validatePhone(show=true){
+  const el=document.querySelector('#custPhone');
+  const v=normalizePhoneValue(el.value.trim());
+  const ok=/^07\d{8}$/.test(v)||/^\+407\d{8}$/.test(v)||/^407\d{8}$/.test(v);
+  if(show)setFieldState('custPhone',ok,ok?'':'Telefon valid: 07xxxxxxxx sau +407xxxxxxxx.');
+  return ok;
+}
+
+function validateEmail(show=true){
+  const v=document.querySelector('#custEmail').value.trim();
+  if(!v){ if(show)setFieldState('custEmail',null,''); return true; }
+  const ok=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v);
+  if(show)setFieldState('custEmail',ok,ok?'':'Email invalid. Exemplu: nume@domeniu.ro');
+  return ok;
+}
+
+function validateCounty(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const ok=!!document.querySelector('#custCounty').value.trim();
+  if(show)setFieldState('custCounty',ok,ok?'':'Alege județul.');
+  return ok;
+}
+
+function validateCity(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custCity').value.trim();
+  const ok=v.length>=2;
+  if(show)setFieldState('custCity',ok,ok?'':'Introdu localitatea.');
+  return ok;
+}
+
+function validatePostcode(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custPostcode').value.trim();
+  const ok=/^\d{6}$/.test(v);
+  if(show)setFieldState('custPostcode',ok,ok?'':'Codul poștal trebuie să aibă exact 6 cifre.');
+  return ok;
+}
+
+function validateAddress(show=true){
+  if(getDeliveryMethod()==='pickup')return true;
+  const v=document.querySelector('#custAddress').value.trim();
+  const hasNumber=/\d/.test(v);
+  const ok=v.length>=5 && hasNumber;
+  if(show)setFieldState('custAddress',ok,ok?'':'Introdu strada și numărul.');
+  return ok;
+}
+
+function validateAllCustomerFields(show=true){
+  return [
+    validateName(show),
+    validatePhone(show),
+    validateEmail(show),
+    validateCounty(show),
+    validateCity(show),
+    validatePostcode(show),
+    validateAddress(show)
+  ].every(Boolean);
+}
+
+function validateCheckout(){
+  const pickup=getDeliveryMethod()==='pickup';
+  const fieldsOk=validateAllCustomerFields(true);
+  const missing=[];
+  if(!fieldsOk) missing.push('datele clientului');
+  if(!pickup){
+    const currentAddress=getDeliveryAddressText();
+    if(shippingPrice==null||shippingLastAddress!==currentAddress) missing.push('calculul transportului');
+  }
+  if(!document.querySelector('#confirmOrder').checked)missing.push('confirmarea sumarului');
+  const err=document.querySelector('#checkoutError');
+  if(missing.length){err.textContent='Verifică: '+missing.join(', ')+'.';err.classList.add('show');return false}
+  err.classList.remove('show');return true;
+}
+const SUPABASE_URL='https://kuwsoylhvvfkreoyfvjf.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_xQv5BWQ0REuNo2TM45mLBg_nOlw4Ee_';
+
+
+async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
+  const deliveryText=pickup
+    ? 'Ridicare personală — Str. Râului nr. 214, Craiova'
+    : `${customer.address}, ${customer.city}, ${customer.county}, ${customer.postcode}`;
+
+  const body={
+    order_id:orderId,
+    customer,
+    delivery:{
+      method:pickup?'pickup':'delivery',
+      text:deliveryText,
+      shipping_price:pickup?0:shippingPrice
+    },
+    mixes:d.mixes,
+    primers:d.primerItems,
+    products_total:d.subtotal,
+    final_total:finalAmount,
+    payment_method:'bank_transfer'
+  };
+
+  const r=await fetch(ORDER_EMAIL_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  });
+
+  let data={};
+  try{data=await r.json()}catch(_){}
+  if(!r.ok || !data.ok){
+    throw new Error(data.message||('Email HTTP '+r.status));
+  }
+  return data;
+}
+
+async function saveOrderToSupabase(){
+  if(!validateCheckout())return;
+  const d=getCheckoutData();
+  if(!d.valid)return;
+  const btn=document.querySelector('#prepareOrder');
+  const st=document.querySelector('#checkoutStatus');
+  const err=document.querySelector('#checkoutError');
+  const oldText=btn.textContent;
+  btn.disabled=true;btn.textContent='Se salvează...';
+  st.classList.remove('show');err.classList.remove('show');
+  const orderId='CMD-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+  const pickup=getDeliveryMethod()==='pickup';
+  const customer={
+    name:document.querySelector('#custName').value.trim(),
+    phone:document.querySelector('#custPhone').value.trim(),
+    email:document.querySelector('#custEmail').value.trim(),
+    county:pickup?'Dolj':document.querySelector('#custCounty').value.trim(),
+    city:pickup?'Craiova':document.querySelector('#custCity').value.trim(),
+    postcode:pickup?'200641':document.querySelector('#custPostcode').value.trim(),
+    address:pickup?'RIDICARE PERSONALĂ — Str. Râului nr. 214':document.querySelector('#custAddress').value.trim(),
+    notes:document.querySelector('#custNotes').value.trim()
+  };
+  const pd=getPrimerData();
+  const primerSmallItems=(d.primerItems||[]).filter(p=>p.kg<20);
+  const primerLargeItems=(d.primerItems||[]).filter(p=>p.kg>=20);
+  const primerSmallBuckets=primerSmallItems.reduce((s,p)=>s+p.quantity,0);
+  const primerLargeBuckets=primerLargeItems.reduce((s,p)=>s+p.quantity,0);
+  const payload={
+    order_number:orderId,
+    mx_code:d.code,
+    customer_name:customer.name,
+    customer_phone:customer.phone,
+    customer_email:customer.email||null,
+    county:customer.county||null,
+    city:customer.city||null,
+    address:customer.address||null,
+    postal_code:customer.postcode||null,
+    customer_notes:customer.notes||null,
+    mosaic_brand:d.mosaicBrand,
+    surface_m2:d.sqm,
+    mosaic_buckets:d.mosaicBuckets,
+    mosaic_bucket_kg:25,
+    mosaic_unit_price:d.mosaicPrice,
+    mix_recipe:{version:3,mixes:d.mixes,primers:d.primerItems},
+    primer_included:d.primerEnabled,
+    primer_brand:d.primerEnabled?(d.primerItems.length===1?d.primerItems[0].brand:'Multiplu'):null,
+    primer_small_bucket_kg:primerSmallItems.length===1?primerSmallItems[0].kg:null,
+    primer_small_buckets:primerSmallBuckets,
+    primer_small_unit_price:primerSmallItems.length===1?primerSmallItems[0].unitPrice:null,
+    primer_large_bucket_kg:primerLargeItems.length===1?primerLargeItems[0].kg:null,
+    primer_large_buckets:primerLargeBuckets,
+    primer_large_unit_price:primerLargeItems.length===1?primerLargeItems[0].unitPrice:null,
+    mosaic_total:d.mosaicTotal,
+    primer_total:d.primerTotal,
+    products_total:d.subtotal,
+    shipping_price:pickup?0:shippingPrice,
+    final_total:pickup?d.subtotal:(shippingPrice==null?null:d.subtotal+shippingPrice),
+    order_status:'noua',
+    payment_method:'bank_transfer',
+    payment_status:'in_asteptare',
+    repeated_from_mx:null
+  };
+  try{
+    const response=await fetch(SUPABASE_URL+'/rest/v1/orders',{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_PUBLISHABLE_KEY,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify(payload)
+    });
+    if(!response.ok){
+      let detail='';
+      try{detail=await response.text()}catch(_){}
+      throw new Error('Supabase '+response.status+(detail?' · '+detail:''));
+    }
+    // Plata prin transfer bancar (OP): nu redirecționăm către procesatorul de card.
+    const finalAmount=pickup?d.subtotal:d.subtotal+shippingPrice;
+
+    let emailOk=false;
+    try{
+      await sendOrderEmails(orderId,d,customer,pickup,finalAmount);
+      emailOk=true;
+    }catch(mailErr){
+      console.error('Email order error:',mailErr);
+    }
+
+    st.innerHTML=`<b>Comanda ${orderId} a fost înregistrată.</b><br><br>
+      Total de plată: <b>${finalAmount.toLocaleString('ro-RO')} lei</b><br>
+      Beneficiar: <b>${BANK_TRANSFER.beneficiary}</b><br>
+      CUI: ${BANK_TRANSFER.cui}<br>
+      IBAN RON: <b>${BANK_TRANSFER.iban}</b><br><br>
+      La detaliile plății scrie: <b>${orderId}</b>.<br>
+      Comanda va fi procesată după confirmarea încasării.<br><br>
+      ${emailOk
+        ? '<b>Confirmarea a fost trimisă și pe email.</b>'
+        : '<b>Comanda este salvată, dar emailul de confirmare nu a putut fi trimis. Datele de plată rămân cele afișate mai sus.</b>'}`;
+    st.classList.add('show');
+    btn.textContent='Comandă înregistrată ✓';
+    return;
+    // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
+    try{
+      const arr=JSON.parse(localStorage.getItem('mixPiatraSentOrders')||'[]');
+      arr.push({orderId,createdAt:new Date().toISOString(),mix:d,customer});
+      localStorage.setItem('mixPiatraSentOrders',JSON.stringify(arr));
+    }catch(_){}
+    st.innerHTML=`Comanda a fost salvată online. <b>${orderId}</b> · Mix <b>${d.code}</b>.<br>O poți identifica ulterior după codul MX, numărul comenzii, telefon, nume, email sau dată.`;
+    st.classList.add('show');
+    btn.textContent='Comandă salvată ✓';
+    setTimeout(()=>{btn.textContent=oldText;btn.disabled=false},2200);
+  }catch(e){
+    console.error(e);
+    err.textContent='Comanda nu a putut fi salvată online. Verifică conexiunea și încearcă din nou. '+(e?.message||'');
+    err.classList.add('show');
+    btn.textContent=oldText;btn.disabled=false;
+  }
+}
+
+function saveDraftOrder(){
+  if(!validateCheckout())return;
+  const d=getCheckoutData();
+  const orderId='CMD-'+Date.now().toString(36).toUpperCase();
+  const customer={name:document.querySelector('#custName').value.trim(),phone:document.querySelector('#custPhone').value.trim(),email:document.querySelector('#custEmail').value.trim(),county:document.querySelector('#custCounty').value.trim(),city:document.querySelector('#custCity').value.trim(),postcode:document.querySelector('#custPostcode').value.trim(),address:document.querySelector('#custAddress').value.trim(),notes:document.querySelector('#custNotes').value.trim()};
+  const draft={orderId,createdAt:new Date().toISOString(),mix:d,customer};
+  try{const arr=JSON.parse(localStorage.getItem('mixPiatraDraftOrders')||'[]');arr.push(draft);localStorage.setItem('mixPiatraDraftOrders',JSON.stringify(arr));}catch(e){}
+  const st=document.querySelector('#checkoutStatus');st.innerHTML=`Datele au fost pregătite. <b>${orderId}</b> · Mix <b>${d.code}</b>.<br>Aceasta este încă o salvare locală de test; comanda nu a fost transmisă către un server.`;st.classList.add('show');
+}
+document.querySelector('#openCheckout').onclick=openCheckout;
+document.querySelector('#checkoutClose').onclick=closeCheckout;
+document.querySelector('#checkoutModal').addEventListener('click',e=>{if(e.target.id==='checkoutModal')closeCheckout()});
+document.querySelector('#prepareOrder').onclick=saveOrderToSupabase;
+document.querySelectorAll('input[name="deliveryMethod"]').forEach(el=>el.addEventListener('change',updateDeliveryUI));
+document.querySelectorAll('input[name="paymentMethod"]').forEach(el=>el.addEventListener('change',()=>{
+  document.querySelectorAll('.payment-option').forEach(x=>x.classList.remove('active'));
+  document.querySelector('input[name="paymentMethod"]:checked')?.closest('.payment-option')?.classList.add('active');
+  document.querySelector('#bankTransferInfo')?.classList.toggle('show',getPaymentMethod()==='bank');
+  renderCheckoutSummary();
+}));
+
+document.querySelector('#calculateShipping').addEventListener('click',calculateShipping);
+
+document.querySelector('#custPostcode').addEventListener('input',e=>{
+  e.target.value=e.target.value.replace(/\D/g,'').slice(0,6);
+  validatePostcode(true);
+});
+document.querySelector('#custPhone').addEventListener('input',e=>{
+  e.target.value=e.target.value.replace(/[^\d+\s-]/g,'').slice(0,14);
+});
+document.querySelector('#custName').addEventListener('blur',()=>validateName(true));
+document.querySelector('#custPhone').addEventListener('blur',()=>validatePhone(true));
+document.querySelector('#custEmail').addEventListener('blur',()=>validateEmail(true));
+document.querySelector('#custCounty').addEventListener('change',()=>validateCounty(true));
+document.querySelector('#custCity').addEventListener('blur',()=>validateCity(true));
+document.querySelector('#custAddress').addEventListener('blur',()=>validateAddress(true));
+
+['custCounty','custCity','custPostcode','custAddress'].forEach(id=>{
+  document.querySelector('#'+id)?.addEventListener('input',()=>{
+    if(getDeliveryMethod()!=='delivery')return;
+    shippingDistanceKm=null;shippingPrice=null;shippingLastAddress='';
+    const d=document.querySelector('#shippingDistance');if(d)d.textContent='—';
+    const p=document.querySelector('#shippingPrice');if(p)p.textContent='—';
+    const s=document.querySelector('#shippingStatus');if(s){s.textContent='Adresa s-a modificat. Recalculează transportul.';s.className='status';}
+    renderCheckoutSummary();
+  });
+});
+document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
+document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
+
+window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();updateDeliveryUI();
+</script>
+  <footer style="
+  background:#0f1720;
+  color:#ffffff;
+  padding:32px 20px;
+  margin-top:40px;
+  border-top:1px solid #26313c;
+  font-family:Arial,sans-serif;
+">
+  <div style="
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:28px;
+  ">
+
+    <div>
+      <h3 style="margin-top:0;color:#f28a00;">PUROHOME</h3>
+      <p style="margin:6px 0;">Mixuri personalizate de piatră decorativă</p>
+      <p style="margin:6px 0;">Telefon: +40 735 172 091</p>
+      <p style="margin:6px 0;">Email: comenzi@purohome.ro</p>
+    </div>
+
+    <div>
+      <h4 style="margin-top:0;">Informații clienți</h4>
+      <p><a href="/termeni-si-conditii.html" style="color:#fff;">Termeni și condiții</a></p>
+      <p><a href="/politica-confidentialitate.html" style="color:#fff;">Politica de confidențialitate</a></p>
+      <p><a href="/politica-livrare.html" style="color:#fff;">Livrare și plată</a></p>
+      <p><a href="/politica-anulare-retur.html" style="color:#fff;">Anulare și retur</a></p>
+      <p><a href="/politica-gdpr.html" style="color:#fff;">Politica GDPR</a></p>
+    </div>
+
+    <div>
+      <h4 style="margin-top:0;">Date companie</h4>
+     <p style="margin:6px 0;">Denumire firmă: SABAKI IMPEX SRL</p>
+     <p style="margin:6px 0;">CUI: RO 14172138</p>
+     <p style="margin:6px 0;">Nr. Reg. Comerțului: J16/611/2001</p>
+     <p style="margin:6px 0;">Sediu: Str. Râului nr. 214, Craiova, Dolj</p>
+      
+    </div>
+
+    <div>
+      <h4 style="margin-top:0;">Plăți și protecția consumatorului</h4>
+      <script src="https://mny.ro/npId.js?p=167931" type="text/javascript" data-version="orizontal" data-contrast-color="#101820" ></script>
+      <p style="margin:6px 0;">Plăți online procesate prin NETOPIA Payments</p>
+      <p style="margin:6px 0;">
+        <a href="https://anpc.ro/" target="_blank" rel="noopener" style="color:#fff;">
+          ANPC
+        </a>
+      </p>
+    </div>
+
+  </div>
+
+  <div style="
+    max-width:1200px;
+    margin:24px auto 0;
+    padding-top:18px;
+    border-top:1px solid #26313c;
+    text-align:center;
+    font-size:13px;
+    color:#aab4bf;
+  ">
+    © 2026 PuroHome. Toate drepturile rezervate.
+  </div>
+</footer>
+  
+<!-- /FOOTER PUROHOME -->
+</body>
+</html>
