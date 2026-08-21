@@ -965,6 +965,8 @@ const BANK_TRANSFER={
   iban:'RO44 BTRL RONC RT05 8012 5601'
 };
 
+const ORDER_EMAIL_ENDPOINT='https://api.purohome.ro/order_email.php';
+
 const WAREHOUSE_QUERY='Strada Râului 214, Craiova, Dolj, 200641, Romania';
 const SHIPPING_RATE_PER_KM=2;
 const SHIPPING_MIN=50;
@@ -1256,6 +1258,41 @@ function validateCheckout(){
 const SUPABASE_URL='https://kuwsoylhvvfkreoyfvjf.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_xQv5BWQ0REuNo2TM45mLBg_nOlw4Ee_';
 
+
+async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
+  const deliveryText=pickup
+    ? 'Ridicare personală — Str. Râului nr. 214, Craiova'
+    : `${customer.address}, ${customer.city}, ${customer.county}, ${customer.postcode}`;
+
+  const body={
+    order_id:orderId,
+    customer,
+    delivery:{
+      method:pickup?'pickup':'delivery',
+      text:deliveryText,
+      shipping_price:pickup?0:shippingPrice
+    },
+    mixes:d.mixes,
+    primers:d.primerItems,
+    products_total:d.subtotal,
+    final_total:finalAmount,
+    payment_method:'bank_transfer'
+  };
+
+  const r=await fetch(ORDER_EMAIL_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  });
+
+  let data={};
+  try{data=await r.json()}catch(_){}
+  if(!r.ok || !data.ok){
+    throw new Error(data.message||('Email HTTP '+r.status));
+  }
+  return data;
+}
+
 async function saveOrderToSupabase(){
   if(!validateCheckout())return;
   const d=getCheckoutData();
@@ -1335,13 +1372,25 @@ async function saveOrderToSupabase(){
     }
     // Plata prin transfer bancar (OP): nu redirecționăm către procesatorul de card.
     const finalAmount=pickup?d.subtotal:d.subtotal+shippingPrice;
+
+    let emailOk=false;
+    try{
+      await sendOrderEmails(orderId,d,customer,pickup,finalAmount);
+      emailOk=true;
+    }catch(mailErr){
+      console.error('Email order error:',mailErr);
+    }
+
     st.innerHTML=`<b>Comanda ${orderId} a fost înregistrată.</b><br><br>
       Total de plată: <b>${finalAmount.toLocaleString('ro-RO')} lei</b><br>
       Beneficiar: <b>${BANK_TRANSFER.beneficiary}</b><br>
       CUI: ${BANK_TRANSFER.cui}<br>
       IBAN RON: <b>${BANK_TRANSFER.iban}</b><br><br>
       La detaliile plății scrie: <b>${orderId}</b>.<br>
-      Comanda va fi procesată după confirmarea încasării.`;
+      Comanda va fi procesată după confirmarea încasării.<br><br>
+      ${emailOk
+        ? '<b>Confirmarea a fost trimisă și pe email.</b>'
+        : '<b>Comanda este salvată, dar emailul de confirmare nu a putut fi trimis. Datele de plată rămân cele afișate mai sus.</b>'}`;
     st.classList.add('show');
     btn.textContent='Comandă înregistrată ✓';
     return;
