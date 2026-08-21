@@ -1406,48 +1406,11 @@ function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk){
 }
 
 function resetAfterCompletedOrder(){
-  orderMixes=[];
-  orderPrimers=[];
-  Object.keys(mixPreviewImages).forEach(k=>delete mixPreviewImages[k]);
-  selected=[];
-  sqm=0;
-  mosaicBuckets=0;
-  recommendedMosaicBuckets=0;
-  primerBig=0;
-  primerSmall=0;
-  currentMixAdded=false;
-  currentAddedMixId=null;
-  shippingDistanceKm=null;
-  shippingPrice=null;
-  shippingLastAddress='';
-
-  document.querySelector('#confirmOrder').checked=false;
-  ['custName','custPhone','custEmail','custCity','custPostcode','custAddress','custNotes'].forEach(id=>{
-    const el=document.querySelector('#'+id);
-    if(el) el.value='';
-  });
-  const county=document.querySelector('#custCounty');
-  if(county) county.value='';
-
-  document.querySelector('#deliveryDelivery').checked=true;
-  document.querySelector('#paymentBank').checked=true;
-
-  renderAll();
-  recommendQuantities();
-  updateDeliveryUI();
-  renderCalc();
-
-  const grid=document.querySelector('#checkoutModal .checkout-grid');
-  const success=document.querySelector('#orderSuccessScreen');
-  const head=document.querySelector('#checkoutModal .checkout-head');
-  if(grid) grid.style.display='grid';
-  if(success) success.style.display='none';
-  if(head) head.style.display='flex';
-
-  closeCheckout();
-  window.scrollTo({top:0,behavior:'smooth'});
+  // Revenirea după o comandă trebuie să pornească o sesiune complet nouă.
+  // O navigare reală la pagina principală golește toate stările din memorie:
+  // coș, mix curent, grund, transport calculat, date client și marcajul comenzii anterioare.
+  window.location.replace(window.location.origin + '/');
 }
-
 document.querySelector('#returnHomeAfterOrder').onclick=resetAfterCompletedOrder;
 
 async function saveOrderToSupabase(){
