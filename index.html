@@ -622,6 +622,7 @@ let orderPrimers=[];
 let recommendedMosaicBuckets=0;
 let currentMixAdded=false;
 let currentAddedMixId=null;
+const mixPreviewImages={};
 const MOSAIC_PRICES={duraziv:270,kober:240};
 const PRIMER_DATA={
   duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
@@ -780,6 +781,25 @@ function currentMixIsValid(){
   const totalPct=selected.reduce((a,b)=>a+(Number(b.pct)||0),0);
   return selected.length>=1 && totalPct===100 && mosaicBuckets>0;
 }
+
+function captureCurrentMixPreview(){
+  try{
+    const src=document.querySelector('#mixCanvas');
+    if(!src || !src.width || !src.height) return null;
+    const maxW=700;
+    const ratio=src.height/src.width;
+    const out=document.createElement('canvas');
+    out.width=maxW;
+    out.height=Math.max(1,Math.round(maxW*ratio));
+    const ctx=out.getContext('2d');
+    ctx.drawImage(src,0,0,out.width,out.height);
+    return out.toDataURL('image/png');
+  }catch(e){
+    console.warn('Nu am putut genera imaginea mixului:',e);
+    return null;
+  }
+}
+
 function addCurrentMixToOrder(){
   if(currentMixAdded){
     alert('Acest mix este deja adăugat în comandă. Folosește „Adaugă alt mix” pentru o configurație nouă.');
@@ -791,6 +811,7 @@ function addCurrentMixToOrder(){
   if(mosaicBuckets<=0){alert('Alege cel puțin o găleată de mozaic.');return;}
   const price=MOSAIC_PRICES[mosaicBrand]||MOSAIC_PRICES.duraziv;
   const newId='MIX-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5);
+  const previewData=captureCurrentMixPreview();
   orderMixes.push({
     id:newId,
     code:makeCode(),
@@ -803,6 +824,7 @@ function addCurrentMixToOrder(){
     requestedSqm:Number(sqm)||0,
     estimatedCoverage:Number(mosaicBuckets)*4
   });
+  if(previewData) mixPreviewImages[newId]=previewData;
   currentMixAdded=true;
   currentAddedMixId=newId;
   renderAll();
@@ -812,6 +834,7 @@ function addCurrentMixToOrder(){
 }
 function removeOrderMix(id){
   orderMixes=orderMixes.filter(m=>m.id!==id);
+  delete mixPreviewImages[id];
   if(id===currentAddedMixId){
     selected=[];
     sqm=0;
@@ -1205,12 +1228,49 @@ function validatePhone(show=true){
   return ok;
 }
 
+function getEmailDomainSuggestion(email){
+  const parts=email.toLowerCase().split('@');
+  if(parts.length!==2)return null;
+  const domain=parts[1];
+  const corrections={
+    'gmial.com':'gmail.com',
+    'gmal.com':'gmail.com',
+    'gmai.com':'gmail.com',
+    'gmail.co':'gmail.com',
+    'gmail.con':'gmail.com',
+    'yaoo.com':'yahoo.com',
+    'yaho.com':'yahoo.com',
+    'yahoo.co':'yahoo.com',
+    'yahoo.con':'yahoo.com',
+    'yahooo.com':'yahoo.com',
+    'outlok.com':'outlook.com',
+    'outloo.com':'outlook.com',
+    'outlook.co':'outlook.com',
+    'outlook.con':'outlook.com',
+    'hotmal.com':'hotmail.com',
+    'hotmai.com':'hotmail.com',
+    'hotmail.co':'hotmail.com'
+  };
+  return corrections[domain]||null;
+}
+
 function validateEmail(show=true){
-  const v=document.querySelector('#custEmail').value.trim();
+  const el=document.querySelector('#custEmail');
+  const v=el.value.trim();
   if(!v){ if(show)setFieldState('custEmail',null,''); return true; }
-  const ok=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v);
-  if(show)setFieldState('custEmail',ok,ok?'':'Email invalid. Exemplu: nume@domeniu.ro');
-  return ok;
+  const formatOk=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v);
+  if(!formatOk){
+    if(show)setFieldState('custEmail',false,'Email invalid. Exemplu: nume@domeniu.ro');
+    return false;
+  }
+  const suggestedDomain=getEmailDomainSuggestion(v);
+  if(suggestedDomain){
+    const local=v.split('@')[0];
+    if(show)setFieldState('custEmail',false,`Verifică adresa. Ai vrut să scrii ${local}@${suggestedDomain}?`);
+    return false;
+  }
+  if(show)setFieldState('custEmail',true,'');
+  return true;
 }
 
 function validateCounty(show=true){
@@ -1290,6 +1350,14 @@ async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
     },
     mixes:d.mixes,
     primers:d.primerItems,
+    mix_previews:d.mixes.map((m,i)=>({
+      id:m.id,
+      code:m.code,
+      filename:`mix-${i+1}-${m.code}.png`,
+      data_url:mixPreviewImages[m.id]||null
+    })).filter(x=>x.data_url),
+    mosaic_total:d.mosaicTotal,
+    primer_total:d.primerTotal,
     products_total:d.subtotal,
     final_total:finalAmount,
     payment_method:'bank_transfer'
@@ -1340,6 +1408,7 @@ function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk){
 function resetAfterCompletedOrder(){
   orderMixes=[];
   orderPrimers=[];
+  Object.keys(mixPreviewImages).forEach(k=>delete mixPreviewImages[k]);
   selected=[];
   sqm=0;
   mosaicBuckets=0;
