@@ -22,7 +22,7 @@
 
 /* Checkout V1 - formular si sumar, fara baza de date */
 .checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.payment-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;background:#fff}.payment-option.active{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.payment-option.disabled{opacity:.6;background:#f5f6f7}.payment-option input{margin-top:3px}.payment-option b{display:block;font-size:13px}.payment-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.bank-transfer-info{display:none;margin:0 0 12px;padding:12px;border-radius:10px;background:#f7f9fa;border:1px solid #dfe4e8;font-size:13px;line-height:1.5}.bank-transfer-info.show{display:block}.bank-transfer-info b{font-weight:900}.bank-transfer-info code{font-family:inherit;font-weight:900}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
 .btn-row{display:none !important;}
 .mix-cart-box{margin-top:12px;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
 .mix-cart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
@@ -143,6 +143,21 @@
           <label class="delivery-option"><input id="deliveryPickup" type="radio" name="deliveryMethod" value="pickup"><span><b>🏢 Ridicare personală — GRATUIT</b><small>Ridicare de la sediul PuroHome din Craiova.</small></span></label>
         </div>
         <div id="pickupInfo" class="pickup-info"><b>Ridicare personală: 0 lei</b><br>Str. Râului nr. 214, Craiova, Dolj, CP 200641.<br>Te contactăm când comanda este pregătită pentru ridicare.</div>
+
+        <h3 style="margin-top:14px">Metoda de plată</h3>
+        <div class="payment-options" role="radiogroup" aria-label="Metoda de plată">
+          <label class="payment-option active"><input id="paymentBank" type="radio" name="paymentMethod" value="bank" checked><span><b>🏦 Transfer bancar (OP)</b><small>Comanda se înregistrează imediat. Primești datele pentru plată și numărul comenzii.</small></span></label>
+          <label class="payment-option disabled"><input id="paymentCard" type="radio" name="paymentMethod" value="card" disabled><span><b>💳 Plată online cu cardul</b><small>Disponibilă în curând.</small></span></label>
+        </div>
+        <div id="bankTransferInfo" class="bank-transfer-info show">
+          <b>Plată prin transfer bancar</b><br>
+          Beneficiar: SC Sabaki Impex SRL<br>
+          CUI: RO 14172138<br>
+          Nr. Reg. Comerțului: J16/611/2001<br>
+          IBAN RON: <code>RO44 BTRL RONC RT05 8012 5601</code><br>
+          La detaliile plății vei trece numărul comenzii afișat după confirmare.
+        </div>
+
         <div id="shippingCalc" class="shipping-calc">
           <div class="row"><span>Transport</span><b id="shippingPrice" class="shipping-price">—</b></div>
           <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
@@ -160,14 +175,14 @@
         </div>
         <div id="checkoutError" class="checkout-error"></div>
         <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat mixurile, culorile, procentele, mărcile și cantitățile din sumarul comenzii.</span></label>
-        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Confirmă datele comenzii</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
+        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Înregistrează comanda</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
         <div id="checkoutStatus" class="checkout-status"></div>
       </section>
       <aside class="checkout-card">
         <h3>Sumar comandă</h3>
         <div id="checkoutSummary" class="checkout-summary"></div>
         <div id="shippingInfo" class="checkout-info"><b>Transport:</b> se calculează separat după adresa de livrare și cantitatea comandată.</div>
-        <div class="checkout-info">Comanda este salvată online în baza de date după confirmare.</div>
+        <div class="checkout-info">Comanda se înregistrează după confirmare.</div>
       </aside>
     </div>
   </div>
@@ -943,6 +958,13 @@ function getCheckoutData(){
   };
 }
 const PICKUP_ADDRESS='Str. Râului nr. 214, Craiova, Dolj, CP 200641';
+const BANK_TRANSFER={
+  beneficiary:'SC Sabaki Impex SRL',
+  cui:'RO 14172138',
+  reg:'J16/611/2001',
+  iban:'RO44 BTRL RONC RT05 8012 5601'
+};
+
 const WAREHOUSE_QUERY='Strada Râului 214, Craiova, Dolj, 200641, Romania';
 const SHIPPING_RATE_PER_KM=2;
 const SHIPPING_MIN=50;
@@ -950,6 +972,10 @@ const SHIPPING_MAX_SHARE=.25;
 let shippingDistanceKm=null;
 let shippingPrice=null;
 let shippingLastAddress='';
+
+function getPaymentMethod(){
+  return document.querySelector('input[name="paymentMethod"]:checked')?.value||'bank';
+}
 
 function getDeliveryMethod(){
   return document.querySelector('input[name="deliveryMethod"]:checked')?.value||'delivery';
@@ -1099,6 +1125,7 @@ function renderCheckoutSummary(){
     ${d.primerEnabled?d.primerItems.map(p=>`<div class="summary-line"><span>${p.brand} ${p.kg} kg</span><b>${p.quantity} găleți × ${p.unitPrice} lei</b></div>`).join(''):''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
     <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
+    <div class="summary-line"><span>Plată</span><b>${getPaymentMethod()==='bank'?'Transfer bancar (OP)':'Card'}</b></div>
     <div class="summary-line checkout-total"><span>${finalTotal==null?'Subtotal produse':'TOTAL FINAL'}</span><span>${(finalTotal??d.subtotal).toLocaleString('ro-RO')} lei</span></div>`;
 }
 function openCheckout(){
@@ -1122,7 +1149,10 @@ function orderText(){
   const deliveryLine=pickup?`Ridicare personală: ${PICKUP_ADDRESS}`:`Livrare: ${customer.address}, ${customer.city}, ${customer.county}${customer.postcode?' '+customer.postcode:''}`;
   const shippingLine=pickup?`Transport: 0 lei\nTotal final: ${d.subtotal} lei`:(shippingPrice==null?`Transport: de calculat`:`Distanță: ${shippingDistanceKm} km\nTransport: ${shippingPrice} lei\nTotal final: ${d.subtotal+shippingPrice} lei`);
   const mixLines=d.mixes.length?d.mixes.map((m,i)=>`Mix ${i+1}: ${m.code}\n${m.recipe.map(x=>`${x.name} ${x.pct}%`).join(' · ')}\n${m.mosaicBrand}: ${m.mosaicBuckets} găleți x 25 kg\nAcoperire estimată: ~${m.estimatedCoverage} m²`).join('\n\n'):'Fără mozaic';
-  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?d.primerItems.map(p=>`${p.brand} ${p.kg} kg — ${p.quantity} găleți`).join(' + '):'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\nObservații: ${customer.notes||'-'}`;
+  const paymentLine=getPaymentMethod()==='bank'
+    ?`Plată: Transfer bancar (OP)\nIBAN: ${BANK_TRANSFER.iban}`
+    :'Plată: Card';
+  return `Client: ${customer.name}\nTelefon: ${customer.phone}\nEmail: ${customer.email||'-'}\n${deliveryLine}\n\n${mixLines}\n\nGrund: ${d.primerEnabled?d.primerItems.map(p=>`${p.brand} ${p.kg} kg — ${p.quantity} găleți`).join(' + '):'Fără grund'}\nSubtotal produse: ${d.subtotal} lei\n${shippingLine}\n${paymentLine}\nObservații: ${customer.notes||'-'}`;
 }
 function setFieldState(id, valid, message=''){
   const el=document.querySelector('#'+id);
@@ -1284,6 +1314,8 @@ async function saveOrderToSupabase(){
     shipping_price:pickup?0:shippingPrice,
     final_total:pickup?d.subtotal:(shippingPrice==null?null:d.subtotal+shippingPrice),
     order_status:'noua',
+    payment_method:'bank_transfer',
+    payment_status:'in_asteptare',
     repeated_from_mx:null
   };
   try{
@@ -1301,12 +1333,18 @@ async function saveOrderToSupabase(){
       try{detail=await response.text()}catch(_){}
       throw new Error('Supabase '+response.status+(detail?' · '+detail:''));
     }
-    // Dacă salvarea comenzii a reușit, pornim plata NETOPIA
-window.location.href =
-    'https://api.purohome.ro/netopia_start.php?orderId=' +
-    encodeURIComponent(orderId);
-
-return;
+    // Plata prin transfer bancar (OP): nu redirecționăm către procesatorul de card.
+    const finalAmount=pickup?d.subtotal:d.subtotal+shippingPrice;
+    st.innerHTML=`<b>Comanda ${orderId} a fost înregistrată.</b><br><br>
+      Total de plată: <b>${finalAmount.toLocaleString('ro-RO')} lei</b><br>
+      Beneficiar: <b>${BANK_TRANSFER.beneficiary}</b><br>
+      CUI: ${BANK_TRANSFER.cui}<br>
+      IBAN RON: <b>${BANK_TRANSFER.iban}</b><br><br>
+      La detaliile plății scrie: <b>${orderId}</b>.<br>
+      Comanda va fi procesată după confirmarea încasării.`;
+    st.classList.add('show');
+    btn.textContent='Comandă înregistrată ✓';
+    return;
     // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
     try{
       const arr=JSON.parse(localStorage.getItem('mixPiatraSentOrders')||'[]');
@@ -1339,6 +1377,13 @@ document.querySelector('#checkoutClose').onclick=closeCheckout;
 document.querySelector('#checkoutModal').addEventListener('click',e=>{if(e.target.id==='checkoutModal')closeCheckout()});
 document.querySelector('#prepareOrder').onclick=saveOrderToSupabase;
 document.querySelectorAll('input[name="deliveryMethod"]').forEach(el=>el.addEventListener('change',updateDeliveryUI));
+document.querySelectorAll('input[name="paymentMethod"]').forEach(el=>el.addEventListener('change',()=>{
+  document.querySelectorAll('.payment-option').forEach(x=>x.classList.remove('active'));
+  document.querySelector('input[name="paymentMethod"]:checked')?.closest('.payment-option')?.classList.add('active');
+  document.querySelector('#bankTransferInfo')?.classList.toggle('show',getPaymentMethod()==='bank');
+  renderCheckoutSummary();
+}));
+
 document.querySelector('#calculateShipping').addEventListener('click',calculateShipping);
 
 document.querySelector('#custPostcode').addEventListener('input',e=>{
