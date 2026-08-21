@@ -158,11 +158,6 @@
           La detaliile plății vei trece numărul comenzii afișat după confirmare.
         </div>
 
-        <div id="shippingCalc" class="shipping-calc">
-          <div class="row"><span>Transport</span><b id="shippingPrice" class="shipping-price">—</b></div>
-          <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
-          <button id="calculateShipping" type="button">Calculează transportul</button>
-        </div>
         <div class="field-grid">
           <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu" minlength="3"><div id="helpName" class="field-help"></div></div>
           <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" maxlength="14"><div id="helpPhone" class="field-help"></div></div>
@@ -173,9 +168,14 @@
           <div class="field full delivery-field"><label>Adresă de livrare *</label><input id="custAddress" autocomplete="street-address" placeholder="Stradă și număr, ex. Str. Libertății nr. 10" minlength="5"><div id="helpAddress" class="field-help"></div></div>
           <div class="field full"><label>Observații</label><textarea id="custNotes" placeholder="Detalii pentru livrare sau comandă"></textarea></div>
         </div>
+        <div id="shippingCalc" class="shipping-calc">
+          <div class="row"><span>Transport</span><b id="shippingPrice" class="shipping-price">—</b></div>
+          <div id="shippingStatus" class="status">Completează județul, localitatea și adresa, apoi calculăm automat transportul.</div>
+          <button id="calculateShipping" type="button">Calculează transportul</button>
+        </div>
         <div id="checkoutError" class="checkout-error"></div>
         <label class="confirm-row"><input id="confirmOrder" type="checkbox"><span>Confirm că am verificat mixurile, culorile, procentele, mărcile și cantitățile din sumarul comenzii.</span></label>
-        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Înregistrează comanda</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
+        <div class="checkout-actions"><button id="prepareOrder" class="checkout-primary" type="button">Trimite comanda</button><button id="copyOrder" class="checkout-secondary" type="button">Copiază sumarul</button></div>
         <div id="checkoutStatus" class="checkout-status"></div>
       </section>
       <aside class="checkout-card">
@@ -185,6 +185,22 @@
         <div class="checkout-info">Comanda se înregistrează după confirmare.</div>
       </aside>
     </div>
+
+    <section id="orderSuccessScreen" style="display:none;padding:28px 22px 32px;max-width:760px;margin:0 auto;text-align:center">
+      <div style="font-size:52px;line-height:1;margin-bottom:12px">✓</div>
+      <h2 style="margin:0 0 8px;font-size:28px">Comanda a fost înregistrată</h2>
+      <p id="successOrderNumber" style="margin:0 0 20px;color:#59636c;font-weight:700"></p>
+
+      <div style="text-align:left;border:1px solid #dfe4e8;border-radius:12px;padding:16px;background:#fff;margin:0 auto 16px">
+        <div id="successOrderDetails"></div>
+      </div>
+
+      <div id="successEmailStatus" style="font-size:13px;color:#59636c;margin:0 0 18px"></div>
+
+      <button id="returnHomeAfterOrder" type="button" class="checkout-primary" style="max-width:320px;width:100%">
+        Revino la pagina principală
+      </button>
+    </section>
   </div>
 </div>
 <script>
@@ -1293,6 +1309,78 @@ async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
   return data;
 }
 
+
+function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk){
+  const grid=document.querySelector('#checkoutModal .checkout-grid');
+  const success=document.querySelector('#orderSuccessScreen');
+  const head=document.querySelector('#checkoutModal .checkout-head');
+  if(grid) grid.style.display='none';
+  if(success) success.style.display='block';
+  if(head) head.style.display='none';
+
+  const deliveryText=pickup
+    ? 'Ridicare personală — Str. Râului nr. 214, Craiova'
+    : `${customer.address}, ${customer.city}, ${customer.county}, ${customer.postcode}`;
+
+  document.querySelector('#successOrderNumber').textContent='Comanda nr. '+orderId;
+  document.querySelector('#successOrderDetails').innerHTML=`
+    <div class="summary-line"><span>Total de plată</span><b>${finalAmount.toLocaleString('ro-RO')} lei</b></div>
+    <div class="summary-line"><span>Metoda de plată</span><b>Transfer bancar (OP)</b></div>
+    <div class="summary-line"><span>Beneficiar</span><b>${BANK_TRANSFER.beneficiary}</b></div>
+    <div class="summary-line"><span>CUI</span><b>${BANK_TRANSFER.cui}</b></div>
+    <div class="summary-line"><span>IBAN RON</span><b>${BANK_TRANSFER.iban}</b></div>
+    <div class="summary-line"><span>Detalii plată</span><b>${orderId}</b></div>
+    <div class="summary-line"><span>Predare</span><b>${deliveryText}</b></div>
+  `;
+  document.querySelector('#successEmailStatus').innerHTML=emailOk
+    ? 'Confirmarea comenzii a fost trimisă și pe email.'
+    : 'Comanda a fost înregistrată. Emailul de confirmare nu a putut fi trimis, însă datele comenzii sunt salvate.';
+}
+
+function resetAfterCompletedOrder(){
+  orderMixes=[];
+  orderPrimers=[];
+  selected=[];
+  sqm=0;
+  mosaicBuckets=0;
+  recommendedMosaicBuckets=0;
+  primerBig=0;
+  primerSmall=0;
+  currentMixAdded=false;
+  currentAddedMixId=null;
+  shippingDistanceKm=null;
+  shippingPrice=null;
+  shippingLastAddress='';
+
+  document.querySelector('#confirmOrder').checked=false;
+  ['custName','custPhone','custEmail','custCity','custPostcode','custAddress','custNotes'].forEach(id=>{
+    const el=document.querySelector('#'+id);
+    if(el) el.value='';
+  });
+  const county=document.querySelector('#custCounty');
+  if(county) county.value='';
+
+  document.querySelector('#deliveryDelivery').checked=true;
+  document.querySelector('#paymentBank').checked=true;
+
+  renderAll();
+  recommendQuantities();
+  updateDeliveryUI();
+  renderCalc();
+
+  const grid=document.querySelector('#checkoutModal .checkout-grid');
+  const success=document.querySelector('#orderSuccessScreen');
+  const head=document.querySelector('#checkoutModal .checkout-head');
+  if(grid) grid.style.display='grid';
+  if(success) success.style.display='none';
+  if(head) head.style.display='flex';
+
+  closeCheckout();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelector('#returnHomeAfterOrder').onclick=resetAfterCompletedOrder;
+
 async function saveOrderToSupabase(){
   if(!validateCheckout())return;
   const d=getCheckoutData();
@@ -1381,17 +1469,7 @@ async function saveOrderToSupabase(){
       console.error('Email order error:',mailErr);
     }
 
-    st.innerHTML=`<b>Comanda ${orderId} a fost înregistrată.</b><br><br>
-      Total de plată: <b>${finalAmount.toLocaleString('ro-RO')} lei</b><br>
-      Beneficiar: <b>${BANK_TRANSFER.beneficiary}</b><br>
-      CUI: ${BANK_TRANSFER.cui}<br>
-      IBAN RON: <b>${BANK_TRANSFER.iban}</b><br><br>
-      La detaliile plății scrie: <b>${orderId}</b>.<br>
-      Comanda va fi procesată după confirmarea încasării.<br><br>
-      ${emailOk
-        ? '<b>Confirmarea a fost trimisă și pe email.</b>'
-        : '<b>Comanda este salvată, dar emailul de confirmare nu a putut fi trimis. Datele de plată rămân cele afișate mai sus.</b>'}`;
-    st.classList.add('show');
+    showOrderSuccess(orderId,finalAmount,customer,pickup,emailOk);
     btn.textContent='Comandă înregistrată ✓';
     return;
     // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
