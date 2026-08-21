@@ -22,7 +22,7 @@
 
 /* Checkout V1 - formular si sumar, fara baza de date */
 .checkout-modal{position:fixed;inset:0;background:rgba(5,8,11,.86);z-index:10020;display:none;align-items:center;justify-content:center;padding:18px}.checkout-modal.open{display:flex}.checkout-panel{width:min(920px,96vw);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.35);color:#111}.checkout-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e3e7ea;background:#fff;border-radius:16px 16px 0 0}.checkout-head h2{margin:0;font-size:20px}.checkout-close{width:38px;height:38px;border:0;border-radius:50%;background:#eef1f4;font-size:24px;cursor:pointer}.checkout-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;padding:18px}.checkout-card{border:1px solid #e0e5e9;border-radius:12px;padding:14px;background:#fff}.checkout-card h3{margin:0 0 12px;font-size:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:#56616b}.field input,.field textarea{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit}.field textarea{min-height:74px;resize:vertical}.checkout-summary{font-size:13px;line-height:1.55}.summary-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf0f2}.summary-line:last-child{border:0}.summary-recipe{margin:9px 0;padding:10px;background:#f7f9fa;border-radius:9px}.checkout-total{font-size:20px;font-weight:900}.checkout-info{font-size:12px;color:#68727b;margin:10px 0}.confirm-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0;font-size:13px}.confirm-row input{margin-top:2px}.checkout-actions{display:flex;gap:9px;flex-wrap:wrap}.checkout-primary{flex:1;min-width:190px;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:13px;font-weight:900;cursor:pointer}.checkout-secondary{border:1px solid #ccd4da;border-radius:10px;background:#fff;padding:13px;font-weight:800;cursor:pointer}.checkout-status{display:none;margin-top:12px;padding:11px;border-radius:9px;background:#eaf8ef;border:1px solid #b9e3c7;color:#176d36;font-size:13px}.checkout-status.show{display:block}.checkout-error{display:none;margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;border:1px solid #f1bcbc;color:#a52828;font-size:13px}.checkout-error.show{display:block}@media(max-width:780px){.checkout-modal{padding:0}.checkout-panel{width:100vw;max-height:100vh;height:100vh;border-radius:0}.checkout-head{border-radius:0}.checkout-grid{grid-template-columns:1fr;padding:12px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.payment-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;background:#fff}.payment-option.active{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.payment-option.disabled{opacity:.6;background:#f5f6f7}.payment-option input{margin-top:3px}.payment-option b{display:block;font-size:13px}.payment-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.bank-transfer-info{display:none;margin:0 0 12px;padding:12px;border-radius:10px;background:#f7f9fa;border:1px solid #dfe4e8;font-size:13px;line-height:1.5}.bank-transfer-info.show{display:block}.bank-transfer-info b{font-weight:900}.bank-transfer-info code{font-family:inherit;font-weight:900}.customer-type-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.customer-type-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.customer-type-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.customer-type-option input{margin-top:3px}.customer-type-option b{display:block;font-size:13px}.customer-type-option small{display:block;color:#68727b;margin-top:2px}.company-fields{display:none;grid-column:1/-1}.company-fields.show{display:contents}.proforma-download{display:inline-block;text-decoration:none;text-align:center;margin:0 0 12px;max-width:320px;width:100%;border:1px solid #17212b;border-radius:10px;background:#fff;color:#17212b;padding:12px;font-weight:900}@media(max-width:780px){.customer-type-options{grid-template-columns:1fr}}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
+.delivery-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.delivery-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;cursor:pointer;background:#fff}.delivery-option:has(input:checked){border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.delivery-option input{margin-top:3px}.delivery-option b{display:block;font-size:13px}.delivery-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.payment-option{display:flex;gap:9px;align-items:flex-start;border:1px solid #d5dce1;border-radius:11px;padding:11px 12px;background:#fff}.payment-option.active{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange);background:#fff9f1}.payment-option.disabled{opacity:.6;background:#f5f6f7}.payment-option input{margin-top:3px}.payment-option b{display:block;font-size:13px}.payment-option small{display:block;color:#68727b;margin-top:2px;line-height:1.35}.bank-transfer-info{display:none;margin:0 0 12px;padding:12px;border-radius:10px;background:#f7f9fa;border:1px solid #dfe4e8;font-size:13px;line-height:1.5}.bank-transfer-info.show{display:block}.bank-transfer-info b{font-weight:900}.bank-transfer-info code{font-family:inherit;font-weight:900}.pickup-info{display:none;margin:0 0 12px;padding:11px 12px;border-radius:10px;background:#eef8f1;border:1px solid #bfe3c8;color:#1e5f33;font-size:13px;line-height:1.45}.pickup-info.show{display:block}.delivery-field.hidden{display:none}.shipping-calc{margin:10px 0 0;padding:11px 12px;border:1px solid #d8dee3;border-radius:10px;background:#f8fafb;font-size:13px}.shipping-calc.hidden{display:none}.shipping-calc .row{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.shipping-calc .status{margin-top:7px;color:#68727b;font-size:12px}.shipping-calc .ok{color:#176d36}.shipping-calc .error{color:#a52828}.shipping-calc button{margin-top:9px;border:1px solid #ccd4da;border-radius:9px;background:#fff;padding:9px 11px;font-weight:800;cursor:pointer}.shipping-price{font-weight:900;color:#111}.field input.invalid,.field textarea.invalid,.field select.invalid{border-color:#d33;background:#fff7f7;box-shadow:0 0 0 1px rgba(211,51,51,.12)}.field input.valid,.field textarea.valid,.field select.valid{border-color:#2f9e44}.field-help{font-size:11px;color:#68727b;min-height:14px}.field-help.error{color:#b42318}.field-help.ok{color:#176d36}.field select{border:1px solid #d5dce1;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;color:#111;width:100%}@media(max-width:780px){.delivery-options{grid-template-columns:1fr}}
 .btn-row{display:none !important;}
 .mix-cart-box{margin-top:12px;padding:12px;border:1px solid #dfe4e8;border-radius:11px;background:#fff}
 .mix-cart-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
@@ -153,24 +153,12 @@
           <b>Plată prin transfer bancar</b><br>
           Beneficiar: SC Sabaki Impex SRL<br>
           CUI: RO 14172138<br>
-          Nr. Reg. Comerțului: J16/611/2001<br>
+          Nr. Reg. Comerțului: ROONRC.J2001000611162<br>
           IBAN RON: <code>RO44 BTRL RONC RT05 8012 5601</code><br>
           La detaliile plății vei trece numărul comenzii afișat după confirmare.
         </div>
 
-        <h3 style="margin-top:14px">Tip client</h3>
-        <div class="customer-type-options" role="radiogroup" aria-label="Tip client">
-          <label class="customer-type-option"><input id="customerPF" type="radio" name="customerType" value="pf" checked><span><b>Persoană fizică</b><small>Comandă în nume personal</small></span></label>
-          <label class="customer-type-option"><input id="customerPJ" type="radio" name="customerType" value="pj"><span><b>Persoană juridică</b><small>Comandă pe firmă</small></span></label>
-        </div>
-
         <div class="field-grid">
-          <div id="companyFields" class="company-fields">
-            <div class="field full"><label>Denumire firmă *</label><input id="companyName" autocomplete="organization" placeholder="Ex. Firma Exemplu SRL"><div id="helpCompanyName" class="field-help"></div></div>
-            <div class="field"><label>CUI / CIF *</label><input id="companyCui" placeholder="Ex. RO12345678"><div id="helpCompanyCui" class="field-help"></div></div>
-            <div class="field"><label>Nr. Registrul Comerțului</label><input id="companyReg" placeholder="Ex. J16/123/2020"></div>
-            <div class="field full"><label>Sediu social *</label><input id="companyAddress" placeholder="Stradă, număr, localitate, județ"><div id="helpCompanyAddress" class="field-help"></div></div>
-          </div>
           <div class="field"><label>Nume și prenume *</label><input id="custName" autocomplete="name" placeholder="Ex. Ion Popescu" minlength="3"><div id="helpName" class="field-help"></div></div>
           <div class="field"><label>Telefon *</label><input id="custPhone" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" maxlength="14"><div id="helpPhone" class="field-help"></div></div>
           <div class="field"><label>Email</label><input id="custEmail" type="email" autocomplete="email" inputmode="email" placeholder="email@exemplu.ro"><div id="helpEmail" class="field-help"></div></div>
@@ -208,7 +196,6 @@
       </div>
 
       <div id="successEmailStatus" style="font-size:13px;color:#59636c;margin:0 0 18px"></div>
-      <a id="downloadProforma" class="proforma-download" href="#" target="_blank" rel="noopener" style="display:none">Descarcă factura proformă</a><br>
 
       <button id="returnHomeAfterOrder" type="button" class="checkout-primary" style="max-width:320px;width:100%">
         Revino la pagina principală
@@ -1013,7 +1000,7 @@ const PICKUP_ADDRESS='Str. Râului nr. 214, Craiova, Dolj, CP 200641';
 const BANK_TRANSFER={
   beneficiary:'SC Sabaki Impex SRL',
   cui:'RO 14172138',
-  reg:'J16/611/2001',
+  reg:'ROONRC.J2001000611162',
   iban:'RO44 BTRL RONC RT05 8012 5601'
 };
 
@@ -1026,27 +1013,6 @@ const SHIPPING_MAX_SHARE=.25;
 let shippingDistanceKm=null;
 let shippingPrice=null;
 let shippingLastAddress='';
-
-function getCustomerType(){
-  return document.querySelector('input[name="customerType"]:checked')?.value||'pf';
-}
-function getBillingData(){
-  const type=getCustomerType();
-  return {
-    type,
-    company_name:type==='pj'?(document.querySelector('#companyName')?.value.trim()||''):'',
-    company_cui:type==='pj'?(document.querySelector('#companyCui')?.value.trim()||''):'',
-    company_reg:type==='pj'?(document.querySelector('#companyReg')?.value.trim()||''):'',
-    company_address:type==='pj'?(document.querySelector('#companyAddress')?.value.trim()||''):''
-  };
-}
-function updateCustomerTypeUI(){
-  const pj=getCustomerType()==='pj';
-  document.querySelector('#companyFields')?.classList.toggle('show',pj);
-  if(!pj){
-    ['companyName','companyCui','companyAddress'].forEach(id=>setFieldState(id,null,''));
-  }
-}
 
 function getPaymentMethod(){
   return document.querySelector('input[name="paymentMethod"]:checked')?.value||'bank';
@@ -1339,28 +1305,11 @@ function validateAddress(show=true){
   return ok;
 }
 
-function validateCompanyFields(show=true){
-  if(getCustomerType()!=='pj')return true;
-  const name=document.querySelector('#companyName')?.value.trim()||'';
-  const cui=(document.querySelector('#companyCui')?.value.trim()||'').replace(/\s+/g,'').toUpperCase();
-  const address=document.querySelector('#companyAddress')?.value.trim()||'';
-  const nameOk=name.length>=2;
-  const cuiOk=/^(RO)?\d{2,10}$/.test(cui);
-  const addressOk=address.length>=5;
-  if(show){
-    setFieldState('companyName',nameOk,nameOk?'':'Introdu denumirea firmei.');
-    setFieldState('companyCui',cuiOk,cuiOk?'':'Introdu un CUI/CIF valid.');
-    setFieldState('companyAddress',addressOk,addressOk?'':'Introdu sediul social.');
-  }
-  return nameOk&&cuiOk&&addressOk;
-}
-
 function validateAllCustomerFields(show=true){
   return [
     validateName(show),
     validatePhone(show),
     validateEmail(show),
-    validateCompanyFields(show),
     validateCounty(show),
     validateCity(show),
     validatePostcode(show),
@@ -1386,7 +1335,7 @@ const SUPABASE_URL='https://kuwsoylhvvfkreoyfvjf.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_xQv5BWQ0REuNo2TM45mLBg_nOlw4Ee_';
 
 
-async function sendOrderEmails(orderId,d,customer,billing,pickup,finalAmount){
+async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
   const deliveryText=pickup
     ? 'Ridicare personală — Str. Râului nr. 214, Craiova'
     : `${customer.address}, ${customer.city}, ${customer.county}, ${customer.postcode}`;
@@ -1394,7 +1343,6 @@ async function sendOrderEmails(orderId,d,customer,billing,pickup,finalAmount){
   const body={
     order_id:orderId,
     customer,
-    billing,
     delivery:{
       method:pickup?'pickup':'delivery',
       text:deliveryText,
@@ -1430,7 +1378,7 @@ async function sendOrderEmails(orderId,d,customer,billing,pickup,finalAmount){
 }
 
 
-function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk, proformaNumber='', proformaUrl=''){
+function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk){
   const grid=document.querySelector('#checkoutModal .checkout-grid');
   const success=document.querySelector('#orderSuccessScreen');
   const head=document.querySelector('#checkoutModal .checkout-head');
@@ -1452,14 +1400,9 @@ function showOrderSuccess(orderId, finalAmount, customer, pickup, emailOk, profo
     <div class="summary-line"><span>Detalii plată</span><b>${orderId}</b></div>
     <div class="summary-line"><span>Predare</span><b>${deliveryText}</b></div>
   `;
-  document.querySelector('#successEmailStatus').innerHTML=(proformaNumber?`Factura proformă <b>${proformaNumber}</b> a fost emisă. `:'')+(emailOk
-    ? 'Confirmarea comenzii și proforma au fost trimise și pe email.'
-    : 'Comanda a fost înregistrată. Emailul de confirmare nu a putut fi trimis, însă datele comenzii sunt salvate.');
-  const pf=document.querySelector('#downloadProforma');
-  if(pf){
-    pf.style.display=proformaUrl?'inline-block':'none';
-    if(proformaUrl)pf.href=proformaUrl;
-  }
+  document.querySelector('#successEmailStatus').innerHTML=emailOk
+    ? 'Confirmarea comenzii a fost trimisă și pe email.'
+    : 'Comanda a fost înregistrată. Emailul de confirmare nu a putut fi trimis, însă datele comenzii sunt salvate.';
 }
 
 function resetAfterCompletedOrder(){
@@ -1492,7 +1435,6 @@ async function saveOrderToSupabase(){
     address:pickup?'RIDICARE PERSONALĂ — Str. Râului nr. 214':document.querySelector('#custAddress').value.trim(),
     notes:document.querySelector('#custNotes').value.trim()
   };
-  const billing=getBillingData();
   const pd=getPrimerData();
   const primerSmallItems=(d.primerItems||[]).filter(p=>p.kg<20);
   const primerLargeItems=(d.primerItems||[]).filter(p=>p.kg>=20);
@@ -1514,7 +1456,7 @@ async function saveOrderToSupabase(){
     mosaic_buckets:d.mosaicBuckets,
     mosaic_bucket_kg:25,
     mosaic_unit_price:d.mosaicPrice,
-    mix_recipe:{version:4,mixes:d.mixes,primers:d.primerItems,billing},
+    mix_recipe:{version:3,mixes:d.mixes,primers:d.primerItems},
     primer_included:d.primerEnabled,
     primer_brand:d.primerEnabled?(d.primerItems.length===1?d.primerItems[0].brand:'Multiplu'):null,
     primer_small_bucket_kg:primerSmallItems.length===1?primerSmallItems[0].kg:null,
@@ -1552,15 +1494,14 @@ async function saveOrderToSupabase(){
     const finalAmount=pickup?d.subtotal:d.subtotal+shippingPrice;
 
     let emailOk=false;
-    let mailResult={};
     try{
-      mailResult=await sendOrderEmails(orderId,d,customer,billing,pickup,finalAmount);
+      await sendOrderEmails(orderId,d,customer,pickup,finalAmount);
       emailOk=true;
     }catch(mailErr){
       console.error('Email order error:',mailErr);
     }
 
-    showOrderSuccess(orderId,finalAmount,customer,pickup,emailOk,mailResult.proforma_number||'',mailResult.proforma_url||'');
+    showOrderSuccess(orderId,finalAmount,customer,pickup,emailOk);
     btn.textContent='Comandă înregistrată ✓';
     return;
     // Păstrăm și o copie locală ca rezervă, fără a o folosi ca sursă principală.
@@ -1602,11 +1543,6 @@ document.querySelectorAll('input[name="paymentMethod"]').forEach(el=>el.addEvent
   renderCheckoutSummary();
 }));
 
-document.querySelectorAll('input[name="customerType"]').forEach(el=>el.addEventListener('change',updateCustomerTypeUI));
-document.querySelector('#companyName')?.addEventListener('blur',()=>validateCompanyFields(true));
-document.querySelector('#companyCui')?.addEventListener('blur',()=>validateCompanyFields(true));
-document.querySelector('#companyAddress')?.addEventListener('blur',()=>validateCompanyFields(true));
-
 document.querySelector('#calculateShipping').addEventListener('click',calculateShipping);
 
 document.querySelector('#custPostcode').addEventListener('input',e=>{
@@ -1636,7 +1572,7 @@ document.querySelector('#custAddress').addEventListener('blur',()=>validateAddre
 document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
 document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
 
-window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();updateDeliveryUI();updateCustomerTypeUI();
+window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();updateDeliveryUI();
 </script>
   <footer style="
   background:#0f1720;
@@ -1674,7 +1610,7 @@ window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantit
       <h4 style="margin-top:0;">Date companie</h4>
      <p style="margin:6px 0;">Denumire firmă: SABAKI IMPEX SRL</p>
      <p style="margin:6px 0;">CUI: RO 14172138</p>
-     <p style="margin:6px 0;">Nr. Reg. Comerțului: J16/611/2001</p>
+     <p style="margin:6px 0;">Nr. Reg. Comerțului: ROONRC.J2001000611162</p>
      <p style="margin:6px 0;">Sediu: Str. Râului nr. 214, Craiova, Dolj</p>
       
     </div>
