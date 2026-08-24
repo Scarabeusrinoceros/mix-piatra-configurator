@@ -53,7 +53,7 @@
 </style>
 </head>
 <body>
-<div id="promoBanner" class="promo-banner" hidden><strong>🎁 PROMOȚIE SEPTEMBRIE — GRUND GRATIS!</strong><span>La 4 găleți de mix → grund mic GRATIS · La 10 găleți → grund 25 kg GRATIS · Promoția se calculează separat pentru Duraziv și Kober.</span></div>
+<div id="promoBanner" class="promo-banner" hidden><strong>🎁 PROMOȚIE DE LANSARE — GRUND GRATIS!</strong><span>La 4 găleți de mix → grund mic GRATIS · La 10 găleți → grund 25 kg GRATIS · Ofertă valabilă până la 30 septembrie 2026.</span></div>
 <div class="app">
 <aside class="left">
   <div class="brand"><div class="logo">◆</div><div><h1>MIX <span>PIATRĂ</span></h1><p>Creează-ți mixul perfect</p></div></div>
@@ -632,7 +632,7 @@ const PRIMER_DATA={
   kober:{name:'Kober',bigKg:25,bigCoverage:60,bigPrice:195,smallKg:8,smallCoverage:15,smallPrice:88}
 };
 const PROMO_START=new Date(2026,8,1),PROMO_END=new Date(2026,9,1);
-function isSeptemberPromoActive(){const n=new Date();return n>=PROMO_START&&n<PROMO_END}
+function isSeptemberPromoActive(){const n=new Date();return n<PROMO_END}
 function updatePromoBanner(){const e=document.querySelector('#promoBanner');if(e)e.hidden=!isSeptemberPromoActive()}
 function getPromoGifts(){
  if(!isSeptemberPromoActive())return[];
