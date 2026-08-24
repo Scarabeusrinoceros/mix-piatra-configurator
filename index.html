@@ -743,6 +743,36 @@ const PRIMER_DATA={
   duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
   kober:{name:'Kober',bigKg:25,bigCoverage:60,bigPrice:195,smallKg:8,smallCoverage:15,smallPrice:88}
 };
+
+
+// GA4 custom + ecommerce tracking. Nu trimitem date personale (nume, telefon, email, adresa).
+let analyticsCheckoutStarted=false;
+function gaEvent(name,params={}){
+  try{
+    if(typeof window.gtag==='function') window.gtag('event',name,params);
+  }catch(err){
+    console.warn('GA4 event error:',name,err);
+  }
+}
+function analyticsItems(d){
+  const items=[];
+  (d?.mixes||[]).forEach((m,i)=>items.push({
+    item_id:m.code||('mix-'+(i+1)),
+    item_name:'Mix piatra '+(m.mosaicBrand||''),
+    item_category:'Mozaic decorativ',
+    item_variant:(m.recipe||[]).map(x=>x.name+' '+x.pct+'%').join(' + '),
+    price:Number(m.mosaicPrice)||0,
+    quantity:Number(m.mosaicBuckets)||0
+  }));
+  (d?.primerItems||[]).forEach((p,i)=>items.push({
+    item_id:'grund-'+String(p.brand||'').toLowerCase()+'-'+p.kg+'kg-'+i,
+    item_name:'Grund '+(p.brand||'')+' '+p.kg+' kg',
+    item_category:'Grund',
+    price:Number(p.unitPrice)||0,
+    quantity:Number(p.quantity)||0
+  }));
+  return items;
+}
 const PROMO_START=new Date(2026,8,1),PROMO_END=new Date(2026,9,1);
 function isSeptemberPromoActive(){const n=new Date();return n<PROMO_END}
 function updatePromoBanner(){const e=document.querySelector('#promoBanner');if(e)e.hidden=!isSeptemberPromoActive()}
@@ -952,6 +982,14 @@ function addCurrentMixToOrder(){
   if(previewData) mixPreviewImages[newId]=previewData;
   currentMixAdded=true;
   currentAddedMixId=newId;
+  gaEvent('mix_created',{
+    mix_code:makeCode(),
+    mosaic_brand:mosaicBrand==='kober'?'Kober':'Duraziv',
+    mosaic_buckets:Number(mosaicBuckets)||0,
+    requested_sqm:Number(sqm)||0,
+    value:Number(mosaicBuckets)*price,
+    currency:'RON'
+  });
   renderAll();
   renderCalc();
   setSectionCollapsed('mosaic',true);
@@ -1261,6 +1299,12 @@ function calculateShippingPrice(distanceKm, subtotal){
     const d=getCheckoutData();
     shippingPrice=calculateShippingPrice(shippingDistanceKm,d.subtotal);
     shippingLastAddress=addressText;
+    gaEvent('shipping_calculated',{
+      distance_km:Number(shippingDistanceKm)||0,
+      shipping_cost:Number(shippingPrice)||0,
+      order_subtotal:Number(d.subtotal)||0,
+      currency:'RON'
+    });
 
     if(distanceEl)distanceEl.textContent=shippingDistanceKm.toLocaleString('ro-RO')+' km';
     if(priceEl)priceEl.textContent=shippingPrice.toLocaleString('ro-RO')+' lei';
@@ -1327,6 +1371,14 @@ function openCheckout(){
   document.querySelector('#checkoutModal').setAttribute('aria-hidden','false');
   document.body.classList.add('modal-open');
   err.classList.remove('show');
+  if(!analyticsCheckoutStarted){
+    analyticsCheckoutStarted=true;
+    gaEvent('begin_checkout',{
+      currency:'RON',
+      value:Number(d.subtotal)||0,
+      items:analyticsItems(d)
+    });
+  }
 }
 function closeCheckout(){document.querySelector('#checkoutModal').classList.remove('open');document.querySelector('#checkoutModal').setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
 function orderText(){
@@ -1657,6 +1709,15 @@ async function saveOrderToSupabase(){
       console.error('Email order error:',mailErr);
     }
 
+    gaEvent('purchase',{
+      transaction_id:orderId,
+      value:Number(finalAmount)||0,
+      currency:'RON',
+      shipping:pickup?0:(Number(shippingPrice)||0),
+      payment_method:'bank_transfer',
+      delivery_method:pickup?'pickup':'delivery',
+      items:analyticsItems(d)
+    });
     showOrderSuccess(orderId,finalAmount,customer,pickup,emailOk);
     btn.textContent='Comandă înregistrată ✓';
     return;
