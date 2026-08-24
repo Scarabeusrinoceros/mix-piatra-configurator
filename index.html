@@ -147,7 +147,7 @@
         <h3 style="margin-top:14px">Metoda de plată</h3>
         <div class="payment-options" role="radiogroup" aria-label="Metoda de plată">
           <label class="payment-option active"><input id="paymentBank" type="radio" name="paymentMethod" value="bank" checked><span><b>🏦 Transfer bancar (OP)</b><small>Comanda se înregistrează imediat. Primești datele pentru plată și numărul comenzii.</small></span></label>
-          <label class="payment-option disabled"><input id="paymentCard" type="radio" name="paymentMethod" value="card" disabled><span><b>💳 Plată online cu cardul</b><small>Disponibilă în curând.</small></span></label>
+          <label class="payment-option"><input id="paymentCard" type="radio" name="paymentMethod" value="card"><span><b>💳 Plată online cu cardul</b><small>Plată securizată prin NETOPIA Payments.</small></span></label>
         </div>
         <div id="bankTransferInfo" class="bank-transfer-info show">
           <b>Plată prin transfer bancar</b><br>
@@ -1471,7 +1471,7 @@ async function saveOrderToSupabase(){
     shipping_price:pickup?0:shippingPrice,
     final_total:pickup?d.subtotal:(shippingPrice==null?null:d.subtotal+shippingPrice),
     order_status:'noua',
-    payment_method:'bank_transfer',
+    payment_method:getPaymentMethod()==='card'?'card':'bank_transfer',
     payment_status:'in_asteptare',
     repeated_from_mx:null
   };
@@ -1490,6 +1490,15 @@ async function saveOrderToSupabase(){
       try{detail=await response.text()}catch(_){}
       throw new Error('Supabase '+response.status+(detail?' · '+detail:''));
     }
+    if(getPaymentMethod()==='card'){
+  btn.textContent='Se deschide plata securizată...';
+
+  window.location.href =
+    'https://api.purohome.ro/netopia_start.php?orderId=' +
+    encodeURIComponent(orderId);
+
+  return;
+}
     // Plata prin transfer bancar (OP): nu redirecționăm către procesatorul de card.
     const finalAmount=pickup?d.subtotal:d.subtotal+shippingPrice;
 
