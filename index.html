@@ -1192,13 +1192,30 @@ async function geocodeAddress(query){
   return {lat:Number(data[0].lat),lon:Number(data[0].lon),label:data[0].display_name||query};
 }
 
-function calculateShippingPrice(distanceKm,subtotal){
-  const distanceCost=distanceKm*SHIPPING_RATE_PER_KM;
-  const cappedCost=subtotal>0?Math.min(distanceCost,subtotal*SHIPPING_MAX_SHARE):distanceCost;
-  return Math.max(SHIPPING_MIN,Math.round(cappedCost));
-}
+function calculateShippingPrice(distanceKm, subtotal){
+  if(distanceKm <= 5) return 30;
 
-async function calculateShipping(){
+  let price;
+
+  if(distanceKm <= 50){
+    price = 30 + (distanceKm - 5) * 1.45;
+  }else if(distanceKm <= 100){
+    price = 95 + (distanceKm - 50) * 0.70;
+  }else if(distanceKm <= 200){
+    price = 130 + (distanceKm - 100) * 0.45;
+  }else if(distanceKm <= 300){
+    price = 175 + (distanceKm - 200) * 0.35;
+  }else{
+    price = 210 + (distanceKm - 300) * 0.25;
+  }
+
+  if(subtotal > 0){
+    price = Math.min(price, subtotal * SHIPPING_MAX_SHARE);
+  }
+
+  return Math.max(30, Math.round(price));
+}
+  async function calculateShipping(){
   if(getDeliveryMethod()!=='delivery') return;
   const err=document.querySelector('#checkoutError');
   const status=document.querySelector('#shippingStatus');
