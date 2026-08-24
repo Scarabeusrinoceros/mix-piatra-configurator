@@ -48,9 +48,12 @@
 .order-summary-line small{color:#68727b}
 .order-summary-empty{font-size:12px;color:#69737c}
 .recommendation-badge{font-size:11px;color:#68727b;margin-top:4px}
+
+.promo-banner{grid-column:1/-1;position:sticky;top:0;z-index:10005;background:#f28a00;color:#111;padding:10px 16px;text-align:center;box-shadow:0 4px 16px #0003;animation:promoPulse 1.8s ease-in-out infinite}.promo-banner[hidden]{display:none!important}.promo-banner strong{font-size:17px}.promo-banner span{display:block;font-size:12px;font-weight:800;margin-top:2px}@keyframes promoPulse{50%{filter:brightness(1.12);transform:scale(1.004)}}.promo-gift{background:#effaf3!important;color:#176d36!important}.promo-progress{margin:8px 0;padding:9px;border-radius:9px;background:#fff7e9;border:1px solid #ffd49b;color:#7a4700;font-size:12px;font-weight:800}@media(max-width:780px){.promo-banner{position:relative}.promo-banner strong{font-size:14px}}
 </style>
 </head>
 <body>
+<div id="promoBanner" class="promo-banner" hidden><strong>🎁 PROMOȚIE SEPTEMBRIE — GRUND GRATIS!</strong><span>La 4 găleți de mix → grund mic GRATIS · La 10 găleți → grund 25 kg GRATIS · Promoția se calculează separat pentru Duraziv și Kober.</span></div>
 <div class="app">
 <aside class="left">
   <div class="brand"><div class="logo">◆</div><div><h1>MIX <span>PIATRĂ</span></h1><p>Creează-ți mixul perfect</p></div></div>
@@ -628,6 +631,16 @@ const PRIMER_DATA={
   duraziv:{name:'Duraziv',bigKg:25,bigCoverage:60,bigPrice:210,smallKg:4,smallCoverage:8,smallPrice:59},
   kober:{name:'Kober',bigKg:25,bigCoverage:60,bigPrice:195,smallKg:8,smallCoverage:15,smallPrice:88}
 };
+const PROMO_START=new Date(2026,8,1),PROMO_END=new Date(2026,9,1);
+function isSeptemberPromoActive(){const n=new Date();return n>=PROMO_START&&n<PROMO_END}
+function updatePromoBanner(){const e=document.querySelector('#promoBanner');if(e)e.hidden=!isSeptemberPromoActive()}
+function getPromoGifts(){
+ if(!isSeptemberPromoActive())return[];
+ const t={duraziv:0,kober:0};orderMixes.forEach(m=>t[m.mosaicBrandKey==='kober'?'kober':'duraziv']+=Number(m.mosaicBuckets)||0);
+ const g=[];Object.entries(t).forEach(([k,n])=>{if(!n)return;const d=PRIMER_DATA[k],big=Math.floor(n/10),small=Math.floor((n%10)/4);
+ if(big)g.push({brand:d.name,brandKey:k,kg:25,quantity:big,normalUnitPrice:d.bigPrice,total:0,promo:true});
+ if(small)g.push({brand:d.name,brandKey:k,kg:d.smallKg,quantity:small,normalUnitPrice:d.smallPrice,total:0,promo:true})});return g
+}
 function getPrimerBrand(){return primerBrand==='auto'?mosaicBrand:primerBrand}
 function getPrimerData(){return PRIMER_DATA[getPrimerBrand()]||PRIMER_DATA.duraziv}
 function recommendedPrimer(area){
@@ -964,7 +977,9 @@ function renderCompactOrderSummary(){
       total:p.total
     });
   });
-  const productsCount=orderMixes.length+orderPrimers.reduce((s,p)=>s+p.quantity,0);
+  const promoGifts=getPromoGifts();
+  promoGifts.forEach(p=>rows.push({title:`🎁 ${p.brand} ${p.kg} kg — GRATIS`,meta:`${p.quantity} ${p.quantity===1?'găleată':'găleți'} promoție`,total:0,promo:true}));
+  const productsCount=orderMixes.length+orderPrimers.reduce((s,p)=>s+p.quantity,0)+promoGifts.reduce((s,p)=>s+p.quantity,0);
   count.textContent=productsCount+(productsCount===1?' produs':' produse');
   const nextActions=document.querySelector('#mixNextActions');
   if(nextActions) nextActions.style.display=orderMixes.length>0?'flex':'none';
@@ -974,7 +989,7 @@ function renderCompactOrderSummary(){
     return;
   }
   box.className='';
-  box.innerHTML=rows.map(r=>`<div class="order-summary-line"><span><b>${r.title}</b><br><small>${r.meta}</small></span><b>${r.total.toLocaleString('ro-RO')} lei</b></div>`).join('');
+  box.innerHTML=rows.map(r=>`<div class="order-summary-line${r.promo?' promo-gift':''}"><span><b>${r.title}</b><br><small>${r.meta}</small></span><b>${r.promo?'GRATIS':r.total.toLocaleString('ro-RO')+' lei'}</b></div>`).join('');
 }
 
 function getCheckoutData(){
@@ -982,9 +997,10 @@ function getCheckoutData(){
   const primers=orderPrimers.map(p=>({...p}));
   const mosaicTotal=mixes.reduce((sum,m)=>sum+m.mosaicTotal,0);
   const primerTotal=primers.reduce((sum,p)=>sum+p.total,0);
+  const promoGifts=getPromoGifts();
   const hasProducts=mixes.length>0||primers.length>0;
   return {
-    valid:hasProducts,mixes,primers,
+    valid:hasProducts,mixes,primers,promoGifts,
     code:mixes.length===1?mixes[0].code:(mixes.length>1?'MULTI-'+mixes.length:'—'),
     recipe:mixes.flatMap(m=>m.recipe),
     mosaicBrand:mixes.length===1?mixes[0].mosaicBrand:(mixes.length>1?'Multiplu':'—'),
@@ -1164,6 +1180,7 @@ function renderCheckoutSummary(){
     <div class="coverage-note"><b>Suprafața de acoperire este orientativă</b>, calculată pe baza unui consum mediu. În practică, aceasta poate varia în funcție de suport, grosimea aplicării, modul de lucru și pierderile de material.</div>
     <div class="summary-line"><span>Grund</span><b>${d.primerEnabled?'Produse selectate':'Fără grund'}</b></div>
     ${d.primerEnabled?d.primerItems.map(p=>`<div class="summary-line"><span>${p.brand} ${p.kg} kg</span><b>${p.quantity} găleți × ${p.unitPrice} lei</b></div>`).join(''):''}
+    ${d.promoGifts.length?`<div class="summary-recipe"><b>🎁 Promoție septembrie</b>${d.promoGifts.map(p=>`<div class="summary-line promo-gift"><span>${p.brand} ${p.kg} kg</span><b>${p.quantity} ${p.quantity===1?'găleată':'găleți'} · GRATIS</b></div>`).join('')}</div>`:''}
     <div class="summary-line"><span>Predare</span><b>${pickup?'Ridicare personală':'Livrare la adresă'}</b></div>
     <div class="summary-line"><span>Transport</span><b>${ship==null?'De calculat':ship.toLocaleString('ro-RO')+' lei'}</b></div>
     <div class="summary-line"><span>Plată</span><b>${getPaymentMethod()==='bank'?'Transfer bancar (OP)':'Card'}</b></div>
@@ -1350,6 +1367,7 @@ async function sendOrderEmails(orderId,d,customer,pickup,finalAmount){
     },
     mixes:d.mixes,
     primers:d.primerItems,
+    promo_gifts:d.promoGifts,
     mix_previews:d.mixes.map((m,i)=>({
       id:m.id,
       code:m.code,
@@ -1456,7 +1474,7 @@ async function saveOrderToSupabase(){
     mosaic_buckets:d.mosaicBuckets,
     mosaic_bucket_kg:25,
     mosaic_unit_price:d.mosaicPrice ?? 0,
-    mix_recipe:{version:3,mixes:d.mixes,primers:d.primerItems},
+    mix_recipe:{version:4,mixes:d.mixes,primers:d.primerItems,promo_gifts:d.promoGifts},
     primer_included:d.primerEnabled,
     primer_brand:d.primerEnabled?(d.primerItems.length===1?d.primerItems[0].brand:'Multiplu'):null,
     primer_small_bucket_kg:primerSmallItems.length===1?primerSmallItems[0].kg:null,
@@ -1581,7 +1599,7 @@ document.querySelector('#custAddress').addEventListener('blur',()=>validateAddre
 document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
 document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
 
-window.onresize=()=>{draw();updateHouseThumbnail()};renderAll();recommendQuantities();updateDeliveryUI();
+window.onresize=()=>{draw();updateHouseThumbnail()};updatePromoBanner();renderAll();recommendQuantities();updateDeliveryUI();
 </script>
   <footer style="
   background:#0f1720;
