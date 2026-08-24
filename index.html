@@ -50,10 +50,122 @@
 .recommendation-badge{font-size:11px;color:#68727b;margin-top:4px}
 
 .promo-banner{grid-column:1/-1;position:sticky;top:0;z-index:10005;background:#f28a00;color:#111;padding:10px 16px;text-align:center;box-shadow:0 4px 16px #0003;animation:promoPulse 1.8s ease-in-out infinite}.promo-banner[hidden]{display:none!important}.promo-banner strong{font-size:17px}.promo-banner span{display:block;font-size:12px;font-weight:800;margin-top:2px}@keyframes promoPulse{50%{filter:brightness(1.12);transform:scale(1.004)}}.promo-gift{background:#effaf3!important;color:#176d36!important}.promo-progress{margin:8px 0;padding:9px;border-radius:9px;background:#fff7e9;border:1px solid #ffd49b;color:#7a4700;font-size:12px;font-weight:800}@media(max-width:780px){.promo-banner{position:relative}.promo-banner strong{font-size:14px}}
+
+/* Popup promoție lansare */
+.promo-modal{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(5,8,11,.72);
+  backdrop-filter:blur(3px);
+}
+.promo-modal.open{display:flex}
+.promo-modal-card{
+  position:relative;
+  width:min(560px,92vw);
+  background:#fff;
+  color:#111;
+  border-radius:18px;
+  padding:28px 26px 24px;
+  box-shadow:0 24px 80px rgba(0,0,0,.38);
+  border:2px solid var(--orange);
+  text-align:center;
+  animation:promoModalIn .28s ease-out;
+}
+.promo-modal-badge{
+  display:inline-block;
+  background:var(--orange);
+  color:#111;
+  font-weight:950;
+  font-size:13px;
+  padding:7px 11px;
+  border-radius:999px;
+  margin-bottom:12px;
+}
+.promo-modal-card h2{
+  margin:0 0 10px;
+  font-size:28px;
+  line-height:1.12;
+}
+.promo-modal-card p{
+  margin:8px 0;
+  color:#4d5963;
+  line-height:1.5;
+}
+.promo-modal-offer{
+  margin:16px 0 8px;
+  display:grid;
+  gap:9px;
+}
+.promo-modal-offer div{
+  padding:11px 12px;
+  border-radius:10px;
+  background:#fff7e9;
+  border:1px solid #ffd49b;
+  font-weight:900;
+}
+.promo-modal-note{
+  font-size:12px;
+  color:#68727b;
+  margin-top:8px;
+}
+.promo-modal-close{
+  margin-top:16px;
+  width:100%;
+  border:0;
+  border-radius:10px;
+  background:#17212b;
+  color:#fff;
+  padding:13px 16px;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+.promo-modal-x{
+  position:absolute;
+  right:12px;
+  top:10px;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#eef1f4;
+  font-size:24px;
+  line-height:36px;
+  cursor:pointer;
+}
+@keyframes promoModalIn{
+  from{opacity:0;transform:translateY(12px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media(max-width:780px){
+  .promo-modal-card{padding:24px 18px 20px}
+  .promo-modal-card h2{font-size:23px}
+}
+
 </style>
 </head>
 <body>
 <div id="promoBanner" class="promo-banner" hidden><strong>🎁 PROMOȚIE DE LANSARE — GRUND GRATIS!</strong><span>La 4 găleți de mix → grund mic GRATIS · La 10 găleți → grund 25 kg GRATIS · Ofertă valabilă până la 30 septembrie 2026.</span></div>
+<div id="promoModal" class="promo-modal" aria-hidden="true">
+  <div class="promo-modal-card" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
+    <button id="promoModalX" class="promo-modal-x" type="button" aria-label="Închide">×</button>
+    <div class="promo-modal-badge">🎁 PROMOȚIE DE LANSARE</div>
+    <h2 id="promoModalTitle">GRUND GRATIS la mixurile PuroHome</h2>
+    <p>Configurează-ți propriul mix de piatră și primești grund gratuit în funcție de cantitatea comandată.</p>
+    <div class="promo-modal-offer">
+      <div>4 găleți de mix → Grund mic GRATIS</div>
+      <div>10 găleți de mix → Grund 25 kg GRATIS</div>
+    </div>
+    <p><b>Duraziv cu grund Duraziv · Kober cu grund Kober</b></p>
+    <div class="promo-modal-note">Ofertă valabilă până la 30 septembrie 2026.</div>
+    <button id="promoModalClose" class="promo-modal-close" type="button">Începe configurarea mixului</button>
+  </div>
+</div>
 <div class="app">
 <aside class="left">
   <div class="brand"><div class="logo">◆</div><div><h1>MIX <span>PIATRĂ</span></h1><p>Creează-ți mixul perfect</p></div></div>
@@ -1599,7 +1711,33 @@ document.querySelector('#custAddress').addEventListener('blur',()=>validateAddre
 document.querySelector('#copyOrder').onclick=async()=>{const text=orderText();try{await navigator.clipboard.writeText(text);const b=document.querySelector('#copyOrder');const old=b.textContent;b.textContent='Copiat ✓';setTimeout(()=>b.textContent=old,1400)}catch(e){prompt('Copiază sumarul:',text)}};
 document.querySelector('#whatsappOffer').onclick=()=>{const mix=selected.length?selected.map(x=>`${x.name} ${x.pct}%`).join(', '):'neconfigurat';const msg=`Bună ziua, doresc o ofertă pentru mixul de piatră configurat pe PURO HOME. Mix: ${mix}.`;window.open('https://wa.me/40735172091?text='+encodeURIComponent(msg),'_blank','noopener');};
 
+
+function openPromoModal(){
+  if(!isSeptemberPromoActive())return;
+  const modal=document.querySelector('#promoModal');
+  if(!modal)return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closePromoModal(){
+  const modal=document.querySelector('#promoModal');
+  if(!modal)return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+document.querySelector('#promoModalClose')?.addEventListener('click',closePromoModal);
+document.querySelector('#promoModalX')?.addEventListener('click',closePromoModal);
+document.querySelector('#promoModal')?.addEventListener('click',e=>{
+  if(e.target.id==='promoModal') closePromoModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && document.querySelector('#promoModal')?.classList.contains('open')) closePromoModal();
+});
+
 window.onresize=()=>{draw();updateHouseThumbnail()};updatePromoBanner();renderAll();recommendQuantities();updateDeliveryUI();
+setTimeout(openPromoModal,180);
 </script>
   <footer style="
   background:#0f1720;
