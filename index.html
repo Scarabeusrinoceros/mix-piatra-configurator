@@ -1,14 +1,10 @@
 <!doctype html>
 <html lang="ro">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWDRJBDBLH"></script>
+  <!-- Google tag (gtag.js) - pornit doar dupa consimtamant, vezi #cookieConsent mai jos -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CWDRJBDBLH');
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -105,6 +101,9 @@
 .recommendation-badge{font-size:11px;color:#68727b;margin-top:4px}
 
 .promo-banner{grid-column:1/-1;position:sticky;top:0;z-index:10005;background:#f28a00;color:#111;padding:10px 16px;text-align:center;box-shadow:0 4px 16px #0003;animation:promoPulse 1.8s ease-in-out infinite}.promo-banner[hidden]{display:none!important}.promo-banner strong{font-size:17px}.promo-banner span{display:block;font-size:12px;font-weight:800;margin-top:2px}@keyframes promoPulse{50%{filter:brightness(1.12);transform:scale(1.004)}}.promo-gift{background:#effaf3!important;color:#176d36!important}.promo-progress{margin:8px 0;padding:9px;border-radius:9px;background:#fff7e9;border:1px solid #ffd49b;color:#7a4700;font-size:12px;font-weight:800}@media(max-width:780px){.promo-banner{position:relative}.promo-banner strong{font-size:14px}}
+
+/* Banner consimtamant cookie-uri (Google Analytics) */
+.cookie-consent{position:fixed;left:14px;right:14px;bottom:14px;z-index:20000;max-width:640px;margin:0 auto;background:#111820;color:#eef1f4;border:1px solid #2d3741;border-radius:14px;padding:16px 18px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;gap:14px;align-items:center;flex-wrap:wrap}.cookie-consent[hidden]{display:none!important}.cookie-consent p{margin:0;font-size:13px;line-height:1.5;color:#c9d0d6;flex:1;min-width:220px}.cookie-consent a{color:#f28a00;text-decoration:underline}.cookie-consent-actions{display:flex;gap:8px;flex-wrap:wrap}.cookie-consent-actions button{border-radius:9px;padding:10px 14px;font-weight:700;font-size:13px;cursor:pointer;border:1px solid #3b4651}.cookie-consent-accept{background:#f28a00;border-color:#f28a00;color:#111}.cookie-consent-decline{background:transparent;color:#eef1f4}@media(max-width:520px){.cookie-consent{flex-direction:column;align-items:stretch;text-align:left}.cookie-consent-actions{justify-content:stretch}.cookie-consent-actions button{flex:1}}
 
 /* Popup promoție lansare */
 .promo-modal{
@@ -205,6 +204,54 @@
 </style>
 </head>
 <body>
+<div id="cookieConsent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Consimțământ cookie-uri" hidden>
+  <p>Folosim Google Analytics ca să înțelegem cum e folosit site-ul. Pornește doar dacă ești de acord — poți citi mai multe în <a href="/politica-gdpr.html">Politica GDPR</a>.</p>
+  <div class="cookie-consent-actions">
+    <button id="cookieDecline" class="cookie-consent-decline" type="button">Refuz</button>
+    <button id="cookieAccept" class="cookie-consent-accept" type="button">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  var CONSENT_KEY='purohome_cookie_consent';
+  function loadGA(){
+    if(window.gaLoaded) return;
+    window.gaLoaded=true;
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-CWDRJBDBLH';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-CWDRJBDBLH');
+  }
+  var saved=null;
+  try{ saved=localStorage.getItem(CONSENT_KEY); }catch(e){}
+  if(saved==='accepted'){
+    loadGA();
+  }else if(saved!=='declined'){
+    var banner=document.getElementById('cookieConsent');
+    if(banner) banner.hidden=false;
+  }
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    try{ localStorage.setItem(CONSENT_KEY,'accepted'); }catch(e){}
+    document.getElementById('cookieConsent').hidden=true;
+    loadGA();
+  });
+  document.getElementById('cookieDecline').addEventListener('click', function(){
+    try{ localStorage.setItem(CONSENT_KEY,'declined'); }catch(e){}
+    document.getElementById('cookieConsent').hidden=true;
+  });
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.id==='cookieSettingsLink'){
+      e.preventDefault();
+      try{ localStorage.removeItem(CONSENT_KEY); }catch(err){}
+      var banner=document.getElementById('cookieConsent');
+      if(banner) banner.hidden=false;
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  });
+})();
+</script>
 <div id="promoBanner" class="promo-banner" hidden><strong>🎁 PROMOȚIE DE LANSARE — GRUND GRATIS!</strong><span>La 4 găleți de mix → grund mic GRATIS · La 10 găleți → grund 25 kg GRATIS · Ofertă valabilă până la 30 septembrie 2026.</span></div>
 <div id="promoModal" class="promo-modal" aria-hidden="true">
   <div class="promo-modal-card" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
@@ -1905,6 +1952,7 @@ setTimeout(openPromoModal,180);
       <p><a href="/politica-livrare.html" style="color:#fff;">Livrare și plată</a></p>
       <p><a href="/politica-anulare-retur.html" style="color:#fff;">Anulare și retur</a></p>
       <p><a href="/politica-gdpr.html" style="color:#fff;">Politica GDPR</a></p>
+      <p><a href="#" id="cookieSettingsLink" style="color:#fff;">Setări cookie-uri</a></p>
     </div>
 
     <div>
